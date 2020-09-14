@@ -47,7 +47,6 @@ def main():
     batch = TableBatch()
 
     # read in the file
-    f = open("vaccine-2020-07-09.txt", "r")
     with open("vaccine-2020-07-09.txt", "r") as f:
         count = 1
         entry_error = 0
