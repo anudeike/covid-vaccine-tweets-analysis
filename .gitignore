@@ -2,3 +2,5 @@
 vaccine-2020-07-09.txt
 *.csv
 test.py
+get_identitfication.py
+*.tsv
