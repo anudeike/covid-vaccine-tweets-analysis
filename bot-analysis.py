@@ -1,5 +1,4 @@
 import pandas as pd
-import json
 import botometer
 from dotenv import load_dotenv
 import os
@@ -26,14 +25,75 @@ bom = botometer.Botometer(wait_on_ratelimit=True,
                           **twitter_app_auth)
 
 # path to the data from the earlier df
-path = "data/basic_user_data.csv"
+path = "data/verified-human-usernames.csv"
+output_path = "data/prepared_data/prepared_human_data_0-50.csv"
 
 df = pd.read_csv(path)
 
-print(df)
+#out_df = pd.DataFrame(columns=["screen_name", "CAP", "astroturf", "fake_follower", "financial", "other", "overall", "self-declared", "spammer"])
+
 def main():
     ## TO DO: GET THE INFORMATION FROM THE BOTOMETER AND PUT INTO THE LIST
-    pass
+    out_df = pd.DataFrame(
+        columns=["screen_name", "CAP", "astroturf", "fake_follower", "financial", "other", "overall", "self-declared",
+                 "spammer"])
+
+    screen_names = df['screen_name'].values
+
+
+    # check the accounts
+    for screen_name, result in bom.check_accounts_in(screen_names[0:50]):
+
+        # target the row with that particular screen name
+        rowIndex = df.loc[df['screen_name'] == screen_name]
+
+        # this will be appended to the new dataframe
+        row = {}
+
+        try:
+            if (result["user"]["majority_lang"] == 'en'):
+                # use the english results
+
+                # for each row that'll be appended
+                row = {
+                    "screen_name": screen_name,
+                    "CAP": result['cap']['english'],
+                    "astroturf": result['display_scores']['english']['astroturf'],
+                    "fake_follower": result['display_scores']['english']['fake_follower'],
+                    "financial": result['display_scores']['english']['financial'],
+                    "other": result['display_scores']['english']['other'],
+                    "overall": result['display_scores']['english']['overall'],
+                    "self-declared": result['display_scores']['english']['self_declared'],
+                    "spammer": result['display_scores']['english']['spammer'],
+                    "type": 'BOT'
+                }
+            else:
+
+                row = {
+                    "screen_name": screen_name,
+                    "CAP": result['cap']['universal'],
+                    "astroturf": result['display_scores']['universal']['astroturf'],
+                    "fake_follower": result['display_scores']['universal']['fake_follower'],
+                    "financial": result['display_scores']['universal']['financial'],
+                    "other": result['display_scores']['universal']['other'],
+                    "overall": result['display_scores']['universal']['overall'],
+                    "self-declared": result['display_scores']['universal']['self_declared'],
+                    "spammer": result['display_scores']['universal']['spammer'],
+                    "type": 'BOT'
+                }
+
+            # append to dataframe
+            out_df = out_df.append(row, ignore_index=True)
+
+            print("{} has been processed.".format(screen_name))
+
+        except Exception as e:
+            # skip if error
+            print("{} Could not be fetched: {}".format(screen_name, e))
+            continue
+
+    # send the info the the df
+    out_df.to_csv(output_path)
 
 main()
 

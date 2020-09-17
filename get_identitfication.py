@@ -2,13 +2,13 @@ import pandas as pd
 import json
 
 
-path = "data/tar/bots/botwiki-2019_tweets.json"
-output_path = "data/bot-usernames.csv"
+path = "data/tar/verified-human/verified-2019_tweets.json"
+output_path = "data/verified-human-usernames.csv"
 
 def main():
 
     # create a dataframe
-    df = pd.DataFrame(columns=['id', 'screen_name', 'follower_count'])
+    df = pd.DataFrame(columns=['id', 'screen_name', 'follower_count', 'type'])
 
     # goal
     # open the file and put username data into a dataframe and create a file for it
@@ -22,7 +22,7 @@ def main():
             followers = tweet['user']['followers_count']
 
             # add the info to the dataframe
-            df.loc[index] = [id] + [screen_name] + [followers]
+            df.loc[index] = [id] + [screen_name] + [followers] + ['human_verified']
 
             # inc
             index += 1
