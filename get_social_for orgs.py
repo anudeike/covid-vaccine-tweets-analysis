@@ -1,7 +1,7 @@
 import luckysocial # can use to get social media provided a name
 import pandas as pd
 
-path = "organization_officials_data/example_data_test"
+path = "organization_officials_data/fortune_500_data_set.csv"
 
 df = pd.read_csv(path)
 
@@ -15,4 +15,4 @@ for link in twitter_links:
     if "https" in link:
         print(link.split('/')[-1])
     else:
-        print(link[1:])
+        print(link)

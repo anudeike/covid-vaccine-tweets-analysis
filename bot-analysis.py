@@ -25,8 +25,8 @@ bom = botometer.Botometer(wait_on_ratelimit=True,
                           **twitter_app_auth)
 
 # path to the data from the earlier df
-path = "organization_officials_data/Organizational Twitter Handles.csv"
-output_path = "data/prepared_data/organization-split/organization_scores.csv"
+path = "organization_officials_data/org_twitter_handle_only.csv"
+output_path = "data/prepared_data/organization-split/organization_scores_2_400-500.csv"
 
 df = pd.read_csv(path)
 
@@ -42,7 +42,7 @@ def main():
 
 
     # check the accounts
-    for screen_name, result in bom.check_accounts_in(screen_names):
+    for screen_name, result in bom.check_accounts_in(screen_names[400:500]):
 
         # target the row with that particular screen name
         #rowIndex = df.loc[df['screen_name'] == screen_name]
@@ -65,7 +65,7 @@ def main():
                     "overall": result['display_scores']['english']['overall'],
                     "self-declared": result['display_scores']['english']['self_declared'],
                     "spammer": result['display_scores']['english']['spammer'],
-                    "type": 'HUMAN'
+                    "type": 'ORGANIZATION'
                 }
             else:
 
@@ -79,7 +79,7 @@ def main():
                     "overall": result['display_scores']['universal']['overall'],
                     "self-declared": result['display_scores']['universal']['self_declared'],
                     "spammer": result['display_scores']['universal']['spammer'],
-                    "type": 'BOT'
+                    "type": 'ORGANIZATION'
                 }
 
             # append to dataframe
