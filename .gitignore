@@ -4,3 +4,5 @@ vaccine-2020-07-09.txt
 test.py
 get_identitfication.py
 *.tsv
+/data
+/organization_officials_data
