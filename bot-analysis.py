@@ -38,6 +38,7 @@ def main():
         columns=["screen_name", "CAP", "astroturf", "fake_follower", "financial", "other", "overall", "self-declared",
                  "spammer"])
 
+    # this can be a series of ids too
     screen_names = df['Handle'].values
 
 
