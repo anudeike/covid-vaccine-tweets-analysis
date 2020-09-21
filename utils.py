@@ -72,14 +72,14 @@ def create_file_with_botometer_statistics(in_path, out_path):
     types = in_df["type"].values
 
     # this will be used to keep track of categories
-    count = 502
+    count = 3002
 
     # this is the rate limit
     rate_limit = 100
-    timeout = 240
+    timeout = 180
 
     # check the accounts
-    for id, result in bom.check_accounts_in(ids[count:1200]):
+    for id, result in bom.check_accounts_in(ids[count:4000]):
 
         # this will be appended to the new dataframe
         row = {}
@@ -159,8 +159,27 @@ def create_file_with_botometer_statistics(in_path, out_path):
     p = "{}/id_labels_with_cap_{}.csv".format(out_path, count)
     out_df.to_csv(p, index=False)
 
+def add_index_to_given_file(in_path, out_path):
+    df = pd.read_csv(in_path)
+    df.to_csv(out_path, index=True)
 
-#create_file_with_id_and_type(path, outpath)
+# turn the labels
+def label_conversion(row):
+    if row["type"] == 'human':
+        return 1
+    else:
+        return 0
+
+def types_to_integers(in_path, out_path):
+    df = pd.read_csv(in_path)
+    df["labels"] = df.apply(lambda row: label_conversion(row), axis=1)
+    df = df.drop(columns=['type','spammer']) # drop the type column, not needed
+    df.to_csv(out_path, index=False)
+
+
 
 """ RUN FUNCTIONS HERE """
+
 create_file_with_botometer_statistics(path_to_id_labels, out_path=batch_files_output)
+
+#types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv")

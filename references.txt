@@ -1,3 +1,8 @@
 https://github.com/euagendas/m3inference
 
 https://botometer.osome.iu.edu/bot-repository/datasets.html
+
+id,CAP,astroturf,fake_follower,financial,other,overall,self-declared,spammer,type
+
+human => 1
+bot => 0
