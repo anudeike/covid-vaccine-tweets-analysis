@@ -1,8 +1,8 @@
-import json
 import pandas as pd
 import botometer
 from dotenv import load_dotenv
 import os
+import time
 
 """
 This file contains all the utility functions that I will use throughout this repo
@@ -72,10 +72,14 @@ def create_file_with_botometer_statistics(in_path, out_path):
     types = in_df["type"].values
 
     # this will be used to keep track of categories
-    count = 0
+    count = 502
+
+    # this is the rate limit
+    rate_limit = 100
+    timeout = 240
 
     # check the accounts
-    for id, result in bom.check_accounts_in(ids[0:2]):
+    for id, result in bom.check_accounts_in(ids[count:1200]):
 
         # this will be appended to the new dataframe
         row = {}
@@ -115,6 +119,18 @@ def create_file_with_botometer_statistics(in_path, out_path):
             # append to dataframe
             out_df = out_df.append(row, ignore_index=True)
 
+            # if the count is mod 75
+            if count % rate_limit == 0:
+                # export the output df using the latest count as the output
+                p = "{}/id_labels_with_cap_{}.csv".format(out_path, count)
+                out_df.to_csv(p, index=False)
+
+                # time out
+                if count > 1:
+                    print("is sleeping for {} seconds...".format(timeout))
+                    time.sleep(timeout)
+
+
             print("{} has been processed. Number: {}".format(id, count))
 
             # increment the count
@@ -124,20 +140,27 @@ def create_file_with_botometer_statistics(in_path, out_path):
             # skip if error
             print("{} Could not be fetched: {}".format(id, e))
 
-            # if the count is mod 100
-            if count % 100 == 0:
-                # send the output with a certain tage
-                print()
+            # if the count is mod 75
+            if count % rate_limit == 0:
+                # export the output df using the latest count as the output
+                p = "{}/id_labels_with_cap_{}.csv".format(out_path, count)
+                out_df.to_csv(p, index=False)
+
+                # time out
+                if count > 1:
+                    print("is sleeping for {} seconds...".format(timeout))
+                    time.sleep(timeout) # should be about 5 minutes
 
             # increment the count
             count += 1
             continue
 
     # send the info the the df
-    out_df.to_csv(out_path)
+    p = "{}/id_labels_with_cap_{}.csv".format(out_path, count)
+    out_df.to_csv(p, index=False)
 
 
 #create_file_with_id_and_type(path, outpath)
 
 """ RUN FUNCTIONS HERE """
-create_file_with_botometer_statistics(path_to_id_labels, out_path="text.csv")
+create_file_with_botometer_statistics(path_to_id_labels, out_path=batch_files_output)
