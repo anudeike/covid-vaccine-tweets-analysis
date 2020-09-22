@@ -6,6 +6,8 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 import matplotlib.pyplot as plt
 from sklearn.metrics import precision_score, recall_score, roc_auc_score, roc_curve
+from sklearn.metrics import confusion_matrix
+import itertools
 
 # HELPER FUNCTIONS
 # id,CAP,astroturf,fake_follower,financial,other,overall,self-declared,spammer,type
@@ -50,6 +52,46 @@ def evaluate_model(predictions, probs, train_predictions, train_probs):
     plt.title('ROC Curves')
     plt.show()
 
+# confusion matrix function
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Oranges):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    Source: http://scikit-learn.org/stable/auto_examples/model_selection/plot_confusion_matrix.html
+    """
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+
+    plt.figure(figsize=(10, 10))
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title, size=24)
+    plt.colorbar(aspect=4)
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45, size=14)
+    plt.yticks(tick_marks, classes, size=14)
+
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+
+    # Labeling the plot
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt), fontsize=20,
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.grid(None)
+    plt.tight_layout()
+    plt.ylabel('True label', size=18)
+    plt.xlabel('Predicted label', size=18)
+    plt.show()
 # path to master class
 master_training_set_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv"
 
@@ -62,8 +104,11 @@ labels = np.array(df["labels"].values)
 # get rid of labels in the training set
 df.drop(['labels'],axis=1,inplace=True)
 
+# get rid of id -> has nothing to do with output in the training set
+df.drop(['id'],axis=1,inplace=True)
+
 # split data for training
-train, test, train_labels, test_labels = train_test_split(df.values, labels,
+train, test, train_labels, test_labels = train_test_split(df, labels,
                                                           stratify=labels,
                                                           test_size=0.3)
 
@@ -96,4 +141,19 @@ evaluate_model(rf_predictions, rf_probs, train_rf_predictions, train_rf_probs)
 # Calculate roc auc
 roc_value = roc_auc_score(test_labels, rf_probs)
 print(f'ROC VALUE: {roc_value}')
+
+
+# Extract feature importances
+fi = pd.DataFrame({'feature': list(train.columns),
+                   'importance': model.feature_importances_}).\
+                    sort_values('importance', ascending = False)
+
+# Display
+print(fi.head())
+
+# show the confusion matrix
+cm = confusion_matrix(test_labels, rf_predictions)
+plot_confusion_matrix(cm, classes = ['Not a Bot', 'Is A Bot'],
+                      title = 'Bot Confusion Matrix')
+print(f'Confusion Matrix: {cm}')
 

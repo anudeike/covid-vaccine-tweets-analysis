@@ -6,3 +6,6 @@ id,CAP,astroturf,fake_follower,financial,other,overall,self-declared,spammer,typ
 
 human => 1
 bot => 0
+
+https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76
+https://github.com/WillKoehrsen/Machine-Learning-Projects/blob/master/Random%20Forest%20Tutorial.ipynb

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000" beforeDir="false" afterPath="$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization_officials_data/raw_org_dataset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/random_forest.py" beforeDir="false" afterPath="$PROJECT_DIR$/random_forest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/references.txt" beforeDir="false" afterPath="$PROJECT_DIR$/references.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
@@ -29,47 +31,48 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bot_stats" value="1" />
-          <entry key="csv" value="81" />
+          <entry key="csv" value="92" />
           <entry key="env" value="1" />
-          <entry key="example_data_test" value="1" />
+          <entry key="example_data_test" value="2" />
           <entry key="gitignore" value="4" />
           <entry key="human_all_prepared" value="4" />
           <entry key="json" value="3" />
           <entry key="master_training_data" value="1" />
-          <entry key="png" value="1" />
+          <entry key="organization_names_fortune_1000" value="1" />
+          <entry key="png" value="2" />
           <entry key="py" value="41" />
-          <entry key="raw_org_dataset" value="1" />
-          <entry key="tsv" value="16" />
-          <entry key="txt" value="3" />
+          <entry key="raw_org_dataset" value="2" />
+          <entry key="tsv" value="17" />
+          <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="89" />
-          <entry key="Image" value="1" />
+          <entry key="CSV" value="103" />
+          <entry key="Image" value="2" />
           <entry key="JSON" value="3" />
-          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="PLAIN_TEXT" value="9" />
           <entry key="Python" value="41" />
-          <entry key="TSV" value="16" />
+          <entry key="TSV" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="bot_stats" value="6" />
-          <entry key="csv" value="57" />
+          <entry key="csv" value="64" />
           <entry key="dummy" value="61" />
           <entry key="env" value="154" />
           <entry key="gitignore" value="56" />
-          <entry key="py" value="15302" />
+          <entry key="py" value="16355" />
           <entry key="tsv" value="11" />
-          <entry key="txt" value="25" />
+          <entry key="txt" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSV" value="63" />
-          <entry key="PLAIN_TEXT" value="296" />
-          <entry key="Python" value="15302" />
+          <entry key="CSV" value="70" />
+          <entry key="PLAIN_TEXT" value="300" />
+          <entry key="Python" value="16355" />
           <entry key="TSV" value="11" />
         </counts>
       </usages-collector>
@@ -81,61 +84,83 @@
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
-              <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
+              <caret line="213" selection-start-line="213" selection-end-line="213" />
               <folding>
+                <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#568#795#0" />
                 <element signature="e#1054#1382#0" />
+                <element signature="e#1502#5690#0" />
                 <element signature="e#2702#3426#0" />
                 <element signature="e#3468#4208#0" />
                 <element signature="e#5744#5785#0" />
-                <element signature="e#5849#5919#0" />
-                <marker date="1600726000092" expanded="false" signature="1049:1054" ph="..." />
-                <marker date="1600726000092" expanded="true" signature="5739:5806" ph="..." />
-                <marker date="1600726000092" expanded="false" signature="5999:6190" ph="..." />
+                <element signature="e#5856#5988#0" />
+                <element signature="e#6056#6271#0" />
+                <element signature="e#6262#6360#0" />
+                <element signature="e#6436#6477#0" />
+                <marker date="1600755090635" expanded="false" signature="1068:1073" ph="..." />
+                <marker date="1600755090635" expanded="true" signature="5758:5825" ph="..." />
+                <marker date="1600755090635" expanded="true" signature="6051:6274" ph="..." />
+                <marker date="1600755090635" expanded="true" signature="6272:6274" ph="..." />
+                <marker date="1600755090635" expanded="true" signature="6618:6898" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_3000.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8492">
-              <caret line="386" column="63" selection-start-line="386" selection-start-column="63" selection-end-line="386" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="998" column="13" selection-start-line="998" selection-start-column="13" selection-end-line="998" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores_no_index.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="535">
+              <caret line="589" column="65" selection-start-line="1" selection-end-line="589" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/random_forest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+            <state relative-caret-position="401">
+              <caret line="156" column="34" selection-start-line="156" selection-start-column="34" selection-end-line="156" selection-end-column="34" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1600730509410" expanded="true" signature="324:326" ph="..." />
-                <marker date="1600730509410" expanded="true" signature="912:913" ph="..." />
+                <element signature="e#516#2074#0" />
+                <marker date="1600751628056" expanded="true" signature="2136:3559" ph="..." />
+                <marker date="1600751628056" expanded="true" signature="4244:4245" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/id-labels.tsv">
+        <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
+            <state relative-caret-position="399">
+              <caret line="3751" column="44" selection-start-line="3751" selection-start-column="44" selection-end-line="3751" selection-end-column="44" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plots/first_roc_plot.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -196,7 +221,6 @@
         <option value="$PROJECT_DIR$/organization_officials_data/org_twitter_handle_only.csv" />
         <option value="$PROJECT_DIR$/analyze_cap_data.py" />
         <option value="$PROJECT_DIR$/bot-analysis.py" />
-        <option value="$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores.csv" />
         <option value="$PROJECT_DIR$/m3_usage_example.py" />
         <option value="$PROJECT_DIR$/sample.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -208,18 +232,20 @@
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/id_labels_humans.tsv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/id-labels.tsv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_2600.csv" />
-        <option value="$PROJECT_DIR$/references.txt" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/sklearn/utils/validation.py" />
-        <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv" />
+        <option value="$PROJECT_DIR$/references.txt" />
         <option value="$PROJECT_DIR$/random_forest.py" />
+        <option value="$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores.csv" />
+        <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv" />
+        <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="-7" />
+    <option name="width" value="961" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -244,6 +270,27 @@
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="prepared_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="prepared_data" type="462c0819:PsiDirectoryNode" />
+              <item name="organization-split" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="prepared_data" type="462c0819:PsiDirectoryNode" />
+              <item name="organization-split" type="462c0819:PsiDirectoryNode" />
+              <item name="added_to_main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
               <item name="data_bank" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -262,9 +309,7 @@
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="data_bank" type="462c0819:PsiDirectoryNode" />
-              <item name="cleaning_data" type="462c0819:PsiDirectoryNode" />
-              <item name="output_batches" type="462c0819:PsiDirectoryNode" />
+              <item name="organization_officials_data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -300,7 +345,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.random_forest">
+  <component name="RunManager" selected="Python.utils">
     <configuration name="analyze_cap_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -415,8 +460,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.random_forest" />
         <item itemvalue="Python.utils" />
+        <item itemvalue="Python.random_forest" />
         <item itemvalue="Python.demography_example" />
         <item itemvalue="Python.analyze_cap_data" />
         <item itemvalue="Python.bot-analysis" />
@@ -440,12 +485,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21074815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16227607" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.32104123" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.32104123" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -459,12 +504,12 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21074815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16227607" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.32104123" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.32104123" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -508,79 +553,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_bank/political-bots-2019.tsv" />
-    <entry file="file://$PROJECT_DIR$/demography_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/demographer/indorg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="50" column="68" selection-start-line="50" selection-start-column="68" selection-end-line="50" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/id_labels_1.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="698" column="22" selection-start-line="1" selection-end-line="698" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/basic_user_data.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/verified-human-usernames.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3118">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/id_labels_humans.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="1987" column="14" selection-start-line="1" selection-end-line="1987" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tar/verified-human/verified-2019.tsv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tar/bots/botwiki-2019.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="695" column="22" selection-start-line="695" selection-start-column="22" selection-end-line="695" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/batch2/cresci-rtbust-2019.tsv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/processed/celebrity-2019.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="5966" column="14" selection-end-line="5970" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/processed/botometer-feedback-2019.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="529" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/midterm-2018.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41091">
-          <caret line="1961" column="23" selection-start-line="1961" selection-start-column="23" selection-end-line="1961" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_bank/processed/vendor-purchased-2019.tsv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -706,13 +678,6 @@
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set_indexed.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/references.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/sklearn/ensemble/forest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -724,24 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="432" selection-start-line="432" selection-end-line="432" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
-          <folding>
-            <element signature="e#568#795#0" />
-            <element signature="e#1054#1382#0" />
-            <element signature="e#2702#3426#0" />
-            <element signature="e#3468#4208#0" />
-            <element signature="e#5744#5785#0" />
-            <element signature="e#5849#5919#0" />
-            <marker date="1600726000092" expanded="false" signature="1049:1054" ph="..." />
-            <marker date="1600726000092" expanded="true" signature="5739:5806" ph="..." />
-            <marker date="1600726000092" expanded="false" signature="5999:6190" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,15 +729,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_3000.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8492">
+        <state relative-caret-position="257">
           <caret line="386" column="63" selection-start-line="386" selection-start-column="63" selection-end-line="386" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv">
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_3200.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        <state relative-caret-position="535">
+          <caret line="197" column="72" lean-forward="true" selection-start-line="1" selection-end-line="197" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_4000.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="780" column="61" lean-forward="true" selection-start-line="1" selection-end-line="780" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -801,15 +755,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plots/first_roc_plot.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/references.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/raw_org_dataset">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/org_twitter_handle_only.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="519" column="12" lean-forward="true" selection-start-line="519" selection-start-column="12" selection-end-line="519" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/eo1.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/midterm-2018.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1068225">
+          <caret line="1961" column="23" selection-start-line="1961" selection-start-column="23" selection-end-line="1961" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/fortune_500_data_set.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1188" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/Organizational Twitter Handles.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="149" column="13" lean-forward="true" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/example_data_test">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/random_forest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+        <state relative-caret-position="401">
+          <caret line="156" column="34" selection-start-line="156" selection-start-column="34" selection-end-line="156" selection-end-column="34" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1600730509410" expanded="true" signature="324:326" ph="..." />
-            <marker date="1600730509410" expanded="true" signature="912:913" ph="..." />
+            <element signature="e#516#2074#0" />
+            <marker date="1600751628056" expanded="true" signature="2136:3559" ph="..." />
+            <marker date="1600751628056" expanded="true" signature="4244:4245" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores_no_index.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="589" column="65" selection-start-line="1" selection-end-line="589" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="3751" column="44" selection-start-line="3751" selection-start-column="44" selection-end-line="3751" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="213" selection-start-line="213" selection-end-line="213" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#568#795#0" />
+            <element signature="e#1054#1382#0" />
+            <element signature="e#1502#5690#0" />
+            <element signature="e#2702#3426#0" />
+            <element signature="e#3468#4208#0" />
+            <element signature="e#5744#5785#0" />
+            <element signature="e#5856#5988#0" />
+            <element signature="e#6056#6271#0" />
+            <element signature="e#6262#6360#0" />
+            <element signature="e#6436#6477#0" />
+            <marker date="1600755090635" expanded="false" signature="1068:1073" ph="..." />
+            <marker date="1600755090635" expanded="true" signature="5758:5825" ph="..." />
+            <marker date="1600755090635" expanded="true" signature="6051:6274" ph="..." />
+            <marker date="1600755090635" expanded="true" signature="6272:6274" ph="..." />
+            <marker date="1600755090635" expanded="true" signature="6618:6898" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="998" column="13" selection-start-line="998" selection-start-column="13" selection-end-line="998" selection-end-column="13" />
         </state>
       </provider>
     </entry>

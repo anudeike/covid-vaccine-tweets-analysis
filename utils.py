@@ -3,6 +3,7 @@ import botometer
 from dotenv import load_dotenv
 import os
 import time
+import luckysocial
 
 """
 This file contains all the utility functions that I will use throughout this repo
@@ -72,14 +73,14 @@ def create_file_with_botometer_statistics(in_path, out_path):
     types = in_df["type"].values
 
     # this will be used to keep track of categories
-    count = 3002
+    count = 4002
 
     # this is the rate limit
     rate_limit = 100
     timeout = 180
 
     # check the accounts
-    for id, result in bom.check_accounts_in(ids[count:4000]):
+    for id, result in bom.check_accounts_in(ids[count:6000]):
 
         # this will be appended to the new dataframe
         row = {}
@@ -167,19 +168,52 @@ def add_index_to_given_file(in_path, out_path):
 def label_conversion(row):
     if row["type"] == 'human':
         return 1
+    elif row["type"] == 'ORGANIZATION':
+        return 2
     else:
-        return 0
+        return 0 # bot
 
 def types_to_integers(in_path, out_path):
     df = pd.read_csv(in_path)
     df["labels"] = df.apply(lambda row: label_conversion(row), axis=1)
-    df = df.drop(columns=['type','spammer']) # drop the type column, not needed
+    df = df.drop(columns=['type', 'spammer'])  # drop the type column, not needed
     df.to_csv(out_path, index=False)
+
+
+def remove_column_and_output_result(in_path, out_path, col_name):
+    df = pd.read_csv(in_path)
+
+    #drop
+    df.drop(col_name,axis=1,inplace=True)
+    df.to_csv(out_path, index=False)
+
+def remove_indices_and_output(in_path, out_path):
+    df = pd.read_csv(in_path)
+    df.to_csv(out_path, index=False)
+
+def get_twitter_handle_from_name(name):
+
+    # lookup
+    info = luckysocial.lookup(name)
+
+    # error handling?
+    if not info["twitter"]:
+        return "No twitter"
+
+    # isolate twitter handle and return
+    # print(info["twitter"])
+
+    handle = info["twitter"].split("/")
+
+    # handle
+    return handle[-1]
 
 
 
 """ RUN FUNCTIONS HERE """
 
-create_file_with_botometer_statistics(path_to_id_labels, out_path=batch_files_output)
+#create_file_with_botometer_statistics(path_to_id_labels, out_path=batch_files_output)
+#remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
+types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv")
 
-#types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv")
+#print(get_twitter_handle_from_name("uc berkeley"))
