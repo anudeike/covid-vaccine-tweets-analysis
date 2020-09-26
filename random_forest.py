@@ -17,19 +17,19 @@ def evaluate_model(predictions, probs, train_predictions, train_probs):
 
     baseline = {}
 
-    baseline['recall'] = recall_score(test_labels, [1 for _ in range(len(test_labels))])
-    baseline['precision'] = precision_score(test_labels, [1 for _ in range(len(test_labels))])
+    baseline['recall'] = recall_score(test_labels, [1 for _ in range(len(test_labels))], average="weighted")
+    baseline['precision'] = precision_score(test_labels, [1 for _ in range(len(test_labels))], average='weighted')
     baseline['roc'] = 0.5
 
     results = {}
 
-    results['recall'] = recall_score(test_labels, predictions)
-    results['precision'] = precision_score(test_labels, predictions)
-    results['roc'] = roc_auc_score(test_labels, probs)
+    results['recall'] = recall_score(test_labels, predictions, average="weighted")
+    results['precision'] = precision_score(test_labels, predictions, average="weighted")
+    results['roc'] = roc_auc_score(test_labels, probs, multi_class="ovr", average="weighted")
 
     train_results = {}
-    train_results['recall'] = recall_score(train_labels, train_predictions)
-    train_results['precision'] = precision_score(train_labels, train_predictions)
+    train_results['recall'] = recall_score(train_labels, train_predictions, average="weighted")
+    train_results['precision'] = precision_score(train_labels, train_predictions, average="weighted")
     train_results['roc'] = roc_auc_score(train_labels, train_probs)
 
     for metric in ['recall', 'precision', 'roc']:
@@ -136,11 +136,11 @@ train_rf_probs = model.predict_proba(train)[:, 1]
 rf_predictions = model.predict(test)
 rf_probs = model.predict_proba(test)[:, 1]
 
-evaluate_model(rf_predictions, rf_probs, train_rf_predictions, train_rf_probs)
+#evaluate_model(rf_predictions, rf_probs, train_rf_predictions, train_rf_probs)
 
 # Calculate roc auc
-roc_value = roc_auc_score(test_labels, rf_probs)
-print(f'ROC VALUE: {roc_value}')
+#roc_value = roc_auc_score(test_labels, rf_probs)
+#print(f'ROC VALUE: {roc_value}')
 
 
 # Extract feature importances
@@ -153,7 +153,7 @@ print(fi.head())
 
 # show the confusion matrix
 cm = confusion_matrix(test_labels, rf_predictions)
-plot_confusion_matrix(cm, classes = ['Not a Bot', 'Is A Bot'],
-                      title = 'Bot Confusion Matrix')
-print(f'Confusion Matrix: {cm}')
+# plot_confusion_matrix(cm, classes = ['Not a Bot', 'Is A Bot'],
+#                       title = 'Bot Confusion Matrix')
+#print(f'Confusion Matrix: {cm}')
 
