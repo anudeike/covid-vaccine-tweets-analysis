@@ -41,7 +41,7 @@ def turn_orgs_to_bots(df):
 
 #describe_plot_save(bots, "plots/meta_data", name="Bot")
 
-def main():
+def log_reg_holdout():
     # sort by type
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
@@ -55,17 +55,155 @@ def main():
     y1 = bots_humans['labels'].values
 
     # train using Logistic Regression
-    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100)
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
     model = LogisticRegression()
 
     # preprocess the data
     X_scaled = preprocessing.scale(X_train)
+    X_test_scaled = preprocessing.scale(X_test)
 
     model.fit(X_scaled, Y_train)
 
-    X_test_scaled = preprocessing.scale(X_test)
+
     result = model.score(X_test_scaled, Y_test) # scored using the train and test split
 
     print("Accuracy: %.2f%%" % (result * 100.0))
 
-main()
+def log_reg_kfold(num_fold = 3):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+    bots_humans = turn_orgs_to_bots(master_df)
+
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # set the folds
+    kfold = model_selection.KFold(n_splits=num_fold, random_state=100)
+
+    # train using Logistic Regression
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=kfold)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+def log_reg_kfold_strat(num_fold = 2):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+    bots_humans = turn_orgs_to_bots(master_df)
+
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # set the folds
+    kfold = model_selection.StratifiedKFold(n_splits=num_fold, random_state=100)
+
+    # train using Logistic Regression
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=kfold)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+def log_reg_loocv():
+    # doesn't seem to work all that well
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+    bots_humans = turn_orgs_to_bots(master_df)
+
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # set the folds
+    loocv = model_selection.LeaveOneOut()
+
+    # train using Logistic Regression
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=loocv)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+def log_reg_shuffle(num_fold = 5):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+    bots_humans = turn_orgs_to_bots(master_df)
+
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # set the folds
+    kfold = model_selection.ShuffleSplit(n_splits=num_fold, test_size=0.3, random_state=100)
+
+    # train using Logistic Regression
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=kfold)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+def log_reg_shuffle_strat(num_fold = 10):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+    bots_humans = turn_orgs_to_bots(master_df)
+
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # set the folds
+    kfold = model_selection.StratifiedShuffleSplit(n_splits=num_fold, test_size=0.3, random_state=100)
+
+    # train using Logistic Regression
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=kfold)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+
+log_reg_shuffle()
