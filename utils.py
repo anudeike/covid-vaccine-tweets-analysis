@@ -75,14 +75,14 @@ def create_file_with_botometer_statistics(in_path, out_path, separator="\t"):
     types = in_df["type"].values
 
     # this will be used to keep track of categories
-    count = 1001
+    count = 10001
 
     # this is the rate limit
     rate_limit = 100
     timeout = 180
 
     # check the accounts
-    for id, result in bom.check_accounts_in(ids[count:2000]):
+    for id, result in bom.check_accounts_in(ids[count:]):
 
         # this will be appended to the new dataframe
         row = {}
@@ -368,7 +368,7 @@ def get_twitter_handles(in_path, out_path):
 
 
 
-create_file_with_botometer_statistics(in_path="data_bank/raw-data/gilani-2017.tsv", out_path="data_bank/cleaning_data/second_batch")
+create_file_with_botometer_statistics(in_path="data_bank/raw-data/pronbots-2019.tsv", out_path="data_bank/cleaning_data/fifth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
 #types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
