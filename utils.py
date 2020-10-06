@@ -368,9 +368,9 @@ def get_twitter_handles(in_path, out_path):
 
 
 
-create_file_with_botometer_statistics(in_path="data_bank/midterm-2018.tsv", out_path="data_bank/cleaning_data/sixth_batch")
+#create_file_with_botometer_statistics(in_path="data_bank/midterm-2018.tsv", out_path="data_bank/cleaning_data/sixth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
-#types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
+types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
 #print(get_twitter_handle_from_name("uc berkeley"))
 #get_twitter_handles(company_names_path, "organization_officials_data/org_twitter_handles_2")

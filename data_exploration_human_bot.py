@@ -17,7 +17,7 @@ from sklearn.model_selection import StratifiedKFold
 
 # the goal of this file
 # is to explore the already gathered data
-master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv"
+master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv"
 
 
 
@@ -27,7 +27,7 @@ def describe_plot_save(df, path, name="default"):
     # send meta data to csv
     df.describe().to_csv(f'{path}/{name}-meta_stats.csv')
     # f'{path}/{name}-histogram_plot.png'
-    df.hist(bins=20)
+    df.hist(bins=100)
     plt.suptitle(f'{name} Histogram')
     plt.show()
 
@@ -38,8 +38,9 @@ def turn_orgs_to_bots(df):
 
 
 
-
-#describe_plot_save(bots, "plots/meta_data", name="Bot")
+#master = pd.read_csv(master_path)
+#print(master.groupby(['labels']).count())
+#describe_plot_save(master[master["labels"] == 0], "plots/meta-data_17k", name="bots_17k")
 
 def log_reg_holdout():
     # sort by type
@@ -53,6 +54,7 @@ def log_reg_holdout():
     # split into array for the features and resp vars
     x1 = bots_humans.drop('labels', axis=1).values
     y1 = bots_humans['labels'].values
+
 
     # train using Logistic Regression
     X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
@@ -69,7 +71,7 @@ def log_reg_holdout():
 
     print("Accuracy: %.2f%%" % (result * 100.0))
 
-def log_reg_kfold(num_fold = 3):
+def log_reg_kfold(num_fold = 5):
     # sort by type
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
@@ -81,6 +83,9 @@ def log_reg_kfold(num_fold = 3):
     # split into array for the features and resp vars
     x1 = bots_humans.drop('labels', axis=1).values
     y1 = bots_humans['labels'].values
+
+    # remove features from training set
+    x1 = bots_humans.drop('astroturf', axis=1).values  # this seems to help????
 
     # set the folds
     kfold = model_selection.KFold(n_splits=num_fold, random_state=100)
@@ -206,4 +211,5 @@ def log_reg_shuffle_strat(num_fold = 10):
     print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
 
 
-log_reg_shuffle()
+log_reg_kfold()
+
