@@ -71,7 +71,7 @@ def log_reg_holdout():
 
     print("Accuracy: %.2f%%" % (result * 100.0))
 
-def log_reg_kfold(num_fold = 5):
+def log_reg_kfold(num_fold = 10):
     # sort by type
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
@@ -85,7 +85,7 @@ def log_reg_kfold(num_fold = 5):
     y1 = bots_humans['labels'].values
 
     # remove features from training set
-    x1 = bots_humans.drop('astroturf', axis=1).values  # this seems to help????
+    x1 = bots_humans.drop('astroturf', axis=1).values  # feature dropping
 
     # set the folds
     kfold = model_selection.KFold(n_splits=num_fold, random_state=100)
@@ -113,6 +113,9 @@ def log_reg_kfold_strat(num_fold = 2):
     # split into array for the features and resp vars
     x1 = bots_humans.drop('labels', axis=1).values
     y1 = bots_humans['labels'].values
+
+    # remove features from training set
+    x1 = bots_humans.drop('astroturf', axis=1).values  # feature dropping
 
     # set the folds
     kfold = model_selection.StratifiedKFold(n_splits=num_fold, random_state=100)
@@ -211,5 +214,5 @@ def log_reg_shuffle_strat(num_fold = 10):
     print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
 
 
-log_reg_kfold()
+log_reg_kfold_strat()
 
