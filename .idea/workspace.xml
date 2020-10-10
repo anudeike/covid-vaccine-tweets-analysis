@@ -15,16 +15,16 @@
     <session id="346404125">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.open.time.7" value="3" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -41,10 +41,10 @@
           <entry key="org_twitter_handles_2" value="4" />
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="png" value="14" />
-          <entry key="py" value="73" />
+          <entry key="py" value="74" />
           <entry key="raw_org_dataset" value="2" />
           <entry key="tsv" value="26" />
-          <entry key="txt" value="4" />
+          <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -53,8 +53,8 @@
           <entry key="Image" value="14" />
           <entry key="JSON" value="9" />
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="12" />
-          <entry key="Python" value="73" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Python" value="74" />
           <entry key="TSV" value="26" />
         </counts>
       </usages-collector>
@@ -67,7 +67,7 @@
           <entry key="gitignore" value="81" />
           <entry key="md" value="173" />
           <entry key="org_twitter_handles_2" value="7" />
-          <entry key="py" value="22375" />
+          <entry key="py" value="23207" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="29" />
         </counts>
@@ -77,7 +77,7 @@
           <entry key="CSV" value="125" />
           <entry key="Markdown" value="173" />
           <entry key="PLAIN_TEXT" value="325" />
-          <entry key="Python" value="22375" />
+          <entry key="Python" value="23207" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -85,11 +85,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="446">
+              <caret line="106" column="37" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#886#1084#0" />
+                <element signature="e#1118#1157#0" />
+                <element signature="e#1358#2255#0" />
+                <element signature="e#2308#3820#0" />
+                <element signature="e#3860#4775#0" />
+                <element signature="e#4820#5745#0" />
+                <element signature="e#5772#6584#0" />
+                <element signature="e#6625#7447#0" />
+                <element signature="e#7495#8327#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="366" lean-forward="true" selection-start-line="366" selection-end-line="366" />
+            <state relative-caret-position="478">
+              <caret line="366" selection-start-line="366" selection-end-line="366" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#676#903#0" />
@@ -115,28 +136,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bot-analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-330">
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="117" column="73" selection-start-line="117" selection-start-column="73" selection-end-line="117" selection-end-column="73" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#1189#2085#0" />
-                <element signature="e#3806#4618#0" />
-                <element signature="e#4659#5481#0" />
-                <element signature="e#5529#6361#0" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/vaccine-2020-07-09.txt">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="484">
+              <caret line="22" column="986" selection-start-line="22" selection-start-column="986" selection-end-line="22" selection-end-column="986" />
             </state>
           </provider>
         </entry>
@@ -159,7 +162,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyze_cap_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-213">
+            <state>
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -265,7 +268,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -286,36 +289,7 @@
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="data_bank" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="data_bank" type="462c0819:PsiDirectoryNode" />
-              <item name="cleaning_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="data_bank" type="462c0819:PsiDirectoryNode" />
-              <item name="cleaning_data" type="462c0819:PsiDirectoryNode" />
-              <item name="master_training_data_id" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="plots" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="plots" type="462c0819:PsiDirectoryNode" />
-              <item name="meta_data" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -491,14 +465,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.28846154" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28846154" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.3231106" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.3231106" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -561,9 +534,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_bank/raw-data/pronbots-2019_tweets.json">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_100.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_1000.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_1800.csv" />
@@ -625,12 +595,8 @@
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_21900.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_24400.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_26800.csv" />
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_47600.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_49800.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_47600.csv" />
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_49800.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_49900.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150744">
@@ -638,13 +604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_27900.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="7" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_27900.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -705,40 +665,52 @@
         <state relative-caret-position="-264" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/get_social_for orgs.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/m3_usage_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demography_example.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_identitfication.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get_users.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/distribution_cap_human_bot_organization_n660.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/meta_data/organizations.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot-analysis.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/meta_data/human_histogram_plot.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plots/meta_data/bot_histogram_plot.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/plots/meta_data/default-meta_stats.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_cap_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213">
+        <state>
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/get_social_for orgs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/m3_usage_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="366" lean-forward="true" selection-start-line="366" selection-end-line="366" />
+        <state relative-caret-position="478">
+          <caret line="366" selection-start-line="366" selection-end-line="366" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#676#903#0" />
@@ -762,64 +734,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demography_example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/vaccine-2020-07-09.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="484">
+          <caret line="22" column="986" selection-start-line="22" selection-start-column="986" selection-end-line="22" selection-end-column="986" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_identitfication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_users.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bot-analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-330">
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/distribution_cap_human_bot_organization_n660.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/human_histogram_plot.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/bot_histogram_plot.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/organizations.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="117" column="73" selection-start-line="117" selection-start-column="73" selection-end-line="117" selection-end-column="73" />
+        <state relative-caret-position="446">
+          <caret line="106" column="37" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#1189#2085#0" />
-            <element signature="e#3806#4618#0" />
-            <element signature="e#4659#5481#0" />
-            <element signature="e#5529#6361#0" />
+            <element signature="e#886#1084#0" />
+            <element signature="e#1118#1157#0" />
+            <element signature="e#1358#2255#0" />
+            <element signature="e#2308#3820#0" />
+            <element signature="e#3860#4775#0" />
+            <element signature="e#4820#5745#0" />
+            <element signature="e#5772#6584#0" />
+            <element signature="e#6625#7447#0" />
+            <element signature="e#7495#8327#0" />
           </folding>
         </state>
       </provider>

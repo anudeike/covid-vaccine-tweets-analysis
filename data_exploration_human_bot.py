@@ -9,11 +9,13 @@ from math import sqrt
 from sklearn import model_selection
 from sklearn.linear_model import LogisticRegression
 from sklearn import preprocessing
+import pickle
 from sklearn.model_selection import KFold
 from sklearn.model_selection import LeaveOneOut
 from sklearn.model_selection import LeavePOut
 from sklearn.model_selection import ShuffleSplit
 from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import plot_confusion_matrix
 
 # the goal of this file
 # is to explore the already gathered data
@@ -70,6 +72,88 @@ def log_reg_holdout():
     result = model.score(X_test_scaled, Y_test) # scored using the train and test split
 
     print("Accuracy: %.2f%%" % (result * 100.0))
+
+def log_reg_holdout_save_model(model_name):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+
+    bots_humans = turn_orgs_to_bots(master_df)
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # remove features from training set
+    x1 = bots_humans.drop('astroturf', axis=1).values  # feature dropping
+
+    # train using Logistic Regression
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(X_train)
+    X_test_scaled = preprocessing.scale(X_test)
+
+    # train the model
+    model.fit(X_scaled, Y_train)
+
+    # save the model
+    model_path = f'models/{model_name}_LogisticRegression.sav'
+    pickle.dump(model, open(model_path, "wb"))
+
+    loaded_model = pickle.load(open(f"models/{model_name}_LogisticRegression.sav", "rb"))
+    result = loaded_model.score(X_test_scaled, Y_test) # scored using the train and test split
+
+    print("Accuracy: %.2f%%" % (result * 100.0))
+# testing the matrix
+def log_reg_holdout_cm():
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv(master_path)
+
+    bots_humans = turn_orgs_to_bots(master_df)
+
+    # split into array for the features and resp vars
+    x1 = bots_humans.drop('labels', axis=1).values
+    y1 = bots_humans['labels'].values
+
+    # remove features from training set
+    x1 = bots_humans.drop('astroturf', axis=1).values  # feature dropping
+
+    # train using Logistic Regression
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
+    model = LogisticRegression()
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(X_train)
+    X_test_scaled = preprocessing.scale(X_test)
+
+    model.fit(X_scaled, Y_train)
+
+
+    result = model.score(X_test_scaled, Y_test) # scored using the train and test split
+
+    print("Accuracy: %.2f%%" % (result * 100.0))
+
+
+    # work on the confusion matrix
+    title_options = [("Confusion Matrix, without normalization", None),
+                     ("Normalized Confusion Matrix", "true")]
+
+    for title, normalize in title_options:
+        disp = plot_confusion_matrix(model, X_test_scaled, Y_test, display_labels=["bot", "human"],
+                                     cmap=plt.cm.Blues, normalize=normalize)
+
+        disp.ax_.set_title(title)
+        print(title)
+        print(disp.confusion_matrix)
+
+    plt.show()
 
 def log_reg_kfold(num_fold = 10):
     # sort by type
@@ -214,5 +298,9 @@ def log_reg_shuffle_strat(num_fold = 10):
     print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
 
 
-log_reg_kfold_strat()
+
+log_reg_holdout_save_model("MainModel")
+
+# load the model and use it
+loaded_model = pickle.load(open("models/FirstRun_LogisticRegression.sav", "rb"))
 
