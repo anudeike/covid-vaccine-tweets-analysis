@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/documentation/model_doc.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_exploration_human_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_exploration_human_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/classify_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/classify_account.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,29 +17,30 @@
     <session id="346404125">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="3" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bot_stats" value="1" />
-          <entry key="csv" value="166" />
+          <entry key="csv" value="167" />
           <entry key="env" value="4" />
           <entry key="example_data_test" value="3" />
           <entry key="gitignore" value="6" />
           <entry key="human_all_prepared" value="4" />
           <entry key="json" value="9" />
           <entry key="master_training_data" value="1" />
-          <entry key="md" value="2" />
+          <entry key="md" value="4" />
           <entry key="org_twitter_handles_2" value="4" />
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="png" value="16" />
@@ -49,10 +52,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="185" />
+          <entry key="CSV" value="186" />
           <entry key="Image" value="16" />
           <entry key="JSON" value="9" />
-          <entry key="Markdown" value="2" />
+          <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="15" />
           <entry key="Python" value="75" />
           <entry key="TSV" value="26" />
@@ -65,9 +68,9 @@
           <entry key="dummy" value="61" />
           <entry key="env" value="155" />
           <entry key="gitignore" value="81" />
-          <entry key="md" value="173" />
+          <entry key="md" value="257" />
           <entry key="org_twitter_handles_2" value="7" />
-          <entry key="py" value="26786" />
+          <entry key="py" value="28157" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="29" />
         </counts>
@@ -75,9 +78,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSV" value="125" />
-          <entry key="Markdown" value="173" />
+          <entry key="Markdown" value="257" />
           <entry key="PLAIN_TEXT" value="326" />
-          <entry key="Python" value="26786" />
+          <entry key="Python" value="28157" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -88,21 +91,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="333" column="6" selection-start-line="333" selection-start-column="6" selection-end-line="333" selection-end-column="6" />
+            <state relative-caret-position="1606">
+              <caret line="352" lean-forward="true" selection-start-line="352" selection-end-line="352" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#886#1084#0" />
-                <element signature="e#1379#1416#0" />
-                <element signature="e#1372#2282#0" />
-                <element signature="e#2290#3187#0" />
-                <element signature="e#2308#3820#0" />
-                <element signature="e#3860#4775#0" />
-                <element signature="e#4820#5745#0" />
-                <element signature="e#5772#6584#0" />
-                <element signature="e#6625#7447#0" />
-                <element signature="e#7495#8327#0" />
-                <marker date="1602320858908" expanded="true" signature="1456:1849" ph="..." />
+                <element signature="e#1076#1274#0" />
+                <element signature="e#1308#1347#0" />
+                <element signature="e#1379#1419#0" />
+                <element signature="e#1462#1848#0" />
+                <element signature="e#2046#2998#0" />
+                <element signature="e#3048#4309#0" />
+                <element signature="e#4361#5873#0" />
+                <element signature="e#5913#6828#0" />
+                <element signature="e#6873#7798#0" />
+                <element signature="e#7825#8637#0" />
+                <element signature="e#8678#9500#0" />
+                <element signature="e#9548#10380#0" />
+                <element signature="e#11958#13521#0" />
+                <marker date="1602739591713" expanded="true" signature="1464:1857" ph="..." />
               </folding>
             </state>
           </provider>
@@ -112,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="68" selection-start-column="3" selection-end-column="68" />
+              <caret column="68" lean-forward="true" selection-start-column="3" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -129,12 +135,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="154" column="25" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
+            <state relative-caret-position="400">
+              <caret line="393" column="104" selection-start-line="393" selection-start-column="104" selection-end-line="393" selection-end-column="104" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#1162#1490#0" />
                 <element signature="e#1162#1376#1" />
+                <element signature="e#1626#5851#0" />
                 <element signature="e#5949#10126#0" />
                 <element signature="e#10179#10240#0" />
                 <element signature="e#10336#10432#0" />
@@ -144,10 +151,11 @@
                 <element signature="e#11190#11252#0" />
                 <element signature="e#11299#11722#0" />
                 <element signature="e#11773#12815#0" />
-                <marker date="1601938488924" expanded="false" signature="1157:1162" ph="..." />
-                <marker date="1601938488924" expanded="true" signature="10174:10433" ph="..." />
-                <marker date="1601938488924" expanded="true" signature="10659:10949" ph="..." />
-                <marker date="1601938488924" expanded="true" signature="10947:10949" ph="..." />
+                <marker date="1602739530288" expanded="false" signature="1200:1205" ph="..." />
+                <marker date="1602739530288" expanded="true" signature="10217:10476" ph="..." />
+                <marker date="1602739530288" expanded="true" signature="10702:10992" ph="..." />
+                <marker date="1602739530288" expanded="true" signature="10990:10992" ph="..." />
+                <marker date="1602739530288" expanded="true" signature="13855:13868" ph="..." />
               </folding>
             </state>
           </provider>
@@ -198,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/using_botometer_api.py" />
         <option value="$PROJECT_DIR$/data/basic_user_data.csv" />
         <option value="$PROJECT_DIR$/text.py" />
         <option value="$PROJECT_DIR$/test.py" />
@@ -244,17 +251,18 @@
         <option value="$PROJECT_DIR$/data_bank/raw-data/pronbots-2019.tsv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_24400.csv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv" />
-        <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/data_bank/documentation/readme-rawdata.md" />
         <option value="$PROJECT_DIR$/models/.env" />
         <option value="$PROJECT_DIR$/models/classify_account.py" />
+        <option value="$PROJECT_DIR$/documentation/model_doc.md" />
+        <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/data_exploration_human_bot.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="961" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -291,13 +299,7 @@
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="plots" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="plots" type="462c0819:PsiDirectoryNode" />
-              <item name="meta_data" type="462c0819:PsiDirectoryNode" />
+              <item name="documentation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -311,17 +313,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\models" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\demographer_testing_data" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\organization_officials_data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\data_bank\processed" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\data_bank\raw-data" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\data_bank\cleaning_data" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\data_bank" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\data\prepared_data\organization-split\added_to_main" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\models" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\demographer_testing_data" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\organization_officials_data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -452,8 +454,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.data_exploration_human_bot" />
-        <item itemvalue="Python.classify_account" />
         <item itemvalue="Python.utils" />
+        <item itemvalue="Python.classify_account" />
         <item itemvalue="Python.demography_example" />
         <item itemvalue="Python.random_forest" />
       </list>
@@ -473,21 +475,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="961" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.28846154" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37820512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.3231106" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.3253012" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33844468" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.335141" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50124276" side_tool="true" weight="0.32201535" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -544,7 +545,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_1800.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_2100.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_2200.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_3000.csv">
@@ -698,20 +698,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_cap_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/vaccine-2020-07-09.txt">
       <provider selected="true" editor-type-id="LargeFileEditor">
@@ -730,28 +717,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-279">
           <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#107#120#0" expanded="true" />
-            <element signature="e#559#2091#0" />
-            <element signature="e#720#1400#0" />
-            <element signature="e#1399#2071#0" />
-            <element signature="e#2128#2231#0" />
-            <element signature="e#621#641#0" />
-            <marker date="1602292504368" expanded="true" signature="2289:2537" ph="..." />
-            <marker date="1602292504368" expanded="true" signature="2837:2838" ph="..." />
-            <marker date="1602292504368" expanded="true" signature="2838:3724" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/model_doc.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="22">
+            <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="68" lean-forward="true" selection-start-column="3" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="154" column="25" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
+        <state relative-caret-position="400">
+          <caret line="393" column="104" selection-start-line="393" selection-start-column="104" selection-end-line="393" selection-end-column="104" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#1162#1490#0" />
             <element signature="e#1162#1376#1" />
+            <element signature="e#1626#5851#0" />
             <element signature="e#5949#10126#0" />
             <element signature="e#10179#10240#0" />
             <element signature="e#10336#10432#0" />
@@ -761,38 +762,35 @@
             <element signature="e#11190#11252#0" />
             <element signature="e#11299#11722#0" />
             <element signature="e#11773#12815#0" />
-            <marker date="1601938488924" expanded="false" signature="1157:1162" ph="..." />
-            <marker date="1601938488924" expanded="true" signature="10174:10433" ph="..." />
-            <marker date="1601938488924" expanded="true" signature="10659:10949" ph="..." />
-            <marker date="1601938488924" expanded="true" signature="10947:10949" ph="..." />
+            <marker date="1602739530288" expanded="false" signature="1200:1205" ph="..." />
+            <marker date="1602739530288" expanded="true" signature="10217:10476" ph="..." />
+            <marker date="1602739530288" expanded="true" signature="10702:10992" ph="..." />
+            <marker date="1602739530288" expanded="true" signature="10990:10992" ph="..." />
+            <marker date="1602739530288" expanded="true" signature="13855:13868" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="68" selection-start-column="3" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="333" column="6" selection-start-line="333" selection-start-column="6" selection-end-line="333" selection-end-column="6" />
+        <state relative-caret-position="1606">
+          <caret line="352" lean-forward="true" selection-start-line="352" selection-end-line="352" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#886#1084#0" />
-            <element signature="e#1379#1416#0" />
-            <element signature="e#1372#2282#0" />
-            <element signature="e#2290#3187#0" />
-            <element signature="e#2308#3820#0" />
-            <element signature="e#3860#4775#0" />
-            <element signature="e#4820#5745#0" />
-            <element signature="e#5772#6584#0" />
-            <element signature="e#6625#7447#0" />
-            <element signature="e#7495#8327#0" />
-            <marker date="1602320858908" expanded="true" signature="1456:1849" ph="..." />
+            <element signature="e#1076#1274#0" />
+            <element signature="e#1308#1347#0" />
+            <element signature="e#1379#1419#0" />
+            <element signature="e#1462#1848#0" />
+            <element signature="e#2046#2998#0" />
+            <element signature="e#3048#4309#0" />
+            <element signature="e#4361#5873#0" />
+            <element signature="e#5913#6828#0" />
+            <element signature="e#6873#7798#0" />
+            <element signature="e#7825#8637#0" />
+            <element signature="e#8678#9500#0" />
+            <element signature="e#9548#10380#0" />
+            <element signature="e#11958#13521#0" />
+            <marker date="1602739591713" expanded="true" signature="1464:1857" ph="..." />
           </folding>
         </state>
       </provider>

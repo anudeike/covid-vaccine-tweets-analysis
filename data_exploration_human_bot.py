@@ -22,7 +22,7 @@ from sklearn.metrics import plot_confusion_matrix, accuracy_score
 
 # the goal of this file
 # is to explore the already gathered data
-master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv"
+master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv"
 
 
 
@@ -339,15 +339,16 @@ def holdout_all_classifiers():
 
     # preprocess the data
     X_scaled = preprocessing.scale(X_train)
+    X_scaled_full_set = preprocessing.scale(x1)
     X_test_scaled = preprocessing.scale(X_test)
 
     # TRAINING
 
-    model = xgboost.XGBClassifier()
+    model = xgboost.XGBClassifier(n_estimators=500, max_depth=4, learning_rate=0.01)
 
     optimization_dict = {
         'max_depth': [2, 4, 6],
-        'n_estimators': [50, 200, 500],
+        'n_estimators': [50, 100, 200],
         'learning_rate': [0.1, 0.01, 1],
 
     }
@@ -355,13 +356,16 @@ def holdout_all_classifiers():
     model = model_selection.GridSearchCV(model, optimization_dict,
                           scoring='accuracy', verbose=1)
 
-    model.fit(X_scaled, Y_train)
-    #model.fit(X_scaled, y1)
+    #model.fit(X_scaled, Y_train)
+
+    model.fit(X_scaled_full_set, y1)
 
     # list all the features and their importances
     #print_feature_importances(model.feature_importances_)
-    #print(model.feature_importances_)
-    print(model.best_score_)
+    # print(model.feature_importances_)
+    # print(model.score(X_test, Y_test))
+
+    print(f'Accuracy: {model.best_score_ * 100}')
     print(model.best_params_)
 
 def holdout_all_classifiers_pruned():
