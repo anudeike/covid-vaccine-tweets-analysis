@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/documentation/model_doc.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_exploration_human_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_exploration_human_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +68,7 @@
           <entry key="gitignore" value="81" />
           <entry key="md" value="257" />
           <entry key="org_twitter_handles_2" value="7" />
-          <entry key="py" value="28157" />
+          <entry key="py" value="28228" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="29" />
         </counts>
@@ -80,7 +78,7 @@
           <entry key="CSV" value="125" />
           <entry key="Markdown" value="257" />
           <entry key="PLAIN_TEXT" value="326" />
-          <entry key="Python" value="28157" />
+          <entry key="Python" value="28228" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -91,14 +89,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
-              <caret line="352" lean-forward="true" selection-start-line="352" selection-end-line="352" />
+            <state relative-caret-position="-9">
+              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#1076#1274#0" />
                 <element signature="e#1308#1347#0" />
                 <element signature="e#1379#1419#0" />
-                <element signature="e#1462#1848#0" />
                 <element signature="e#2046#2998#0" />
                 <element signature="e#3048#4309#0" />
                 <element signature="e#4361#5873#0" />
@@ -108,7 +105,7 @@
                 <element signature="e#8678#9500#0" />
                 <element signature="e#9548#10380#0" />
                 <element signature="e#11958#13521#0" />
-                <marker date="1602739591713" expanded="true" signature="1464:1857" ph="..." />
+                <marker date="1602787524888" expanded="true" signature="1464:1869" ph="..." />
               </folding>
             </state>
           </provider>
@@ -476,8 +473,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37820512" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3440171" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -488,7 +486,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.335141" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33406353" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50124276" side_tool="true" weight="0.32201535" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -773,14 +771,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="352" lean-forward="true" selection-start-line="352" selection-end-line="352" />
+        <state relative-caret-position="-9">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#1076#1274#0" />
             <element signature="e#1308#1347#0" />
             <element signature="e#1379#1419#0" />
-            <element signature="e#1462#1848#0" />
             <element signature="e#2046#2998#0" />
             <element signature="e#3048#4309#0" />
             <element signature="e#4361#5873#0" />
@@ -790,7 +787,7 @@
             <element signature="e#8678#9500#0" />
             <element signature="e#9548#10380#0" />
             <element signature="e#11958#13521#0" />
-            <marker date="1602739591713" expanded="true" signature="1464:1857" ph="..." />
+            <marker date="1602787524888" expanded="true" signature="1464:1869" ph="..." />
           </folding>
         </state>
       </provider>

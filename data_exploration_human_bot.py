@@ -22,7 +22,7 @@ from sklearn.metrics import plot_confusion_matrix, accuracy_score
 
 # the goal of this file
 # is to explore the already gathered data
-master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv"
+master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv"
 
 
 
@@ -50,15 +50,15 @@ def print_feature_importances(arr):
 
     feature_names = ["CAP","astroturf","fake_follower","financial","other","overall","self-declared"]
 
-    print(arr)
+
     if len(arr) != len(feature_names):
         print(len(feature_names))
         print(len(arr))
         print("the amount of features must be the same length")
         return
 
-    for i in range(feature_names):
-        print(f'Importance of {feature_names[i]}: {arr[i]}')
+    for i in range(len(feature_names)):
+        print('Importance of {}: {:.2f}%'.format(feature_names[i], arr[i] * 100))
 #master = pd.read_csv(master_path)
 #print(master.groupby(['labels']).count())
 #describe_plot_save(master[master["labels"] == 0], "plots/meta-data_17k", name="bots_17k")
@@ -344,7 +344,7 @@ def holdout_all_classifiers():
 
     # TRAINING
 
-    model = xgboost.XGBClassifier(n_estimators=500, max_depth=4, learning_rate=0.01)
+    model = xgboost.XGBClassifier(n_estimators=50, max_depth=6, learning_rate=0.1)
 
     optimization_dict = {
         'max_depth': [2, 4, 6],
@@ -353,20 +353,20 @@ def holdout_all_classifiers():
 
     }
 
-    model = model_selection.GridSearchCV(model, optimization_dict,
-                          scoring='accuracy', verbose=1)
+    # model = model_selection.GridSearchCV(model, optimization_dict,
+    #                       scoring='accuracy', verbose=1)
 
-    #model.fit(X_scaled, Y_train)
+    model.fit(X_scaled, Y_train)
 
-    model.fit(X_scaled_full_set, y1)
+    #model.fit(X_scaled_full_set, y1)
 
     # list all the features and their importances
-    #print_feature_importances(model.feature_importances_)
-    # print(model.feature_importances_)
-    # print(model.score(X_test, Y_test))
+    print_feature_importances(model.feature_importances_)
+    #print(model.feature_importances_)
+    print(model.score(X_test_scaled, Y_test))
 
-    print(f'Accuracy: {model.best_score_ * 100}')
-    print(model.best_params_)
+    # print(f'Accuracy: {model.best_score_ * 100}')
+    # print(model.best_params_)
 
 def holdout_all_classifiers_pruned():
     # sort by type
