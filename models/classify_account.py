@@ -87,7 +87,10 @@ def process_single_account(model, stats):
 
 # create a class that will hold all the information that is needed and run the actual model
 class BotClassifier:
-    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path, separator=','):
+    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path, separator=',', isBatch=False):
+
+        # set whether you can use a batch
+        self.isBatch = isBatch
 
         # init the botometer module
         self.bom = botometer.Botometer(wait_on_ratelimit=True,
@@ -98,6 +101,8 @@ class BotClassifier:
 
         # will be a dataframe of the account ids
         self.account_ids = self.get_account_ids(data_file_path, separator)
+
+
 
     def predict(self, data):
 
@@ -110,14 +115,20 @@ class BotClassifier:
             raise RuntimeError("Prediction Failed.")
 
     def classify(self):
+        """
+        Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
+        :return: Dataframe
+        """
+
+        # this function does not work on batches
+        if self.isBatch:
+            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
 
         out = pd.DataFrame()
         row_list = []
 
         # for each of the names in the list -> this would work best on the muted list
         for id in self.account_ids:
-
-            id = id[0] # get the inner string
 
             try:
                 result = self.bom.check_account(id)
@@ -197,6 +208,84 @@ class BotClassifier:
         out = out.append(row_list)
         return out
 
+
+    def classify_batch(self, batchSize = 100):
+        """
+        Classifies accounts in batches.
+        :param batchSize: The amount of accounts
+        :return:
+        """
+        # this function does not work on batches
+        if not self.isBatch:
+            raise ValueError("Classifier set to work with single entry processing (isBatch = False). Consider using classify() instead.")
+
+        out = pd.DataFrame()
+        botometer_data = []
+
+        # for each of the names in the list -> this would work best on the muted list
+        for id in self.account_ids:
+
+            try:
+                result = self.bom.check_account(id)
+
+                if (result["user"]["majority_lang"] == 'en'):
+                    # use the english results
+
+                    # for each row that'll be appended
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['english'],
+                        "astroturf": result['display_scores']['english']['astroturf'],
+                        "fake_follower": result['display_scores']['english']['fake_follower'],
+                        "financial": result['display_scores']['english']['financial'],
+                        "other": result['display_scores']['english']['other'],
+                        "overall": result['display_scores']['english']['overall'],
+                        "self-declared": result['display_scores']['english']['self_declared'],
+                        # "spammer": result['display_scores']['english']['spammer'],
+                    }
+
+                    # append to the batch_data
+                    botometer_data.append(np.array(list(row.values())[1:]))
+                    # notify
+                    print(f'{id} has been processed.\n')
+
+                else:
+
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['universal'],
+                        "astroturf": result['display_scores']['universal']['astroturf'],
+                        "fake_follower": result['display_scores']['universal']['fake_follower'],
+                        "financial": result['display_scores']['universal']['financial'],
+                        "other": result['display_scores']['universal']['other'],
+                        "overall": result['display_scores']['universal']['overall'],
+                        "self-declared": result['display_scores']['universal']['self_declared'],
+                        # "spammer": result['display_scores']['universal']['spammer'],
+                    }
+
+                    # append to the batch_data
+                    botometer_data.append(np.array(list(row.values())[1:]))
+
+                    # notify
+                    print(f'{id} has been processed.\n')
+
+            except Exception as e:
+                # skip if error
+                print("{} Could not be fetched: {}".format(id, e))
+
+
+        # reshape for prediction
+        botometer_data = np.array(botometer_data)
+
+        # predict
+        r = self.predict(botometer_data)
+
+        # zip the output with the array of ids
+        zipped = list(zip(self.account_ids, r))
+        df = pd.DataFrame(zipped, columns=['id', 'labels'])
+        print(df)
+
+
     def get_account_ids(self, path, separ=','):
         """
         Reads the account ids from a file into a dataframe.
@@ -205,7 +294,8 @@ class BotClassifier:
         :return: a dataframe containing all the account ids
         """
         try:
-            return pd.read_csv(path, sep=separ).values # put into an array
+            df = pd.read_csv(path, sep=separ)
+            return df['id'].values # put into an array
         except Exception as e:
             print(f'ERROR: {repr(e)}')
 
@@ -248,10 +338,8 @@ if __name__ == "__main__":
     #                           **twitter_app_auth)
 
     bc = BotClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, data_file_path="test_accounts.csv")
+                       model_path=path_models, data_file_path="test_accounts.csv", isBatch=True)
 
-    pred_df = bc.classify()
-
-    print(pred_df.head())
+    bc.classify_batch()
 
 
