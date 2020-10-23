@@ -7,6 +7,7 @@ import botometer
 from dotenv import load_dotenv
 import os
 import pandas as pd
+import numpy as np
 
 load_dotenv()
 
@@ -97,7 +98,104 @@ class BotClassifier:
 
         # will be a dataframe of the account ids
         self.account_ids = self.get_account_ids(data_file_path, separator)
-        print(self.account_ids)
+
+    def predict(self, data):
+
+        try:
+            r = self.model.predict(data)
+            print(f'Prediction: {r}')
+            return r
+        except Exception as e:
+            print(e)
+            raise RuntimeError("Prediction Failed.")
+
+    def classify(self):
+
+        out = pd.DataFrame()
+        row_list = []
+
+        # for each of the names in the list -> this would work best on the muted list
+        for id in self.account_ids:
+
+            id = id[0] # get the inner string
+
+            try:
+                result = self.bom.check_account(id)
+
+                if (result["user"]["majority_lang"] == 'en'):
+                    # use the english results
+
+                    # for each row that'll be appended
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['english'],
+                        "astroturf": result['display_scores']['english']['astroturf'],
+                        "fake_follower": result['display_scores']['english']['fake_follower'],
+                        "financial": result['display_scores']['english']['financial'],
+                        "other": result['display_scores']['english']['other'],
+                        "overall": result['display_scores']['english']['overall'],
+                        "self-declared": result['display_scores']['english']['self_declared'],
+                        # "spammer": result['display_scores']['english']['spammer'],
+                    }
+
+                    # prepare to be read
+                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
+
+                    # predict
+                    classification = self.predict(reshaped_data) # make a prediction
+
+                    # display what it is classified as
+                    if classification[0] == 1:
+                        print(f'{id} is classified as HUMAN')
+                    else:
+                        print(f'{id} is classified as NON-HUMAN')
+
+                    # notify
+                    print(f'{id} has been predicted.\n')
+
+                    # append the row list
+                    row_list.append({"id":id,
+                                     "predicted_label": classification[0]})
+
+                else:
+
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['universal'],
+                        "astroturf": result['display_scores']['universal']['astroturf'],
+                        "fake_follower": result['display_scores']['universal']['fake_follower'],
+                        "financial": result['display_scores']['universal']['financial'],
+                        "other": result['display_scores']['universal']['other'],
+                        "overall": result['display_scores']['universal']['overall'],
+                        "self-declared": result['display_scores']['universal']['self_declared'],
+                        # "spammer": result['display_scores']['universal']['spammer'],
+                    }
+
+                    # prepare to be read
+                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
+
+                    classification = self.predict(reshaped_data)  # make a prediction
+
+                    # display what it is classified as
+                    if classification[0] == 1:
+                        print(f'{id} is classified as HUMAN')
+                    else:
+                        print(f'{id} is classified as NON-HUMAN')
+
+                    # notify
+                    print(f'{id} has been predicted.\n')
+
+                    # append the row list
+                    row_list.append({"id": id,
+                                     "predicted_label": classification[0]})
+
+            except Exception as e:
+                # skip if error
+                print("{} Could not be fetched: {}".format(id, e))
+
+        print(row_list)
+        out = out.append(row_list)
+        return out
 
     def get_account_ids(self, path, separ=','):
         """
@@ -125,6 +223,8 @@ class BotClassifier:
         except Exception as e:
             print(f'ERROR: {repr(e)}')
 
+
+
 if __name__ == "__main__":
 
     # rapid fire key
@@ -150,6 +250,8 @@ if __name__ == "__main__":
     bc = BotClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path="test_accounts.csv")
 
-    #process_single_account(model=model, stats=res)
+    pred_df = bc.classify()
+
+    print(pred_df.head())
 
 
