@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_exploration_human_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_exploration_human_bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/classify_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/classify_account.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +38,7 @@
           <entry key="human_all_prepared" value="4" />
           <entry key="json" value="9" />
           <entry key="master_training_data" value="1" />
-          <entry key="md" value="7" />
+          <entry key="md" value="8" />
           <entry key="org_twitter_handles_2" value="5" />
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="png" value="16" />
@@ -56,7 +53,7 @@
           <entry key="CSV" value="199" />
           <entry key="Image" value="16" />
           <entry key="JSON" value="9" />
-          <entry key="Markdown" value="7" />
+          <entry key="Markdown" value="8" />
           <entry key="PLAIN_TEXT" value="15" />
           <entry key="Python" value="82" />
           <entry key="TSV" value="27" />
@@ -71,7 +68,7 @@
           <entry key="gitignore" value="81" />
           <entry key="md" value="2156" />
           <entry key="org_twitter_handles_2" value="7" />
-          <entry key="py" value="32489" />
+          <entry key="py" value="32642" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="29" />
         </counts>
@@ -81,7 +78,7 @@
           <entry key="CSV" value="149" />
           <entry key="Markdown" value="2156" />
           <entry key="PLAIN_TEXT" value="326" />
-          <entry key="Python" value="32489" />
+          <entry key="Python" value="32642" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -101,17 +98,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/classify_account.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="207" column="34" lean-forward="true" selection-start-line="207" selection-start-column="34" selection-end-line="207" selection-end-column="34" />
+            <state relative-caret-position="381">
+              <caret line="250" column="43" lean-forward="true" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="43" />
               <folding>
                 <element signature="e#107#120#0" expanded="true" />
                 <element signature="e#306#2263#0" />
                 <element signature="e#2328#2569#0" />
                 <element signature="e#2618#2934#0" />
                 <element signature="e#3175#3660#0" />
+                <element signature="e#3945#4102#1" />
                 <element signature="e#6271#7741#0" />
-                <marker date="1603848280664" expanded="true" signature="3050:12033" ph="..." />
-                <marker date="1603848280664" expanded="true" signature="3691:3916" ph="..." />
+                <element signature="e#11244#11703#0" />
+                <element signature="e#11746#12030#0" />
+                <marker date="1603849890687" expanded="true" signature="3050:12234" ph="..." />
+                <marker date="1603849890687" expanded="true" signature="3691:3916" ph="..." />
               </folding>
             </state>
           </provider>
@@ -172,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/get_identitfication.py" />
         <option value="$PROJECT_DIR$/data/bot-usernames.csv" />
         <option value="$PROJECT_DIR$/data/prepared_data/prepared_bot_data.csv" />
         <option value="$PROJECT_DIR$/data/prepared_data/bot-split/bot_stats" />
@@ -222,6 +221,7 @@
         <option value="$PROJECT_DIR$/models/example_cli.py" />
         <option value="$PROJECT_DIR$/models/test_accounts.csv" />
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv" />
+        <option value="$PROJECT_DIR$/welcome.md" />
         <option value="$PROJECT_DIR$/models/classify_account.py" />
       </list>
     </option>
@@ -435,13 +435,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" weight="0.3253012" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.3253012" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.33296824" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33296824" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50124276" side_tool="true" weight="0.32201535" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -498,13 +498,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/fifth_batch/id_labels_with_cap_second_bots_21964.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="958" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_17800.csv" />
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_18000.csv">
       <provider selected="true" editor-type-id="text-editor">
@@ -717,19 +710,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1166">
+            <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/classify_account.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="207" column="34" lean-forward="true" selection-start-line="207" selection-start-column="34" selection-end-line="207" selection-end-column="34" />
+        <state relative-caret-position="381">
+          <caret line="250" column="43" lean-forward="true" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="43" />
           <folding>
             <element signature="e#107#120#0" expanded="true" />
             <element signature="e#306#2263#0" />
             <element signature="e#2328#2569#0" />
             <element signature="e#2618#2934#0" />
             <element signature="e#3175#3660#0" />
+            <element signature="e#3945#4102#1" />
             <element signature="e#6271#7741#0" />
-            <marker date="1603848280664" expanded="true" signature="3050:12033" ph="..." />
-            <marker date="1603848280664" expanded="true" signature="3691:3916" ph="..." />
+            <element signature="e#11244#11703#0" />
+            <element signature="e#11746#12030#0" />
+            <marker date="1603849890687" expanded="true" signature="3050:12234" ph="..." />
+            <marker date="1603849890687" expanded="true" signature="3691:3916" ph="..." />
           </folding>
         </state>
       </provider>

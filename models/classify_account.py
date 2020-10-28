@@ -209,7 +209,7 @@ class BotClassifier:
         return out
 
 
-    def classify_batch(self, batchSize = 100):
+    def classify_batch(self, batchSize = 100, out_path = None):
         """
         Classifies accounts in batches.
         :param batchSize: The amount of accounts
@@ -222,6 +222,7 @@ class BotClassifier:
         out = pd.DataFrame()
         botometer_data = []
 
+        count = 0
         # for each of the names in the list -> this would work best on the muted list
         for id in self.account_ids:
 
@@ -247,7 +248,8 @@ class BotClassifier:
                     # append to the batch_data
                     botometer_data.append(np.array(list(row.values())[1:]))
                     # notify
-                    print(f'{id} has been processed.\n')
+                    print(f'Account {count}: {id} has been processed.\n')
+                    count += 1
 
                 else:
 
@@ -284,6 +286,12 @@ class BotClassifier:
         zipped = list(zip(self.account_ids, r))
         df = pd.DataFrame(zipped, columns=['id', 'labels'])
         print(df)
+
+        # if there is an output path, return
+        if out_path:
+            df.to_csv(out_path)
+
+        return df
 
 
     def get_account_ids(self, path, separ=','):
@@ -330,12 +338,6 @@ if __name__ == "__main__":
 
     # model path
     path_models = "XGB_Default_Classifier.dat"
-
-    #print(twitter_app_auth)
-    # set up botometer - auth
-    # bom = botometer.Botometer(wait_on_ratelimit=True,
-    #                           rapidapi_key=rapidapi_key,
-    #                           **twitter_app_auth)
 
     bc = BotClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path="test_accounts.csv")
