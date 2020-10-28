@@ -315,7 +315,7 @@ def log_reg_shuffle_strat(num_fold = 10):
 
     print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
 
-def holdout_all_classifiers():
+def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
     # sort by type
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
@@ -343,7 +343,6 @@ def holdout_all_classifiers():
     X_test_scaled = preprocessing.scale(X_test)
 
     # TRAINING
-
     model = xgboost.XGBClassifier(n_estimators=50, max_depth=6, learning_rate=0.1)
 
     optimization_dict = {
@@ -367,6 +366,9 @@ def holdout_all_classifiers():
 
     # print(f'Accuracy: {model.best_score_ * 100}')
     # print(model.best_params_)
+
+    # save the model
+    pickle.dump(model, open(f'models/{save_path}.dat', 'wb'))
 
 def holdout_all_classifiers_pruned():
     # sort by type

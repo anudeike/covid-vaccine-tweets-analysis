@@ -87,7 +87,7 @@ def process_single_account(model, stats):
 
 # create a class that will hold all the information that is needed and run the actual model
 class BotClassifier:
-    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path, separator=',', isBatch=False):
+    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path, separator=',', isBatch=True):
 
         # set whether you can use a batch
         self.isBatch = isBatch
@@ -338,7 +338,7 @@ if __name__ == "__main__":
     #                           **twitter_app_auth)
 
     bc = BotClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, data_file_path="test_accounts.csv", isBatch=True)
+                       model_path=path_models, data_file_path="test_accounts.csv")
 
     bc.classify_batch()
 

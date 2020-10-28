@@ -77,14 +77,14 @@ def create_file_with_botometer_statistics(in_path, out_path, separator="\t"):
     types = in_df["type"].values
 
     # this will be used to keep track of categories
-    count = 27901
+    count = 101
 
     # this is the rate limit
     rate_limit = 100
     timeout = 60
 
     # check the accounts
-    for id, result in bom.check_accounts_in(ids[count:]):
+    for id, result in bom.check_accounts_in(ids[count:150]):
 
         # this will be appended to the new dataframe
         row = {}
@@ -148,7 +148,7 @@ def create_file_with_botometer_statistics(in_path, out_path, separator="\t"):
             # if the count is mod 75
             if count % rate_limit == 0:
                 # export the output df using the latest count as the output
-                p = "{}/id_labels_with_cap_second_bots_{}.csv".format(out_path, count)
+                p = "{}/id_labels_with_cap_second_botstesting_{}.csv".format(out_path, count)
                 out_df.to_csv(p, index=False)
 
                 # time out
@@ -397,7 +397,7 @@ def remove_outliers(in_path=None):
 
 
 
-#create_file_with_botometer_statistics(in_path="data_bank/midterm-2018.tsv", out_path="data_bank/cleaning_data/sixth_batch")
+create_file_with_botometer_statistics(in_path="data_bank/cleaning_data/id-labels.tsv", out_path="data_bank/cleaning_data/sixth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
 #types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
@@ -406,4 +406,4 @@ def remove_outliers(in_path=None):
 
 #add_column_to_file_inplace("organization_officials_data/org_twitter_handles_2all.csv")
 #create_file_with_botometer_statistics_org("organization_officials_data/org_twitter_handles_2all.csv", out_path="data_bank/cleaning_data/org_clean")
-remove_outliers()
+#remove_outliers()
