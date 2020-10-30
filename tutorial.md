@@ -172,4 +172,69 @@ Meanings of the bot type scores:
 
 For more information on the response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
+### Getting the Data We Need
+The result of the botometer processing is quite large and contains many fields, most we don't need. For clarity, here are the fields that we need.
 
+ - The Id/Username of the Account
+ - The CAP: Complete Automation Probability. See the [Botometer FAQ](https://botometer.osome.iu.edu/faq) for more.
+ - Astroturf
+ - fake_follower
+ - financial
+ - other
+ - overall
+ - self_declared
+
+All of these values (except the CAP) can be take from the display_scores dictionary.
+The resulting code should look something like this:
+
+    # check the accounts  
+    ids = df["ids"] # this is just a list of all of the account ids
+    for id, result in bom.check_accounts_in(ids):  
+      
+      # this will be appended to the new dataframe  
+      row = {}  
+      
+      # we use a try-catch because we do not want it to stop execution if botometer fails to get stats on an account.
+    try:  
+      if (result["user"]["majority_lang"] == 'en'):
+        
+      # use the english results  
+	     row = {  
+                    "id": id,  
+                    "CAP": result['cap']['english'],  
+                    "astroturf": result['display_scores']['english']['astroturf'],  
+                    "fake_follower": result['display_scores']['english']['fake_follower'],  
+                    "financial": result['display_scores']['english']['financial'],  
+                    "other": result['display_scores']['english']['other'],  
+                    "overall": result['display_scores']['english']['overall'],  
+                    "self-declared": result['display_scores']['english']['self_declared'],  
+                    "spammer": result['display_scores']['english']['spammer'],  
+                    "type": types[count]  
+                }  
+       else:  
+	      row = {  
+                    "id": id,  
+                    "CAP": result['cap']['universal'],  
+                    "astroturf": result['display_scores']['universal']['astroturf'],  
+                    "fake_follower": result['display_scores']['universal']['fake_follower'],  
+                    "financial": result['display_scores']['universal']['financial'],  
+                    "other": result['display_scores']['universal']['other'],  
+                    "overall": result['display_scores']['universal']['overall'],  
+                    "self-declared": result['display_scores']['universal']['self_declared'],  
+                    "spammer": result['display_scores']['universal']['spammer'],  
+                    "type": types[count]  
+                }  
+	              
+                # notify that we are done processing
+                print(f'{id} has been processed.')
+                # you can then add it to a dataframe or do whatever you want to here with the row
+      
+      except Exception as e:  
+      # skip if error  
+	      print("{} Could not be fetched: {}".format(id, e))
+	      continue
+
+### A Short Note about getting Data from large datasets
+Getting data using this library for large datasets is ... tricky, to say the least, because of Twitter's rate limiting and how Botometer chooses to handle this edge case. A larger discussion and a possible solution to this problem is can be found [here](https://github.com/anudeike/covid-vaccine-tweets-analysis/blob/master/welcome.md), but the gist of the issue is that Twitter's rate limiting only allows a certain amount of requests within a certain time period. This cap is very very low and processing large datasets (anything about 150 rows), can take multiple hours. 
+
+If you find a better solution, feel free to reach out to use at ikechukwuanude@gmail.com or leave an issue in the github repo.
