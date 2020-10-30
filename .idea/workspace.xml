@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tutorial.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +40,7 @@
           <entry key="org_twitter_handles_2" value="5" />
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="png" value="16" />
-          <entry key="py" value="84" />
+          <entry key="py" value="85" />
           <entry key="raw_org_dataset" value="2" />
           <entry key="tsv" value="27" />
           <entry key="txt" value="5" />
@@ -56,7 +53,7 @@
           <entry key="JSON" value="9" />
           <entry key="Markdown" value="10" />
           <entry key="PLAIN_TEXT" value="15" />
-          <entry key="Python" value="84" />
+          <entry key="Python" value="85" />
           <entry key="TSV" value="27" />
         </counts>
       </usages-collector>
@@ -132,10 +129,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="39" column="45" lean-forward="true" selection-start-line="26" selection-end-line="39" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#1205#1533#0" />
+                <element signature="e#6000#10177#0" />
+                <element signature="e#10230#10291#0" />
+                <element signature="e#10387#10483#0" />
+                <element signature="e#10534#10667#0" />
+                <element signature="e#10715#10998#0" />
+                <element signature="e#11070#11185#0" />
+                <element signature="e#11241#11303#0" />
+                <element signature="e#11350#11773#0" />
+                <element signature="e#11824#12866#0" />
+                <element signature="e#12907#13872#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tutorial.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="524">
+                <caret line="47" column="136" selection-start-line="47" selection-start-column="136" selection-end-line="47" selection-end-column="136" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -208,7 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data/bot-usernames.csv" />
         <option value="$PROJECT_DIR$/data/prepared_data/prepared_bot_data.csv" />
         <option value="$PROJECT_DIR$/data/prepared_data/bot-split/bot_stats" />
         <option value="$PROJECT_DIR$/organization_officials_data/example_data_test" />
@@ -259,6 +280,7 @@
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv" />
         <option value="$PROJECT_DIR$/models/classify_account.py" />
         <option value="$PROJECT_DIR$/welcome.md" />
+        <option value="$PROJECT_DIR$/tutorial.md" />
       </list>
     </option>
   </component>
@@ -719,14 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="953">
-          <caret line="128" column="43" selection-start-line="128" selection-start-column="43" selection-end-line="128" selection-end-column="43" />
-          <caret line="127" column="39" lean-forward="true" selection-start-line="127" selection-start-column="39" selection-end-line="127" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -770,6 +784,16 @@
     <entry file="file://$PROJECT_DIR$/demography_example.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/tutorial.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="524">
+            <caret line="47" column="136" selection-start-line="47" selection-start-column="136" selection-end-line="47" selection-end-column="136" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1210">
@@ -780,11 +804,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="26" selection-end-line="39" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#1205#1533#0" />
+            <element signature="e#6000#10177#0" />
+            <element signature="e#10230#10291#0" />
+            <element signature="e#10387#10483#0" />
+            <element signature="e#10534#10667#0" />
+            <element signature="e#10715#10998#0" />
+            <element signature="e#11070#11185#0" />
+            <element signature="e#11241#11303#0" />
+            <element signature="e#11350#11773#0" />
+            <element signature="e#11824#12866#0" />
+            <element signature="e#12907#13872#0" />
+          </folding>
         </state>
       </provider>
     </entry>
