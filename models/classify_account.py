@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 import numpy as np
+import time
 
 load_dotenv()
 
@@ -114,6 +115,7 @@ class BotClassifier:
             print(e)
             raise RuntimeError("Prediction Failed.")
 
+
     def classify(self):
         """
         Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
@@ -124,6 +126,7 @@ class BotClassifier:
         if self.isBatch:
             raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
 
+        # set some of the dataframe parameters
         out = pd.DataFrame()
         row_list = []
 
@@ -208,27 +211,37 @@ class BotClassifier:
         out = out.append(row_list)
         return out
 
+    def save_batch(self, arr):
+        """
+        Takes in a double array and makes predictions then outputs the dataframe to
+        :param arr:
+        :return:
+        """
+        pass
 
-    def classify_batch(self, batchSize = 100, out_path = None):
+    def classify_batch(self, batchSize = 100, timeout = 120, outputFolder = None, outputFileName = "default"):
         """
         Classifies accounts in batches.
         :param batchSize: The amount of accounts
+        :param timeout: The amount of time the program waits between batches
+        :param output_folder: The folder where all the batch files will be saved
         :return:
         """
         # this function does not work on batches
         if not self.isBatch:
             raise ValueError("Classifier set to work with single entry processing (isBatch = False). Consider using classify() instead.")
 
-        out = pd.DataFrame()
+        out = pd.DataFrame(columns=['id', 'prediction'])
         botometer_data = []
 
-        count = 0
+        count = 1
+
         # for each of the names in the list -> this would work best on the muted list
-        for id in self.account_ids:
+        for id, result in self.bom.check_accounts_in(self.account_ids):
 
+            # set up a row
+            row = {}
             try:
-                result = self.bom.check_account(id)
-
                 if (result["user"]["majority_lang"] == 'en'):
                     # use the english results
 
@@ -249,7 +262,6 @@ class BotClassifier:
                     botometer_data.append(np.array(list(row.values())[1:]))
                     # notify
                     print(f'Account {count}: {id} has been processed.\n')
-                    count += 1
 
                 else:
 
@@ -271,27 +283,77 @@ class BotClassifier:
                     # notify
                     print(f'{id} has been processed.\n')
 
+
+                # save the batch and then sleep if you hit batch size
+                if (count % batchSize == 0):
+
+                    # make predictions
+                    print(f"Making predictions on {count}...")
+                    predictions = self.predict(np.array(botometer_data))
+
+                    # zip
+                    zipped = list(zip(self.account_ids, predictions))
+
+                    df = pd.DataFrame(zipped, columns=["id", "prediction"])
+
+                    out = out.append(df)
+
+                    # send it out.
+                    out.to_csv(f'{outputFolder}/{outputFileName}_{count}.csv', index=False)
+
+                    # reset the array
+                    botometer_data = []
+
+                    # sleep
+                    print("is sleeping for {} seconds...".format(timeout))
+                    time.sleep(timeout)
+
+                # increment by one every loop
+                count += 1
+
             except Exception as e:
                 # skip if error
                 print("{} Could not be fetched: {}".format(id, e))
 
+                # save the batch and then sleep if you hit batch size
+                if (count % batchSize == 0):
+                    # make predictions
+                    predictions = self.predict(np.array(botometer_data))
 
-        # reshape for prediction
-        botometer_data = np.array(botometer_data)
+                    # zip
+                    zipped = list(zip(self.account_ids, predictions))
+                    df = pd.DataFrame(zipped, columns=["id", "prediction"])
 
-        # predict
-        r = self.predict(botometer_data)
+                    out = out.append(df)
 
-        # zip the output with the array of ids
-        zipped = list(zip(self.account_ids, r))
-        df = pd.DataFrame(zipped, columns=['id', 'labels'])
-        print(df)
+                    # send it out.
+                    out.to_csv(f'{outputFolder}/{outputFileName}_{count}.csv', index=False)
 
-        # if there is an output path, return
-        if out_path:
-            df.to_csv(out_path)
+                    # reset the array
+                    botometer_data = []
 
-        return df
+                    # sleep
+                    print("is sleeping for {} seconds...".format(timeout))
+                    time.sleep(timeout)
+
+                count += 1
+                continue
+
+
+        # export the remaining
+        # make predictions
+        predictions = self.predict(np.array(botometer_data))
+
+        # zip
+        zipped = list(zip(self.account_ids, predictions))
+        df = pd.DataFrame(zipped, columns=["id", "prediction"])
+
+        out = out.append(df)
+
+        # send it out.
+        out.to_csv(f'{outputFolder}/{outputFileName}_{count}.csv', index=False)
+
+        return out
 
 
     def get_account_ids(self, path, separ=','):
@@ -342,6 +404,6 @@ if __name__ == "__main__":
     bc = BotClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path="test_accounts.csv")
 
-    bc.classify_batch()
+    bc.classify_batch(batchSize=3, timeout=2, outputFolder="li_data/classifications", outputFileName="li_usn_trial")
 
 
