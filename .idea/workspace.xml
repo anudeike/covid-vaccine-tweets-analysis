@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/classify_account3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/classify_accounts2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/classify_accounts4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/classify_accounts5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/classify_accounts6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/classify_accounts7.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/classify_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/classify_account.py" afterDir="false" />
     </list>
@@ -15,71 +21,78 @@
     <session id="346404125">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.5" value="3" />
-          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="21" />
+          <entry key="project.open.time.8" value="3" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bot_stats" value="1" />
-          <entry key="csv" value="188" />
-          <entry key="env" value="5" />
+          <entry key="csv" value="306" />
+          <entry key="env" value="6" />
           <entry key="example_data_test" value="3" />
-          <entry key="gitignore" value="6" />
-          <entry key="human_all_prepared" value="4" />
+          <entry key="gitignore" value="8" />
+          <entry key="human_all_prepared" value="5" />
           <entry key="json" value="9" />
+          <entry key="li_trial_master" value="3" />
           <entry key="master_training_data" value="1" />
           <entry key="md" value="10" />
           <entry key="org_twitter_handles_2" value="5" />
           <entry key="organization_names_fortune_1000" value="4" />
+          <entry key="password" value="3" />
           <entry key="png" value="16" />
-          <entry key="py" value="86" />
+          <entry key="py" value="96" />
           <entry key="raw_org_dataset" value="2" />
           <entry key="tsv" value="27" />
           <entry key="txt" value="5" />
+          <entry key="vmoptions" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="208" />
+          <entry key="CSV" value="330" />
           <entry key="Image" value="16" />
           <entry key="JSON" value="9" />
           <entry key="Markdown" value="10" />
-          <entry key="PLAIN_TEXT" value="16" />
-          <entry key="Python" value="86" />
+          <entry key="PLAIN_TEXT" value="23" />
+          <entry key="Python" value="96" />
           <entry key="TSV" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="bot_stats" value="6" />
-          <entry key="csv" value="136" />
+          <entry key="csv" value="140" />
           <entry key="dummy" value="61" />
           <entry key="env" value="155" />
           <entry key="gitignore" value="81" />
+          <entry key="li_trial_master" value="21" />
           <entry key="md" value="2156" />
           <entry key="org_twitter_handles_2" value="7" />
-          <entry key="py" value="34159" />
+          <entry key="password" value="85" />
+          <entry key="py" value="35454" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="29" />
+          <entry key="vmoptions" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSV" value="149" />
+          <entry key="CSV" value="174" />
           <entry key="Markdown" value="2156" />
-          <entry key="PLAIN_TEXT" value="326" />
-          <entry key="Python" value="34159" />
+          <entry key="PLAIN_TEXT" value="415" />
+          <entry key="Python" value="35454" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -87,89 +100,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/classify_account.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="408" lean-forward="true" selection-start-line="408" selection-end-line="408" />
+            <state relative-caret-position="-2508">
               <folding>
-                <element signature="e#107#120#0" expanded="true" />
-                <element signature="e#306#2263#0" />
-                <element signature="e#2328#2569#0" />
-                <element signature="e#2618#2934#0" />
-                <element signature="e#3944#4101#1" />
-                <element signature="e#9229#10289#0" />
-                <element signature="e#8827#9552#0" />
-                <element signature="e#9855#10813#0" />
-                <element signature="e#11444#11903#0" />
-                <element signature="e#11946#12230#0" />
-                <marker date="1604034322197" expanded="true" signature="3062:14473" ph="..." />
-                <marker date="1604034322197" expanded="true" signature="3703:3929" ph="..." />
-                <marker date="1604034322197" expanded="true" signature="8046:8210" ph="..." />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1257">
-              <caret line="155" column="74" lean-forward="true" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="74" />
+            <state relative-caret-position="224">
+              <caret line="287" column="16" lean-forward="true" selection-start-line="287" selection-start-column="16" selection-end-line="287" selection-end-column="16" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#1205#1533#0" />
+                <element signature="e#1669#5902#0" />
                 <element signature="e#6000#10177#0" />
-                <element signature="e#10230#10291#0" />
-                <element signature="e#10387#10483#0" />
-                <element signature="e#10534#10667#0" />
-                <element signature="e#10715#10998#0" />
-                <element signature="e#11070#11185#0" />
-                <element signature="e#11241#11303#0" />
-                <element signature="e#11350#11773#0" />
-                <element signature="e#11824#12866#0" />
-                <element signature="e#12907#13872#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tutorial.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="334">
-                <caret line="236" column="52" lean-forward="true" selection-start-line="236" selection-start-column="52" selection-end-line="236" selection-end-column="52" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bot-analysis.py">
+        <entry file="file://$PROJECT_DIR$/data/prepared_data/human-split/human_all_prepared">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-792" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/welcome.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="70">
-                <caret line="70" lean-forward="true" selection-end-line="101" selection-end-column="67" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="154">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -205,6 +165,8 @@
       <find>2790236045</find>
       <find>gannett</find>
       <find>,</find>
+      <find>id</find>
+      <find>prediction</find>
     </findStrings>
     <replaceStrings>
       <replace>english</replace>
@@ -220,17 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data/prepared_data/prepared_bot_data.csv" />
-        <option value="$PROJECT_DIR$/data/prepared_data/bot-split/bot_stats" />
-        <option value="$PROJECT_DIR$/organization_officials_data/example_data_test" />
-        <option value="$PROJECT_DIR$/data/prepared_data/human-split/human_all_prepared" />
-        <option value="$PROJECT_DIR$/organization_officials_data/raw_org_dataset" />
-        <option value="$PROJECT_DIR$/organization_officials_data/Organizational Twitter Handles.csv" />
-        <option value="$PROJECT_DIR$/data/prepared_data/master_data.csv" />
-        <option value="$PROJECT_DIR$/get_social_for orgs.py" />
-        <option value="$PROJECT_DIR$/analyze_cap_data.py" />
-        <option value="$PROJECT_DIR$/bot-analysis.py" />
-        <option value="$PROJECT_DIR$/m3_usage_example.py" />
         <option value="$PROJECT_DIR$/sample.py" />
         <option value="$PROJECT_DIR$/demographer.py" />
         <option value="$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/demographer/utils.py" />
@@ -270,15 +221,25 @@
         <option value="$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv" />
         <option value="$PROJECT_DIR$/welcome.md" />
         <option value="$PROJECT_DIR$/tutorial.md" />
+        <option value="$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_28700.csv" />
+        <option value="$PROJECT_DIR$/data/password" />
+        <option value="$PROJECT_DIR$/classify_accounts4.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/pycharm64.exe.vmoptions" />
+        <option value="$PROJECT_DIR$/models/li_data/li_trial_master" />
         <option value="$PROJECT_DIR$/models/classify_account.py" />
+        <option value="$PROJECT_DIR$/models/classify_accounts2.py" />
+        <option value="$PROJECT_DIR$/models/classify_account3.py" />
+        <option value="$PROJECT_DIR$/models/classify_accounts4.py" />
+        <option value="$PROJECT_DIR$/models/classify_accounts6.py" />
+        <option value="$PROJECT_DIR$/models/classify_accounts5.py" />
+        <option value="$PROJECT_DIR$/models/classify_accounts7.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="266" />
-    <option name="y" value="122" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="953" />
     <option name="width" value="974" />
-    <option name="height" value="1040" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -286,7 +247,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -297,23 +257,29 @@
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
               <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="li_data" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="prepared_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vaccine-data-processing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vaccine-data-processing" type="462c0819:PsiDirectoryNode" />
+              <item name="data_bank" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/audio_digital_processing" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -487,23 +453,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13909379" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14383562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" visible="true" weight="0.324295" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.32321042" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50124276" side_tool="true" weight="0.32201535" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49947312" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -514,13 +480,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" weight="0.3253012" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49875724" weight="0.324295" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50124276" side_tool="true" weight="0.32201535" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -558,198 +524,138 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_49800.csv" />
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_49900.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150744">
-          <caret line="6852" column="61" selection-start-line="1" selection-end-line="6852" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_27900.csv" />
-    <entry file="file://$PROJECT_DIR$/data_bank/midterm-2018.tsv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="50538" column="24" lean-forward="true" selection-start-line="50527" selection-end-line="50538" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/example_data_test">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/Organizational Twitter Handles.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/Organization-Data_Extra - Sheet1.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/organization_names_fortune_1000">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_social_for orgs.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/m3_usage_example.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_identitfication.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/get_users.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/distribution_cap_human_bot_organization_n660.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/organizations.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/default-meta_stats.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analyze_cap_data.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vaccine-2020-07-09.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="484">
-          <caret line="22" column="986" selection-start-line="22" selection-start-column="986" selection-end-line="22" selection-end-column="986" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/human_histogram_plot.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots/meta_data/bot_histogram_plot.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tweepy/binder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="233" selection-start-line="233" selection-end-line="233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/documentation/readme-rawdata.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="836">
-            <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="68" selection-start-column="3" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/id-labels.tsv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/documentation/model_doc.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="374">
-            <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/example_cli.py" />
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv">
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_208400.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_162900.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_55000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_120000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_163000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_208600.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_402800.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_303800.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_212600.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_167200.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_305300.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_404300.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_214100.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_406000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_309100.csv" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/pycharm64.exe.vmoptions">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
-          <caret line="1" column="3" selection-start-line="1" selection-end-line="1" selection-end-column="10" />
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set_indexed.csv">
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_408300.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/li_trial_master" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_311900.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_411000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_66900.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_175300.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_220800.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/li_usn_trial_411100.csv" />
+    <entry file="file://$PROJECT_DIR$/models/classify_account3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="82" />
+        <state relative-caret-position="373">
+          <caret line="419" column="155" selection-start-line="419" selection-start-column="155" selection-end-line="419" selection-end-column="155" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/botometer/__init__.py">
+    <entry file="file://$PROJECT_DIR$/models/classify_accounts4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        <state relative-caret-position="373">
+          <caret line="419" column="154" selection-start-line="419" selection-start-column="154" selection-end-line="419" selection-end-column="154" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/org_twitter_handle_only.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/eo1.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/fortune_500_data_set.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv">
+    <entry file="file://$PROJECT_DIR$/models/classify_accounts2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1056" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_training_set.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376442">
-          <caret line="17177" column="40" selection-start-line="17177" selection-start-column="40" selection-end-line="17177" selection-end-column="40" />
+        <state relative-caret-position="2872">
+          <caret line="419" column="153" selection-start-line="419" selection-start-column="153" selection-end-line="419" selection-end-column="153" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/org_twitter_handles_2">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organization_officials_data/org_twitter_handles_2all.csv">
+    <entry file="file://$PROJECT_DIR$/models/classify_accounts5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="7" />
+        <state relative-caret-position="456">
+          <caret line="418" column="28" selection-start-line="418" selection-start-column="28" selection-end-line="418" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv">
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/seventh/li_usn_trial_503400.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="75" />
-        </state>
+        <state relative-caret-position="-68239" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/test_accounts.csv">
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/seventh/li_usn_trial_508000.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
+        <state relative-caret-position="-160155" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/welcome.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="70">
-            <caret line="70" lean-forward="true" selection-end-line="101" selection-end-column="67" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bot-analysis.py">
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/second/li_usn_trial_191200.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/third/li_usn_trial_237300.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/fourth/li_usn_trial_328000.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/fifth/li_usn_trial_427100.csv" />
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/sixth/li_usn_trial_462400.csv" />
+    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-792" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        <state relative-caret-position="9042">
+          <caret line="418" column="24" selection-start-line="418" selection-start-column="24" selection-end-line="418" selection-end-column="24" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#107#120#0" expanded="true" />
+            <marker date="1604643194639" expanded="true" signature="3219:14901" ph="..." />
+            <marker date="1604643194639" expanded="true" signature="3860:4086" ph="..." />
+            <marker date="1604643194639" expanded="true" signature="8172:8177" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/seventh/li_usn_trial_512800.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/first/li_usn_trial_83100.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="17" selection-end-line="14604" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/classify_accounts7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="414" selection-start-line="414" selection-end-line="414" />
+          <folding>
+            <element signature="e#107#120#0" expanded="true" />
+            <element signature="e#3227#14900#0" />
+            <element signature="e#4117#4274#1" />
+            <element signature="e#8320#8599#1" />
+            <element signature="e#9332#10057#0" />
+            <element signature="e#12547#12602#0" />
+            <element signature="e#13602#13698#0" />
+            <element signature="e#14103#14573#0" />
+            <element signature="e#14616#14900#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/classify_accounts6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="403" column="11" selection-start-line="403" selection-start-column="9" selection-end-line="403" selection-end-column="11" />
+          <folding>
+            <element signature="e#107#120#0" expanded="true" />
+            <element signature="e#3227#14900#0" />
+            <element signature="e#4117#4274#1" />
+            <element signature="e#8320#8599#1" />
+            <element signature="e#9332#10057#0" />
+            <element signature="e#12547#12602#0" />
+            <element signature="e#13602#13698#0" />
+            <element signature="e#14103#14573#0" />
+            <element signature="e#14616#14900#0" />
           </folding>
         </state>
       </provider>
@@ -757,84 +663,70 @@
     <entry file="file://$PROJECT_DIR$/tutorial.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="334">
-            <caret line="236" column="52" lean-forward="true" selection-start-line="236" selection-start-column="52" selection-end-line="236" selection-end-column="52" />
+          <first_editor relative-caret-position="176">
+            <caret line="170" column="11" selection-start-line="170" selection-start-column="11" selection-end-line="170" selection-end-column="11" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demography_example.py">
+    <entry file="file://$PROJECT_DIR$/data/prepared_data/human-split/prepared_human_data_500-600.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_0.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_5.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_7.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_14.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/.env">
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/output_batches/id_labels_with_cap_1600.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        <state relative-caret-position="176">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_3.csv">
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_150.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_bots_27901.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/sixth_batch/id_labels_with_cap_second_botstesting_101.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_bank/cleaning_data/second_batch/id_labels_with_cap_midterm_42505.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1257">
-          <caret line="155" column="74" lean-forward="true" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="74" />
+        <state relative-caret-position="110">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_exploration_human_bot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2508">
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#1205#1533#0" />
-            <element signature="e#6000#10177#0" />
-            <element signature="e#10230#10291#0" />
-            <element signature="e#10387#10483#0" />
-            <element signature="e#10534#10667#0" />
-            <element signature="e#10715#10998#0" />
-            <element signature="e#11070#11185#0" />
-            <element signature="e#11241#11303#0" />
-            <element signature="e#11350#11773#0" />
-            <element signature="e#11824#12866#0" />
-            <element signature="e#12907#13872#0" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/default_8.csv">
+    <entry file="file://$PROJECT_DIR$/data/prepared_data/human-split/human_all_prepared">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="154">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
+    <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="408" lean-forward="true" selection-start-line="408" selection-end-line="408" />
+        <state relative-caret-position="224">
+          <caret line="287" column="16" lean-forward="true" selection-start-line="287" selection-start-column="16" selection-end-line="287" selection-end-column="16" />
           <folding>
-            <element signature="e#107#120#0" expanded="true" />
-            <element signature="e#306#2263#0" />
-            <element signature="e#2328#2569#0" />
-            <element signature="e#2618#2934#0" />
-            <element signature="e#3944#4101#1" />
-            <element signature="e#9229#10289#0" />
-            <element signature="e#8827#9552#0" />
-            <element signature="e#9855#10813#0" />
-            <element signature="e#11444#11903#0" />
-            <element signature="e#11946#12230#0" />
-            <marker date="1604034322197" expanded="true" signature="3062:14473" ph="..." />
-            <marker date="1604034322197" expanded="true" signature="3703:3929" ph="..." />
-            <marker date="1604034322197" expanded="true" signature="8046:8210" ph="..." />
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#1669#5902#0" />
+            <element signature="e#6000#10177#0" />
           </folding>
         </state>
       </provider>

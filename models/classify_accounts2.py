@@ -4,14 +4,14 @@ The only input is the account name or id.
 """
 import pickle
 import botometer
-from dotenv import load_dotenv
-import os
+#from dotenv import load_dotenv
+#import os
 import pandas as pd
 import numpy as np
 import time
 from datetime import datetime
 
-load_dotenv()
+#load_dotenv()
 
 # def get_botometer_stats_single_account(bom_instance, screen_name):
 #     """
@@ -389,7 +389,7 @@ class BotClassifier:
 if __name__ == "__main__":
 
     # rapid fire key
-    rapidapi_key = os.getenv('RAPID_FIRE_KEY')
+    rapidapi_key = "5348a286aamsh9ac63418e367f9ap194e4cjsna66191d65c0b"
 
     # authentication
     # twitter_app_auth = {
@@ -401,8 +401,8 @@ if __name__ == "__main__":
 
     # authentication via app
     twitter_app_auth = {
-        'consumer_key': os.getenv('TWITTER_API_KEY'),
-        'consumer_secret': os.getenv('TWITTER_API_SECRET'),
+        'consumer_key': "afbgtRPvt2EZmI2BFB0UhIsQW",
+        'consumer_secret': "auusOJTt8zmGQA9zbMYNUpqDAH4dDcTEy4w9RHbtaDkNT65hyU",
     }
 
     # model path
@@ -416,7 +416,8 @@ if __name__ == "__main__":
     current_time = now.strftime("%H:%M:%S")
     print("Script Started: ", current_time)
 
-    # ultimate cap: 100k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=100000, base_count=66902)
+    # total range 150k - 200k
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/second", outputFileName="li_usn_trial", cap=200000, base_count=175302)
+                                                                                                                        # skipp 110000 to 120000
 
 
