@@ -417,6 +417,6 @@ if __name__ == "__main__":
     print("Script Started: ", current_time)
 
     # ultimate cap: 100k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=100000, base_count=66902)
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=700000, base_count=618302)
 
 

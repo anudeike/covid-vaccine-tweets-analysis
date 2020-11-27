@@ -389,7 +389,7 @@ class BotClassifier:
 if __name__ == "__main__":
 
     # rapid fire key
-    rapidapi_key = "5348a286aamsh9ac63418e367f9ap194e4cjsna66191d65c0b"
+    rapidapi_key = "473b4380cemshe9fd21f285e1ee2p1aabcajsn64b70bd7961c"
 
     # authentication
     # twitter_app_auth = {
@@ -399,6 +399,8 @@ if __name__ == "__main__":
     #     'access_token_secret': os.getenv('TWITTER_ACCESS_SECRET'),
     # }
 
+    ## LATEST RUN
+    ## STARTED AT 1:12 AM NOV 27
     # authentication via app
     twitter_app_auth = {
         'consumer_key': "afbgtRPvt2EZmI2BFB0UhIsQW",
@@ -416,8 +418,9 @@ if __name__ == "__main__":
     current_time = now.strftime("%H:%M:%S")
     print("Script Started: ", current_time)
 
-    # total range 150k - 200k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/second", outputFileName="li_usn_trial", cap=200000, base_count=175302)
+    # total range
+    # 705002 - 718000 (covered)
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/second", outputFileName="li_usn_trial", cap=800000, base_count=705002)
                                                                                                                         # skipp 110000 to 120000
 
 
