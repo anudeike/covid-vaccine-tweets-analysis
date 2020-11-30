@@ -417,7 +417,9 @@ if __name__ == "__main__":
     print("Script Started: ", current_time)
 
     # COVERED FROM 618300 to 635600
+    # COVERED TO 660900
+    # COVERED TO 703100
     # ultimate cap: 100k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=700000, base_count=635600)
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=800000, base_count=703102)
 
 

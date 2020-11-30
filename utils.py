@@ -6,6 +6,7 @@ import time
 import luckysocial
 from scipy import stats
 import numpy as np
+import json
 
 """
 This file contains all the utility functions that I will use throughout this repo
@@ -395,9 +396,55 @@ def remove_outliers(in_path=None):
 
     pass
 
+def get_tweets_from_sample(path):
+
+    # create a dataframe
+    df = pd.DataFrame(columns=['id', 'screen_name', 'follower_count'])
+
+    # goal
+    # open the file and put username data into a dataframe and create a file for it
+    with open(path, "r") as f:
+
+        index = 0
+
+        for line in f:
+            # skip lines that are empty space
+            if line.isspace():
+                continue
+
+            try:
+                # deserialize
+                tweet_data = json.loads(line)
+                print(tweet_data['text'])
+                # vars
+                id = tweet_data['user']['id_str']
+                screen_name = tweet_data['user']['screen_name']
+                followers = tweet_data['user']['followers_count']
+
+                # insert info
+                df.loc[index] = [id] + [screen_name] + [followers]
+
+                # control
+                if index > 3:
+                    break
+
+                index += 1
 
 
-create_file_with_botometer_statistics(in_path="data_bank/cleaning_data/id-labels.tsv", out_path="data_bank/cleaning_data/sixth_batch")
+            except(json.decoder.JSONDecodeError, TypeError) as e:
+
+                # skip lines that don't serialize correctly should only be 2% of the lines
+                print(e)
+                continue
+
+        # send the info to a csv file
+        #df.to_csv(output_path)
+        print(df.head(6))
+
+
+
+get_tweets_from_sample("vaccine-2020-07-09.txt")
+#create_file_with_botometer_statistics(in_path="data_bank/cleaning_data/id-labels.tsv", out_path="data_bank/cleaning_data/sixth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
 #types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 

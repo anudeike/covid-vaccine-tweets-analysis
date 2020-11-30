@@ -1,0 +1,31 @@
+  {
+    "dep": "nsubj",
+    "governor": 4,
+    "governorGloss": "tasty",
+    "dependent": 2,
+    "dependentGloss": "bread"
+  },
+
+  {
+    "dep": "nsubj",
+    "governor": 6,
+    "governorGloss": "warm",
+    "dependent": 2,
+    "dependentGloss": "bread"
+  },
+
+  {
+    "dep": "nsubj",
+    "governor": 12,
+    "governorGloss": "cold",
+    "dependent": 9,
+    "dependentGloss": "sauce"
+  },
+
+  {
+    "dep": "advmod",
+    "governor": 12,
+    "governorGloss": "cold",
+    "dependent": 11,
+    "dependentGloss": "too"
+  },
