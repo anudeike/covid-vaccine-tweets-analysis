@@ -420,7 +420,8 @@ if __name__ == "__main__":
 
     # total range
     # 705002 - 718000 (covered)
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/second", outputFileName="li_usn_trial", cap=800000, base_count=705002)
-                                                                                                                        # skipp 110000 to 120000
+    # Covered 800000 - 813900
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/second", outputFileName="li_usn_trial", cap=1700000, base_count=1600002)
+
 
 

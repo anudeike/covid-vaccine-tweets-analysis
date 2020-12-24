@@ -389,7 +389,7 @@ class BotClassifier:
 if __name__ == "__main__":
 
     # rapid fire key
-    rapidapi_key = "ee2abe032emsh906b721657282c9p148f1djsn3a316c338467"
+    rapidapi_key = "6caba81f9cmshd6167be3b6b4b11p1ecd7fjsn6be834df0d56"
 
     # authentication
     # twitter_app_auth = {
@@ -399,10 +399,10 @@ if __name__ == "__main__":
     #     'access_token_secret': os.getenv('TWITTER_ACCESS_SECRET'),
     # }
 
-    # authentication via app
+    # authentication via app - this should be a third app NOT IMPLEMENTED WITH NEW KEYS YET
     twitter_app_auth = {
-        'consumer_key': "FmyKzMLuAuELbeSj7U0H9JitB",
-        'consumer_secret': "AEAOsmmtMmG010u1exNjYWrEmtKB5jFCZJksvB6xZUVnIEKQIt",
+        'consumer_key': "zHibrv3vPOK09SvGFoAyXgSMF",
+        'consumer_secret': "kbSZ7NHcGdAYMwBcKYlgWYXO12Ms7CuZp8zdzBFE9VWKwmwxdy",
     }
 
     # model path
@@ -416,7 +416,5 @@ if __name__ == "__main__":
     current_time = now.strftime("%H:%M:%S")
     print("Script Started: ", current_time)
 
-    # 200k to 300k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/third", outputFileName="li_usn_trial", cap=999999, base_count=965002)
-
-
+    # total range 500k to 600k
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/eighth", outputFileName="li_usn_trial", cap=1600000, base_count=1574802)

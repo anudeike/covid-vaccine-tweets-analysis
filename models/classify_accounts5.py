@@ -389,7 +389,7 @@ class BotClassifier:
 if __name__ == "__main__":
 
     # rapid fire key
-    rapidapi_key = "ee2abe032emsh906b721657282c9p148f1djsn3a316c338467"
+    rapidapi_key = "eef407b744msheffe9130eb5792fp128bb0jsnadf62f2c048b"
 
     # authentication
     # twitter_app_auth = {
@@ -416,7 +416,7 @@ if __name__ == "__main__":
     current_time = now.strftime("%H:%M:%S")
     print("Script Started: ", current_time)
 
-    # total range 400k to 450k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/fifth", outputFileName="li_usn_trial", cap=450000, base_count=411102)
+    # total range 411k to 450k
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/fifth", outputFileName="li_usn_trial", cap=1300000, base_count=1285102)
 
 

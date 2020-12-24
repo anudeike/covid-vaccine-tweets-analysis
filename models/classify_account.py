@@ -419,7 +419,9 @@ if __name__ == "__main__":
     # COVERED FROM 618300 to 635600
     # COVERED TO 660900
     # COVERED TO 703100
+    # 722702 - 736600
+
     # ultimate cap: 100k
-    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=800000, base_count=703102)
+    bc.classify_batch(batchSize=100, timeout=90, outputFolder="li_data/classifications/first", outputFileName="li_usn_trial", cap=1200000, base_count=1191902)
 
 
