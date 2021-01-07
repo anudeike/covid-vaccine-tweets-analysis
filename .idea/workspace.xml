@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/test.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +79,7 @@
           <entry key="md" value="2303" />
           <entry key="org_twitter_handles_2" value="7" />
           <entry key="password" value="85" />
-          <entry key="py" value="41877" />
+          <entry key="py" value="42618" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="1264" />
           <entry key="vmoptions" value="4" />
@@ -92,7 +90,7 @@
           <entry key="CSV" value="175" />
           <entry key="Markdown" value="2303" />
           <entry key="PLAIN_TEXT" value="1650" />
-          <entry key="Python" value="41877" />
+          <entry key="Python" value="42618" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -103,12 +101,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="64" column="66" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="66" />
+            <state relative-caret-position="212">
+              <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#432#982#0" />
-                <marker date="1610060796119" expanded="true" signature="988:2186" ph="..." />
+                <element signature="e#1028#2188#0" />
+                <marker date="1610063404592" expanded="true" signature="1678:2963" ph="..." />
               </folding>
             </state>
           </provider>
@@ -181,6 +179,7 @@
       <find>prediction</find>
       <find>&gt;&gt;&gt;</find>
       <find>...</find>
+      <find>replace</find>
     </findStrings>
     <replaceStrings>
       <replace>english</replace>
@@ -188,6 +187,7 @@
       <replace>HUMAN</replace>
       <replace>ORGANIZATION</replace>
       <replace>human</replace>
+      <replace>re.sub</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -483,13 +483,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.318872" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.318872" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" weight="0.3286334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49947312" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -755,12 +755,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="64" column="66" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="66" />
+        <state relative-caret-position="212">
+          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#432#982#0" />
-            <marker date="1610060796119" expanded="true" signature="988:2186" ph="..." />
+            <element signature="e#1028#2188#0" />
+            <marker date="1610063404592" expanded="true" signature="1678:2963" ph="..." />
           </folding>
         </state>
       </provider>

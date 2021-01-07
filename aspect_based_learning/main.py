@@ -24,23 +24,46 @@ def tweet_to_json(limit=3):
         json.dump(tweet, j)
 
 def get_full_tweet_text(tweet_data: dict):
+    """
+    Gets the following data:
+    - full tweet text
+    - screen_name
+    - location: if there is one
+
+    should return a dictionary with these values
+    :param tweet_data:
+    :return: dict
+    """
+
+    tweet_info = {}
 
     # check if truncated
     if tweet_data["truncated"]:
         # get the extended tweet
-        return tweet_data["extended_tweet"]["full_text"]
+        tweet_info["full_text"] = tweet_data["extended_tweet"]["full_text"]
+        # get the username
+        tweet_info["screen_name"] = tweet_data["user"]["screen_name"]
+
+        return tweet_info
     else:
         # if not retweeted
         if "retweeted_status" not in tweet_data:
-            return tweet_data["text"]
+            tweet_info["full_text"] = tweet_data["text"]
+            tweet_info["screen_name"] = tweet_data["user"]["screen_name"]
+            return tweet_info
 
         # if retweet
         if tweet_data["retweeted_status"]:
+            tweet_info["screen_name"] = tweet_data["retweeted_status"]["user"]["screen_name"]
+
             # and you're truncated
             if tweet_data["retweeted_status"]["truncated"]:
-                return tweet_data["retweeted_status"]["extended_tweet"]["full_text"]
+                tweet_info["full_text"] = tweet_data["retweeted_status"]["extended_tweet"]["full_text"]
 
-            return tweet_data["text"]
+                return tweet_info
+
+            tweet_info["full_text"] = tweet_data["text"]
+            return tweet_info
 
 
 def preprocess_tweet(full_text):
@@ -95,7 +118,7 @@ def preprocess_tweet(full_text):
 def get_tweets(limit=3):
 
     # create a dataframe
-    #df = pd.DataFrame(columns=['tweets'])
+    df = pd.DataFrame()
 
 
     # goal
@@ -115,14 +138,14 @@ def get_tweets(limit=3):
 
                 # get the full text of the tweet
                 try:
-                    full_tweet_text = get_full_tweet_text(tweet_data)
+                    key_tweet_info = get_full_tweet_text(tweet_data)
 
-                    tweet_content = preprocess_tweet(full_tweet_text)
+                    key_tweet_info["full_text"] = preprocess_tweet(key_tweet_info["full_text"])
 
-                    print(f'{index}: TWEET TEXT: {tweet_content}')
+                    print(f'{index}: TWEET TEXT: {key_tweet_info["full_text"]}')
 
                     # insert info
-                    # df.loc[index] = [tweet_content]
+                    df = df.append(key_tweet_info, ignore_index=True)
                 except Exception as e:
                     # in final code: will change to skipping this iteration and going to the next one.
                     print(f'ERROR: {e}')
@@ -143,7 +166,7 @@ def get_tweets(limit=3):
                 continue
 
         # send the info to a csv file
-        #print(df)
+        print(df.head())
 
     #return df
 
