@@ -1,25 +1,22 @@
 # this file only runs with the 3.6.9 + intepreter (Python 3.8)
 import aspect_based_sentiment_analysis as absa
+import pandas as pd
 
+# get the tweets
+tweets_df = pd.read_csv('pre_processed_tweets.csv')
 
-# establish a pipeline for the model (including a reviewer)
-name = 'absa/classifier-rest-0.2'
-model = absa.BertABSClassifier.from_pretrained(name)
-tokenizer = absa.BertTokenizer.from_pretrained(name)
-professor = absa.Professor()
-text_splitter = absa.sentencizer()
+# example tweet
+tweet = tweets_df.values[2][0]
 
 # Break
-nlp = absa.Pipeline(model, tokenizer, professor=[])
+nlp = absa.load()
 
-text = ("We are great fans of Slack, but we wish the subscriptions "
-        "were more accessible to small startups.")
-
-slack, price = nlp(text, aspects=["slack", "price"])
+vaccine, virus = nlp(tweet, aspects=["vaccine", "virus"])
 
 
 # what does slack.scores mean??
-print(slack.sentiment)
+print(f'Virus: {virus.scores}')
+print(f'Vaccine: {vaccine.scores}')
 # assert price.sentiment == absa.Sentiment.negative
 # assert slack.sentiment == absa.Sentiment.positive
 

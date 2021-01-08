@@ -89,7 +89,7 @@ def preprocess_tweet(full_text):
     full_text = re.sub(r'www\.\S+\.com', '', full_text)
 
     # removes retweets & cc
-    full_text = re.sub(r'rt|cc', '', full_text)
+    full_text = re.sub(r'rt| cc', '', full_text)
 
     # hashtags removes
     full_text = re.sub(r'#\S+', '', full_text)
@@ -107,11 +107,6 @@ def preprocess_tweet(full_text):
     full_text = re.sub(r' +', ' ', full_text)
     full_text = re.sub(r'/(\r\n)+|\r+|\n+|\t+/', " ", full_text)
 
-    # leave punctuation out the model should be able to handle it
-    # # punctuation
-    # full_text = full_text.re.sub('[{}]'.format(string.punctuation), '')
-
-    #print(full_text)
 
     return full_text
 
@@ -166,7 +161,8 @@ def get_tweets(limit=3):
                 continue
 
         # send the info to a csv file
-        print(df.head())
+        print(df)
+        df.to_csv("pre_processed_tweets.csv", index=False)
 
     #return df
 
@@ -174,15 +170,7 @@ def get_tweets(limit=3):
 
 
 def main():
-    t = get_tweets(limit=10)
-    #pp = preprocess_tweets(t)
-
-    #tweet_to_json(limit=4)
-
-    #print(pp)
-
-    # write to a csv
-    #pp.to_csv('test.csv', index=False)
+    t = get_tweets(limit=100)
 
     pass
 

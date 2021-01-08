@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +37,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bot_stats" value="1" />
-          <entry key="csv" value="377" />
+          <entry key="csv" value="379" />
           <entry key="env" value="6" />
           <entry key="example_data_test" value="3" />
           <entry key="gitignore" value="8" />
@@ -59,7 +60,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="401" />
+          <entry key="CSV" value="403" />
           <entry key="Image" value="16" />
           <entry key="JSON" value="13" />
           <entry key="Markdown" value="12" />
@@ -71,7 +72,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="bot_stats" value="6" />
-          <entry key="csv" value="141" />
+          <entry key="csv" value="149" />
           <entry key="dummy" value="61" />
           <entry key="env" value="155" />
           <entry key="gitignore" value="81" />
@@ -79,7 +80,7 @@
           <entry key="md" value="2303" />
           <entry key="org_twitter_handles_2" value="7" />
           <entry key="password" value="85" />
-          <entry key="py" value="42618" />
+          <entry key="py" value="43045" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="1264" />
           <entry key="vmoptions" value="4" />
@@ -87,10 +88,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSV" value="175" />
+          <entry key="CSV" value="183" />
           <entry key="Markdown" value="2303" />
           <entry key="PLAIN_TEXT" value="1650" />
-          <entry key="Python" value="42618" />
+          <entry key="Python" value="43045" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -98,39 +99,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+            <state relative-caret-position="317">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#1028#2188#0" />
-                <marker date="1610063404592" expanded="true" signature="1678:2963" ph="..." />
+                <marker date="1610072539326" expanded="true" signature="1681:2784" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/vaccine-2020-07-09.txt">
-          <provider selected="true" editor-type-id="LargeFileEditor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
+        <entry file="file://$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="383">
+              <caret line="99" column="75" selection-start-line="99" selection-start-column="75" selection-end-line="99" selection-end-column="75" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.csv">
+        <entry file="file://$PROJECT_DIR$/aspect_based_learning/vaccine-2020-07-09.txt">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state relative-caret-position="485">
+              <caret line="34" column="4950" selection-start-line="34" selection-start-column="4950" selection-end-line="34" selection-end-column="4950" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="142" selection-start-line="9" selection-start-column="142" selection-end-line="9" selection-end-column="142" />
+            <state relative-caret-position="330">
+              <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+              <folding>
+                <element signature="e#63#109#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,6 +187,7 @@
       <find>&gt;&gt;&gt;</find>
       <find>...</find>
       <find>replace</find>
+      <find>jair</find>
     </findStrings>
     <replaceStrings>
       <replace>english</replace>
@@ -196,7 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/organization_officials_data/org_twitter_handles_2" />
         <option value="$PROJECT_DIR$/organization_officials_data/org_twitter_handle_only.csv" />
         <option value="$PROJECT_DIR$/organization_officials_data/org_twitter_handles_2all.csv" />
         <option value="$PROJECT_DIR$/data/prepared_data/organization-split/organization_scores.csv" />
@@ -245,8 +252,9 @@
         <option value="$PROJECT_DIR$/models/classify_accounts6.py" />
         <option value="$PROJECT_DIR$/models/classify_accounts7.py" />
         <option value="$PROJECT_DIR$/models/li_data/ranges_covered.txt" />
-        <option value="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" />
+        <option value="$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv" />
         <option value="$PROJECT_DIR$/aspect_based_learning/main.py" />
+        <option value="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" />
       </list>
     </option>
   </component>
@@ -329,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.aspect-based">
     <configuration name="aspect-based" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -444,8 +452,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.aspect-based" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.classify_account" />
         <item itemvalue="Python.utils" />
         <item itemvalue="Python.corenlp_dependency" />
@@ -478,18 +486,18 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13540569" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13540569" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.318872" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.318872" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49947312" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -527,14 +535,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/second/li_usn_trial_900000.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-791149">
-          <caret line="3" column="17" selection-end-line="35985" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/third/li_usn_trial_966500.csv" />
     <entry file="file://$PROJECT_DIR$/models/li_data/classifications/fourth/li_usn_trial_1021100.csv" />
     <entry file="file://$PROJECT_DIR$/models/li_data/classifications/fifth/li_usn_trial_1240300.csv" />
     <entry file="file://$PROJECT_DIR$/models/li_data/classifications/sixth/li_usn_trial_1337200.csv" />
@@ -729,16 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="142" selection-start-line="9" selection-start-column="142" selection-end-line="9" selection-end-column="142" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/vaccine-2020-07-09.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -746,21 +736,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="198">
+          <caret line="9" column="142" selection-start-line="9" selection-start-column="142" selection-end-line="9" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/Rest.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="99" column="75" selection-start-line="99" selection-start-column="75" selection-end-line="99" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+        <state relative-caret-position="317">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#1028#2188#0" />
-            <marker date="1610063404592" expanded="true" signature="1678:2963" ph="..." />
+            <marker date="1610072539326" expanded="true" signature="1681:2784" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/vaccine-2020-07-09.txt">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="485">
+          <caret line="34" column="4950" selection-start-line="34" selection-start-column="4950" selection-end-line="34" selection-end-column="4950" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding>
+            <element signature="e#63#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
