@@ -365,8 +365,8 @@ class AccountClassifier:
             "vaccine_scores": vaccine.scores,
             "vaccine_overall_sent": vaccine.sentiment
         },{
-            "virus_scores": vaccine.scores,
-            "virus_overall_sent": vaccine.sentiment
+            "virus_scores": virus.scores,
+            "virus_overall_sent": virus.sentiment
         }]
 
         pass
@@ -383,9 +383,8 @@ class AccountClassifier:
                              "To use this function you must set (isPreproccessed = True) as well.")
 
 
-        # set some of the dataframe parameters
-        out = pd.DataFrame(
-            columns=['id', 'tweet_text', 'prediction', 'vaccine_scores', 'vaccine_overall', 'virus_scores', 'virus_overall'])
+        # create a blank_dataframe
+        out = pd.DataFrame()
 
         row_list = []
 
@@ -415,19 +414,20 @@ class AccountClassifier:
                 row_data["vaccine_scores"] = [sent[0]["vaccine_scores"]]
                 row_data["vaccine_overall"] = sent[0]["vaccine_overall_sent"]
 
-                row_data["virus_scores"] = [sent[0]["virus_scores"]]
-                row_data["virus_overall"] = sent[0]["virus_overall_sent"]
+                row_data["virus_scores"] = [sent[1]["virus_scores"]]
+                row_data["virus_overall"] = sent[1]["virus_overall_sent"]
 
                 #append the dictionary as a new row
-                print(row_data)
+                print(f"row: {row_data}")
+                out = out.append(row_data, ignore_index=True)
+
 
 
             except Exception as e:
-                print(f"[top-level]:{e}")
+                print(f"[top-level]: {repr(e)}\n")
                 continue # skip this one
 
-
-
+        out.to_csv("output.csv")
 
         return 0
 
