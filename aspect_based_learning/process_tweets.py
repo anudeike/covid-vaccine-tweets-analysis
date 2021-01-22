@@ -110,6 +110,7 @@ def preprocess_tweet(full_text):
 
     return full_text
 
+
 def get_tweets(limit=3):
 
     # create a dataframe
@@ -137,10 +138,11 @@ def get_tweets(limit=3):
 
                     key_tweet_info["full_text"] = preprocess_tweet(key_tweet_info["full_text"])
 
-                    print(f'{index}: TWEET TEXT: {key_tweet_info["full_text"]}')
+                    # print(f'{index}: TWEET TEXT: {key_tweet_info["full_text"]}')
 
                     # insert info
                     df = df.append(key_tweet_info, ignore_index=True)
+
                 except Exception as e:
                     # in final code: will change to skipping this iteration and going to the next one.
                     print(f'ERROR: {e}')
@@ -164,14 +166,13 @@ def get_tweets(limit=3):
         print(df)
         df.to_csv("pre_processed_tweets.csv", index=False)
 
-    #return df
+    return
 
 
 
 
 def main():
-    t = get_tweets(limit=100)
-
+    get_tweets(limit=100)
     pass
 
 main()

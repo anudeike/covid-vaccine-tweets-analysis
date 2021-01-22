@@ -10,7 +10,7 @@ from datetime import datetime
 load_dotenv()
 
 class AccountClassifier:
-    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path="", separator=',', isBatch=True):
+    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path="", separator=',', isBatch=True, isPreprocessed=False):
 
         # set whether you can use a batch
         self.isBatch = isBatch
@@ -22,9 +22,17 @@ class AccountClassifier:
         # load model
         self.model = self.load_model(model_path)
 
+        if isPreprocessed:
+            print("using preprocessed tweets...")
+
+            # set batch to false
+            self.isBatch = False
+            self.prep_df = self.get_preprocessed_tweets(data_file_path, separator)
+
         # will only be a batch if is batch is true
         if self.isBatch:
             self.account_ids = self.get_account_ids(data_file_path, separator)
+
 
 
 
@@ -334,6 +342,105 @@ class AccountClassifier:
 
         return out
 
+
+    def classify_preprocessed_single(self, preprocessed_tweets_path):
+        """
+        Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
+        :return: Dataframe
+        """
+
+        # this function does not work on batches
+        if self.isBatch:
+            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
+
+        # set some of the dataframe parameters
+        out = pd.DataFrame(
+            columns=['id', 'tweet_text', 'classification_name', 'classification_type', 'pos_score', 'neu_score',
+                     'neg_score', 'overall_sent'])
+
+        row_list = []
+
+        # for each of the names in the list -> this would work best on the muted list
+        for id in self.account_ids:
+
+            try:
+                result = self.bom.check_account(id)
+
+                if (result["user"]["majority_lang"] == 'en'):
+                    # use the english results
+
+                    # for each row that'll be appended
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['english'],
+                        "astroturf": result['display_scores']['english']['astroturf'],
+                        "fake_follower": result['display_scores']['english']['fake_follower'],
+                        "financial": result['display_scores']['english']['financial'],
+                        "other": result['display_scores']['english']['other'],
+                        "overall": result['display_scores']['english']['overall'],
+                        "self-declared": result['display_scores']['english']['self_declared'],
+                        # "spammer": result['display_scores']['english']['spammer'],
+                    }
+
+                    # prepare to be read
+                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
+
+                    # predict
+                    classification = self.predict(reshaped_data) # make a prediction
+
+                    # display what it is classified as
+                    if classification[0] == 1:
+                        print(f'{id} is classified as HUMAN')
+                    else:
+                        print(f'{id} is classified as NON-HUMAN')
+
+                    # notify
+                    print(f'{id} has been predicted.\n')
+
+                    # append the row list
+                    row_list.append({"id":id,
+                                     "predicted_label": classification[0]})
+
+                else:
+
+                    row = {
+                        "id": id,
+                        "CAP": result['cap']['universal'],
+                        "astroturf": result['display_scores']['universal']['astroturf'],
+                        "fake_follower": result['display_scores']['universal']['fake_follower'],
+                        "financial": result['display_scores']['universal']['financial'],
+                        "other": result['display_scores']['universal']['other'],
+                        "overall": result['display_scores']['universal']['overall'],
+                        "self-declared": result['display_scores']['universal']['self_declared'],
+                        # "spammer": result['display_scores']['universal']['spammer'],
+                    }
+
+                    # prepare to be read
+                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
+
+                    classification = self.predict(reshaped_data)  # make a prediction
+
+                    # display what it is classified as
+                    if classification[0] == 1:
+                        print(f'{id} is classified as HUMAN')
+                    else:
+                        print(f'{id} is classified as NON-HUMAN')
+
+                    # notify
+                    print(f'{id} has been predicted.\n')
+
+                    # append the row list
+                    row_list.append({"id": id,
+                                     "predicted_label": classification[0]})
+
+            except Exception as e:
+                # skip if error
+                print("{} Could not be fetched: {}".format(id, e))
+
+        print(row_list)
+        out = out.append(row_list)
+        return out
+
     def get_account_ids(self, path, separ=','):
         """
         Reads the account ids from a file into a dataframe.
@@ -346,6 +453,20 @@ class AccountClassifier:
             return df['id'].values # put into an array
         except Exception as e:
             raise ValueError(f'ERROR: {repr(e)}')
+
+    def get_preprocessed_tweets(self, path, sepr=','):
+        """
+        Used to get the preprocessed tweets from the csv files.
+        :param path: path to file
+        :param sepr: separator
+        :return: a dataframe
+        """
+        try:
+            df = pd.read_csv(path, sep=sepr)
+            return df
+        except Exception as e:
+            raise ValueError(f'ERROR: {repr(e)}')
+
 
     def load_model(self, path):
         """
@@ -384,9 +505,12 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
+    # file path
+    prep_path = "pre_processed_tweets.csv"
+
     # create the batch class
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, isBatch=False)
+                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True)
 
-    bc.classify_single_account(account_id="johanvinet")
+    #bc.classify_single_account(account_id="johanvinet")
 
