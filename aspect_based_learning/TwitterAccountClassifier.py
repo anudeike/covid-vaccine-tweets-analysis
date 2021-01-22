@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import time
 from datetime import datetime
+#import aspect_based_sentiment_analysis as absa
 
 load_dotenv()
 
@@ -24,7 +25,6 @@ class AccountClassifier:
 
         if isPreprocessed:
             print("using preprocessed tweets...")
-
             # set batch to false
             self.isBatch = False
             self.prep_df = self.get_preprocessed_tweets(data_file_path, separator)
@@ -153,9 +153,12 @@ class AccountClassifier:
         if self.isBatch:
             raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
 
+
         # classify account
         try:
             result = self.bom.check_account(account_id)
+
+            classification = []
 
             if (result["user"]["majority_lang"] == 'en'):
                 # use the english results
@@ -178,14 +181,18 @@ class AccountClassifier:
                 # predict
                 classification = self.predict(reshaped_data)  # make a prediction
 
+                # notify
+                print(f'{account_id} has been predicted.\n')
+
                 # display what it is classified as
                 if classification[0] == 1:
                     print(f'{account_id} is classified as HUMAN')
+                    return {"prediction": classification[0], "type": "HUMAN"}
                 else:
                     print(f'{account_id} is classified as NON-HUMAN')
+                    return {"prediction": classification[0], "type": "NON-HUMAN"}
 
-                # notify
-                print(f'{account_id} has been predicted.\n')
+
 
             else:
 
@@ -205,18 +212,22 @@ class AccountClassifier:
 
                 classification = self.predict(reshaped_data)  # make a prediction
 
-                # display what it is classified as
-                if classification[0] == 1:
-                    print(f'{account_id} is classified as HUMAN')
-                else:
-                    print(f'{account_id} is classified as NON-HUMAN')
-
                 # notify
                 print(f'{account_id} has been predicted.\n')
 
+                # display what it is classified as
+                if classification[0] == 1:
+                    print(f'{account_id} is classified as HUMAN')
+                    return {"prediction": classification[0], "type": "HUMAN"}
+                else:
+                    print(f'{account_id} is classified as NON-HUMAN')
+                    return {"prediction": classification[0], "type": "NON-HUMAN"}
+
+
+
         except Exception as e:
-            # skip if error
-            print("{} Could not be fetched: {}".format(account_id, e))
+            # raise so the external function can catch it
+            raise ValueError("{} Could not be fetched: {}".format(account_id, e))
 
 
     def classify_batch(self, batchSize = 100, timeout = 120, outputFolder = None, outputFileName = "default", cap=100, base_count = 0):
@@ -343,7 +354,7 @@ class AccountClassifier:
         return out
 
 
-    def classify_preprocessed_single(self, preprocessed_tweets_path):
+    def classify_preprocessed(self):
         """
         Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
         :return: Dataframe
@@ -351,95 +362,38 @@ class AccountClassifier:
 
         # this function does not work on batches
         if self.isBatch:
-            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
+            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.\n"
+                             "To use this function you must set (isPreproccessed = True) as well.")
+
 
         # set some of the dataframe parameters
         out = pd.DataFrame(
-            columns=['id', 'tweet_text', 'classification_name', 'classification_type', 'pos_score', 'neu_score',
+            columns=['id', 'tweet_text', 'prediction', 'class_type', 'pos_score', 'neu_score',
                      'neg_score', 'overall_sent'])
 
         row_list = []
 
-        # for each of the names in the list -> this would work best on the muted list
-        for id in self.account_ids:
+        # put into a 2d array
+        p_data = self.prep_df.values
 
+        # for each row
+        for entry in p_data:
+            text = entry[0]
+            id = entry[1]
+
+            # get the type of account
             try:
-                result = self.bom.check_account(id)
-
-                if (result["user"]["majority_lang"] == 'en'):
-                    # use the english results
-
-                    # for each row that'll be appended
-                    row = {
-                        "id": id,
-                        "CAP": result['cap']['english'],
-                        "astroturf": result['display_scores']['english']['astroturf'],
-                        "fake_follower": result['display_scores']['english']['fake_follower'],
-                        "financial": result['display_scores']['english']['financial'],
-                        "other": result['display_scores']['english']['other'],
-                        "overall": result['display_scores']['english']['overall'],
-                        "self-declared": result['display_scores']['english']['self_declared'],
-                        # "spammer": result['display_scores']['english']['spammer'],
-                    }
-
-                    # prepare to be read
-                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
-
-                    # predict
-                    classification = self.predict(reshaped_data) # make a prediction
-
-                    # display what it is classified as
-                    if classification[0] == 1:
-                        print(f'{id} is classified as HUMAN')
-                    else:
-                        print(f'{id} is classified as NON-HUMAN')
-
-                    # notify
-                    print(f'{id} has been predicted.\n')
-
-                    # append the row list
-                    row_list.append({"id":id,
-                                     "predicted_label": classification[0]})
-
-                else:
-
-                    row = {
-                        "id": id,
-                        "CAP": result['cap']['universal'],
-                        "astroturf": result['display_scores']['universal']['astroturf'],
-                        "fake_follower": result['display_scores']['universal']['fake_follower'],
-                        "financial": result['display_scores']['universal']['financial'],
-                        "other": result['display_scores']['universal']['other'],
-                        "overall": result['display_scores']['universal']['overall'],
-                        "self-declared": result['display_scores']['universal']['self_declared'],
-                        # "spammer": result['display_scores']['universal']['spammer'],
-                    }
-
-                    # prepare to be read
-                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
-
-                    classification = self.predict(reshaped_data)  # make a prediction
-
-                    # display what it is classified as
-                    if classification[0] == 1:
-                        print(f'{id} is classified as HUMAN')
-                    else:
-                        print(f'{id} is classified as NON-HUMAN')
-
-                    # notify
-                    print(f'{id} has been predicted.\n')
-
-                    # append the row list
-                    row_list.append({"id": id,
-                                     "predicted_label": classification[0]})
+                type = self.classify_single_account(id)
+                print(type)
 
             except Exception as e:
-                # skip if error
-                print("{} Could not be fetched: {}".format(id, e))
+                print("[top-level]: {} Could not be fetched: {}".format(id, e))
+                continue # skip this one
 
-        print(row_list)
-        out = out.append(row_list)
-        return out
+
+
+
+        return 0
 
     def get_account_ids(self, path, separ=','):
         """
@@ -461,6 +415,7 @@ class AccountClassifier:
         :param sepr: separator
         :return: a dataframe
         """
+
         try:
             df = pd.read_csv(path, sep=sepr)
             return df
@@ -512,5 +467,5 @@ if __name__ == "__main__":
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True)
 
-    #bc.classify_single_account(account_id="johanvinet")
+    bc.classify_preprocessed()
 
