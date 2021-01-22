@@ -6,7 +6,10 @@ import pandas as pd
 import numpy as np
 import time
 from datetime import datetime
-#import aspect_based_sentiment_analysis as absa
+
+# sent analysis
+import aspect_based_sentiment_analysis as absa
+nlp = absa.load()
 
 load_dotenv()
 
@@ -353,6 +356,20 @@ class AccountClassifier:
 
         return out
 
+    def get_sentiment(self, text):
+
+        # get the sentiment in all of the target words
+        vaccine, virus = nlp(text, aspects=["vaccine", "virus"])
+
+        return [{
+            "vaccine_scores": vaccine.scores,
+            "vaccine_overall_sent": vaccine.sentiment
+        },{
+            "virus_scores": vaccine.scores,
+            "virus_overall_sent": vaccine.sentiment
+        }]
+
+        pass
 
     def classify_preprocessed(self):
         """
@@ -368,26 +385,45 @@ class AccountClassifier:
 
         # set some of the dataframe parameters
         out = pd.DataFrame(
-            columns=['id', 'tweet_text', 'prediction', 'class_type', 'pos_score', 'neu_score',
-                     'neg_score', 'overall_sent'])
+            columns=['id', 'tweet_text', 'prediction', 'vaccine_scores', 'vaccine_overall', 'virus_scores', 'virus_overall'])
 
         row_list = []
 
         # put into a 2d array
         p_data = self.prep_df.values
 
+        # to be inserted data
+        row_data = {}
+
         # for each row
         for entry in p_data:
-            text = entry[0]
-            id = entry[1]
+
+            row_data["id"] = entry[1]
+            row_data["tweet_text"] = entry[0]
 
             # get the type of account
             try:
-                type = self.classify_single_account(id)
-                print(type)
+                # get the type
+                type = self.classify_single_account(row_data["id"])
+                row_data["prediction"] = type["prediction"]
+                row_data["class_type"] = type["type"]
+
+                # analyze sentiment
+                sent = self.get_sentiment(row_data["tweet_text"])
+
+                # put into the row
+                row_data["vaccine_scores"] = [sent[0]["vaccine_scores"]]
+                row_data["vaccine_overall"] = sent[0]["vaccine_overall_sent"]
+
+                row_data["virus_scores"] = [sent[0]["virus_scores"]]
+                row_data["virus_overall"] = sent[0]["virus_overall_sent"]
+
+                #append the dictionary as a new row
+                print(row_data)
+
 
             except Exception as e:
-                print("[top-level]: {} Could not be fetched: {}".format(id, e))
+                print(f"[top-level]:{e}")
                 continue # skip this one
 
 
@@ -467,5 +503,6 @@ if __name__ == "__main__":
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True)
 
+    #bc.classify_single_account("MrBeezul")
     bc.classify_preprocessed()
 

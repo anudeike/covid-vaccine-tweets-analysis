@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,7 @@
           <entry key="md" value="2303" />
           <entry key="org_twitter_handles_2" value="7" />
           <entry key="password" value="85" />
-          <entry key="py" value="44995" />
+          <entry key="py" value="46306" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="1264" />
           <entry key="vmoptions" value="4" />
@@ -89,7 +90,7 @@
           <entry key="CSV" value="183" />
           <entry key="Markdown" value="2303" />
           <entry key="PLAIN_TEXT" value="1664" />
-          <entry key="Python" value="44995" />
+          <entry key="Python" value="46306" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -100,15 +101,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/process_tweets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="174" column="4" lean-forward="true" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
+            <state relative-caret-position="572">
+              <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#157#388#0" />
                 <element signature="e#437#1681#0" />
                 <element signature="e#1721#2782#0" />
                 <element signature="e#2815#4301#0" />
-                <marker date="1611310432026" expanded="true" signature="1681:2785" ph="..." />
+                <marker date="1611317217611" expanded="true" signature="1681:2785" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,12 +118,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="184" column="63" lean-forward="true" selection-start-line="184" selection-start-column="63" selection-end-line="184" selection-end-column="63" />
+            <state relative-caret-position="354">
+              <caret line="419" column="17" selection-start-line="419" selection-start-column="17" selection-end-line="419" selection-end-column="17" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#879#1088#0" />
                 <element signature="e#1122#5179#0" />
+                <element signature="e#5490#9023#0" />
                 <element signature="e#5858#6470#0" />
                 <element signature="e#7080#7706#0" />
                 <element signature="e#8525#13340#0" />
@@ -131,10 +133,11 @@
                 <element signature="e#18490#18544#0" />
                 <element signature="e#13910#14194#0" />
                 <element signature="e#14299#14315#0" />
-                <marker date="1611314032980" expanded="true" signature="8804:8810" ph="..." />
-                <marker date="1611314032980" expanded="true" signature="13766:18123" ph="..." />
-                <marker date="1611314032980" expanded="true" signature="13837:13846" ph="..." />
-                <marker date="1611314032980" expanded="true" signature="18884:19052" ph="..." />
+                <marker date="1611318487539" expanded="true" signature="9110:9116" ph="..." />
+                <marker date="1611318487539" expanded="true" signature="14480:14485" ph="..." />
+                <marker date="1611318487539" expanded="true" signature="14480:16349" ph="..." />
+                <marker date="1611318487539" expanded="true" signature="14517:14526" ph="..." />
+                <marker date="1611318487539" expanded="true" signature="17110:17278" ph="..." />
               </folding>
             </state>
           </provider>
@@ -143,17 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2178">
-              <caret line="99" column="75" selection-start-line="99" selection-start-column="75" selection-end-line="99" selection-end-column="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/vaccine-2020-07-09.txt">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="559">
-              <caret line="34" column="4950" selection-start-line="34" selection-start-column="4950" selection-end-line="34" selection-end-column="4950" />
+            <state relative-caret-position="286">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -161,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="286">
+              <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-end-line="13" selection-end-column="57" />
               <folding>
                 <element signature="e#63#109#0" expanded="true" />
               </folding>
@@ -173,7 +167,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/classify_account.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="286">
               <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="13" />
               <folding>
                 <element signature="e#107#120#0" expanded="true" />
@@ -794,21 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/process_tweets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="174" column="4" lean-forward="true" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#157#388#0" />
-            <element signature="e#437#1681#0" />
-            <element signature="e#1721#2782#0" />
-            <element signature="e#2815#4301#0" />
-            <marker date="1611310432026" expanded="true" signature="1681:2785" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notes.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -821,23 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#107#120#0" expanded="true" />
-            <element signature="e#3224#14897#0" />
-            <element signature="e#3870#4079#0" />
-            <element signature="e#4114#8171#0" />
-            <element signature="e#8317#14041#0" />
-            <element signature="e#14100#14570#0" />
-            <element signature="e#14613#14897#0" />
-            <element signature="e#14933#16138#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -855,31 +817,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="e#107#120#0" expanded="true" />
+            <element signature="e#3224#14897#0" />
+            <element signature="e#3870#4079#0" />
+            <element signature="e#4114#8171#0" />
+            <element signature="e#8317#14041#0" />
+            <element signature="e#14100#14570#0" />
+            <element signature="e#14613#14897#0" />
+            <element signature="e#14933#16138#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/process_tweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#157#388#0" />
+            <element signature="e#437#1681#0" />
+            <element signature="e#1721#2782#0" />
+            <element signature="e#2815#4301#0" />
+            <marker date="1611317217611" expanded="true" signature="1681:2785" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="286">
+          <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-end-line="13" selection-end-column="57" />
           <folding>
             <element signature="e#63#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2178">
-          <caret line="99" column="75" selection-start-line="99" selection-start-column="75" selection-end-line="99" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="184" column="63" lean-forward="true" selection-start-line="184" selection-start-column="63" selection-end-line="184" selection-end-column="63" />
+        <state relative-caret-position="354">
+          <caret line="419" column="17" selection-start-line="419" selection-start-column="17" selection-end-line="419" selection-end-column="17" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#879#1088#0" />
             <element signature="e#1122#5179#0" />
+            <element signature="e#5490#9023#0" />
             <element signature="e#5858#6470#0" />
             <element signature="e#7080#7706#0" />
             <element signature="e#8525#13340#0" />
@@ -888,10 +883,11 @@
             <element signature="e#18490#18544#0" />
             <element signature="e#13910#14194#0" />
             <element signature="e#14299#14315#0" />
-            <marker date="1611314032980" expanded="true" signature="8804:8810" ph="..." />
-            <marker date="1611314032980" expanded="true" signature="13766:18123" ph="..." />
-            <marker date="1611314032980" expanded="true" signature="13837:13846" ph="..." />
-            <marker date="1611314032980" expanded="true" signature="18884:19052" ph="..." />
+            <marker date="1611318487539" expanded="true" signature="9110:9116" ph="..." />
+            <marker date="1611318487539" expanded="true" signature="14480:14485" ph="..." />
+            <marker date="1611318487539" expanded="true" signature="14480:16349" ph="..." />
+            <marker date="1611318487539" expanded="true" signature="14517:14526" ph="..." />
+            <marker date="1611318487539" expanded="true" signature="17110:17278" ph="..." />
           </folding>
         </state>
       </provider>
