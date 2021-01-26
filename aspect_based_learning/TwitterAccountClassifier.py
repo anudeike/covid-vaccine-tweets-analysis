@@ -14,7 +14,7 @@ nlp = absa.load()
 load_dotenv()
 
 class AccountClassifier:
-    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path="", separator=',', isBatch=True, isPreprocessed=False):
+    def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path="", separator=',', isBatch=True, isPreprocessed=False, path_to_classified=None):
 
         # set whether you can use a batch
         self.isBatch = isBatch
@@ -25,6 +25,11 @@ class AccountClassifier:
                                        **twitter_app_auth)
         # load model
         self.model = self.load_model(model_path)
+
+        # load the bank
+        self.classification_bank = None
+        if path_to_classified is not None:
+            self.classification_bank = pd.read_csv(path_to_classified)
 
         if isPreprocessed:
             print("using preprocessed tweets...")
@@ -371,6 +376,30 @@ class AccountClassifier:
 
         pass
 
+    def fetch_classification(self, uid):
+
+        if self.classification_bank is None:
+            return None
+
+        df = self.classification_bank
+
+        # search
+        res = df.loc[df['id'] == uid]
+
+        if res.empty:
+            print("IS EMPTY\n\n\n\n")
+            return None
+
+        print(f'{uid} fetched.\n')
+        print(res)
+        # get the type
+        pred = res.values
+
+        if pred[0][1] == 0:
+            return pred[0][1], 'NON-HUMAN'
+
+        return pred[0][1], 'HUMAN'
+
     def classify_preprocessed(self):
         """
         Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
@@ -382,7 +411,7 @@ class AccountClassifier:
             raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.\n"
                              "To use this function you must set (isPreproccessed = True) as well.")
 
-
+        # place an if statement here that checks in the separate data frame
         # create a blank_dataframe
         out = pd.DataFrame()
 
@@ -403,9 +432,20 @@ class AccountClassifier:
             # get the type of account
             try:
                 # get the type
-                type = self.classify_single_account(row_data["id"])
-                row_data["prediction"] = type["prediction"]
-                row_data["class_type"] = type["type"]
+
+                # first check if you are using the list
+                fetched = self.fetch_classification(row_data["id"])
+
+                if fetched is None:
+
+                    # if nothing turned up then you can fill it with this
+                    type = self.classify_single_account(row_data["id"])
+                    row_data["prediction"] = type["prediction"]
+                    row_data["class_type"] = type["type"]
+                else:
+                    row_data["prediction"] = fetched[0]
+                    row_data["class_type"] = fetched[1]
+
 
                 # analyze sentiment
                 sent = self.get_sentiment(row_data["tweet_text"])
@@ -427,7 +467,7 @@ class AccountClassifier:
                 print(f"[top-level]: {repr(e)}\n")
                 continue # skip this one
 
-        out.to_csv("output.csv")
+        out.to_csv("output.csv", index=False)
 
         return 0
 
@@ -501,7 +541,7 @@ if __name__ == "__main__":
 
     # create the batch class
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True)
+                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True, path_to_classified="li_trial_master.csv")
 
     #bc.classify_single_account("MrBeezul")
     bc.classify_preprocessed()
