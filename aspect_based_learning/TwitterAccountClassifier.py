@@ -29,12 +29,15 @@ class AccountClassifier:
         # load the bank
         self.classification_bank = None
         if path_to_classified is not None:
+            # this is the li_trial_master data
             self.classification_bank = pd.read_csv(path_to_classified)
 
         if isPreprocessed:
             print("using preprocessed tweets...")
             # set batch to false
             self.isBatch = False
+
+
             self.prep_df = self.get_preprocessed_tweets(data_file_path, separator)
 
         # will only be a batch if is batch is true
@@ -376,7 +379,7 @@ class AccountClassifier:
 
         pass
 
-    def fetch_classification(self, uid):
+    def fetch_from_classification_bank(self, uid):
 
         if self.classification_bank is None:
             return None
@@ -387,7 +390,7 @@ class AccountClassifier:
         res = df.loc[df['id'] == uid]
 
         if res.empty:
-            print("IS EMPTY\n\n\n\n")
+            print(f'{uid} could not be found in database.')
             return None
 
         print(f'{uid} fetched.\n')
@@ -423,6 +426,11 @@ class AccountClassifier:
         # to be inserted data
         row_data = {}
 
+        # this data will be inserted into the classification bank
+        # these are the accounts that were classified by botometer that were not in the classification
+        missing_classified_accounts = []
+
+
         # for each row
         for entry in p_data:
 
@@ -433,15 +441,18 @@ class AccountClassifier:
             try:
                 # get the type
 
-                # first check if you are using the list
-                fetched = self.fetch_classification(row_data["id"])
+                # this fetches from the classification bank
+                fetched = self.fetch_from_classification_bank(row_data["id"])
 
                 if fetched is None:
 
-                    # if nothing turned up then you can fill it with this
+                    # if is not in the classification bank, then fetch from botometer
                     type = self.classify_single_account(row_data["id"])
-                    row_data["prediction"] = type["prediction"]
+                    row_data["prediction"] = type["prediction"] # this is the numerical value
                     row_data["class_type"] = type["type"]
+
+                    # then add it to the list to be appended to the classification bank
+                    missing_classified_accounts.append([row_data['id'], row_data['prediction']])
                 else:
                     row_data["prediction"] = fetched[0]
                     row_data["class_type"] = fetched[1]
@@ -467,7 +478,11 @@ class AccountClassifier:
                 print(f"[top-level]: {repr(e)}\n")
                 continue # skip this one
 
-        out.to_csv("output.csv", index=False)
+        # show the time elapsed
+
+        print("Missing Accounts: ")
+        print(missing_classified_accounts)
+        out.to_csv("analysis_data_test.csv", index=False)
 
         return 0
 
@@ -543,6 +558,6 @@ if __name__ == "__main__":
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
                        model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True, path_to_classified="li_trial_master.csv")
 
-    #bc.classify_single_account("MrBeezul")
+
     bc.classify_preprocessed()
 

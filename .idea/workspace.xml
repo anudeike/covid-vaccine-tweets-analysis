@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aspect_based_learning/tweet_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" afterDir="false" />
@@ -17,10 +16,11 @@
     <session id="346404125">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="38" />
+          <entry key="project.closed" value="40" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="2" />
@@ -32,13 +32,13 @@
           <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="47" />
+          <entry key="project.opened" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bot_stats" value="1" />
-          <entry key="csv" value="385" />
+          <entry key="csv" value="387" />
           <entry key="env" value="8" />
           <entry key="example_data_test" value="3" />
           <entry key="gitignore" value="8" />
@@ -52,7 +52,7 @@
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="password" value="3" />
           <entry key="png" value="16" />
-          <entry key="py" value="162" />
+          <entry key="py" value="163" />
           <entry key="raw_org_dataset" value="2" />
           <entry key="tsv" value="27" />
           <entry key="txt" value="15" />
@@ -61,12 +61,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="409" />
+          <entry key="CSV" value="411" />
           <entry key="Image" value="16" />
           <entry key="JSON" value="14" />
           <entry key="Markdown" value="14" />
           <entry key="PLAIN_TEXT" value="36" />
-          <entry key="Python" value="162" />
+          <entry key="Python" value="163" />
           <entry key="TSV" value="27" />
         </counts>
       </usages-collector>
@@ -81,7 +81,7 @@
           <entry key="md" value="2303" />
           <entry key="org_twitter_handles_2" value="7" />
           <entry key="password" value="85" />
-          <entry key="py" value="47016" />
+          <entry key="py" value="48360" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="1264" />
           <entry key="vmoptions" value="4" />
@@ -92,7 +92,7 @@
           <entry key="CSV" value="183" />
           <entry key="Markdown" value="2303" />
           <entry key="PLAIN_TEXT" value="1664" />
-          <entry key="Python" value="47016" />
+          <entry key="Python" value="48360" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -100,29 +100,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="413" column="24" selection-start-line="413" selection-start-column="24" selection-end-line="413" selection-end-column="24" />
+            <state relative-caret-position="-18">
+              <caret line="454" column="96" selection-start-line="454" selection-start-column="96" selection-end-line="454" selection-end-column="96" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#1211#1420#0" />
-                <element signature="e#1454#5511#0" />
-                <element signature="e#5572#9109#0" />
-                <element signature="e#9256#14071#0" />
-                <marker date="1611628055028" expanded="true" signature="9314:9320" ph="..." />
-                <marker date="1611628055028" expanded="true" signature="14681:14686" ph="..." />
-                <marker date="1611628055028" expanded="true" signature="14681:16819" ph="..." />
-                <marker date="1611628055028" expanded="true" signature="14718:14727" ph="..." />
+                <element signature="e#1415#1624#0" />
+                <element signature="e#1658#5715#0" />
+                <element signature="e#5776#9313#0" />
+                <element signature="e#9460#14275#0" />
+                <element signature="e#14321#14680#0" />
+                <element signature="e#17627#18097#0" />
+                <element signature="e#18162#18497#0" />
+                <element signature="e#18540#18824#0" />
+                <marker date="1611770187899" expanded="true" signature="9363:9369" ph="..." />
+                <marker date="1611770187899" expanded="true" signature="15266:15271" ph="..." />
+                <marker date="1611770187899" expanded="true" signature="15266:18110" ph="..." />
+                <marker date="1611770187899" expanded="true" signature="15303:15312" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aspect_based_learning/analysis_data.csv">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/li_trial_master.csv">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aspect_based_learning/output.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -136,21 +154,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/output.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/tweet_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="38" />
               <folding>
-                <marker date="1611628190152" expanded="true" signature="178:183" ph="..." />
+                <marker date="1611628711862" expanded="true" signature="205:210" ph="..." />
               </folding>
             </state>
           </provider>
@@ -177,7 +186,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="374">
               <caret line="18" column="33" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="34" />
               <folding>
                 <element signature="e#63#109#0" expanded="true" />
@@ -294,19 +303,18 @@
         <option value="$PROJECT_DIR$/aspect_based_learning/pre_processed_tweets.csv" />
         <option value="$PROJECT_DIR$/aspect_based_learning/main.py" />
         <option value="$PROJECT_DIR$/aspect_based_learning/.env" />
-        <option value="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" />
         <option value="$PROJECT_DIR$/aspect_based_learning/test.json" />
         <option value="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" />
-        <option value="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" />
         <option value="$PROJECT_DIR$/aspect_based_learning/tweet_analysis.py" />
+        <option value="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" />
+        <option value="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="976" />
-    <option name="height" value="1056" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -389,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tweet_analysis">
+  <component name="RunManager" selected="Python.TwitterAccountClassifier">
     <configuration name="TwitterAccountClassifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -504,9 +512,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tweet_analysis" />
         <item itemvalue="Python.TwitterAccountClassifier" />
         <item itemvalue="Python.process_tweets" />
+        <item itemvalue="Python.tweet_analysis" />
         <item itemvalue="Python.aspect-based" />
         <item itemvalue="Python.main" />
       </list>
@@ -535,15 +543,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="976" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13540569" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1085353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.31236443" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.31236443" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -606,13 +614,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/li_data/classifications/sixth/li_usn_trial_1351600.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13329" column="14" selection-start-line="13329" selection-start-column="14" selection-end-line="13329" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/li_data/classifications/seventh/li_usn_trial_1450700.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-44">
@@ -800,17 +801,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/uniq_user_list_2020_07_to_2020_09.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="44">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/test_accounts.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/li_data/li_trial_master.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/process_tweets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#157#388#0" />
-            <element signature="e#437#1681#0" />
-            <element signature="e#1721#2782#0" />
-            <marker date="1611339844000" expanded="true" signature="1681:2785" ph="..." />
-          </folding>
+        <state relative-caret-position="1738">
+          <caret line="174" column="22" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/li_trial_master.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/output.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -822,10 +839,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/output.csv">
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/tweet_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        <state relative-caret-position="198">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="38" />
+          <folding>
+            <marker date="1611628711862" expanded="true" signature="205:210" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -843,16 +863,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="5619" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/aspect-based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="374">
           <caret line="18" column="33" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="34" />
           <folding>
             <element signature="e#63#109#0" expanded="true" />
@@ -860,46 +873,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/uniq_user_list_2020_07_to_2020_09.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="44">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="31" />
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/test.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="5619" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/test_accounts.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/li_data/li_trial_master.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/li_trial_master.csv">
+    <entry file="file://$PROJECT_DIR$/aspect_based_learning/analysis_data.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="413" column="24" selection-start-line="413" selection-start-column="24" selection-end-line="413" selection-end-column="24" />
+        <state relative-caret-position="-18">
+          <caret line="454" column="96" selection-start-line="454" selection-start-column="96" selection-end-line="454" selection-end-column="96" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#1211#1420#0" />
-            <element signature="e#1454#5511#0" />
-            <element signature="e#5572#9109#0" />
-            <element signature="e#9256#14071#0" />
-            <marker date="1611628055028" expanded="true" signature="9314:9320" ph="..." />
-            <marker date="1611628055028" expanded="true" signature="14681:14686" ph="..." />
-            <marker date="1611628055028" expanded="true" signature="14681:16819" ph="..." />
-            <marker date="1611628055028" expanded="true" signature="14718:14727" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aspect_based_learning/tweet_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <marker date="1611628190152" expanded="true" signature="178:183" ph="..." />
+            <element signature="e#1415#1624#0" />
+            <element signature="e#1658#5715#0" />
+            <element signature="e#5776#9313#0" />
+            <element signature="e#9460#14275#0" />
+            <element signature="e#14321#14680#0" />
+            <element signature="e#17627#18097#0" />
+            <element signature="e#18162#18497#0" />
+            <element signature="e#18540#18824#0" />
+            <marker date="1611770187899" expanded="true" signature="9363:9369" ph="..." />
+            <marker date="1611770187899" expanded="true" signature="15266:15271" ph="..." />
+            <marker date="1611770187899" expanded="true" signature="15266:18110" ph="..." />
+            <marker date="1611770187899" expanded="true" signature="15303:15312" ph="..." />
           </folding>
         </state>
       </provider>
