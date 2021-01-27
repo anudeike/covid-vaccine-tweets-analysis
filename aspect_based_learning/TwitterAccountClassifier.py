@@ -460,7 +460,7 @@ class AccountClassifier:
                     row_data["class_type"] = type["type"]
 
                     # then add it to the list to be appended to the classification bank
-                    missing_classified_accounts.append({"id": row_data['id'],"prediciton": row_data['prediction']})
+                    missing_classified_accounts.append({"id": row_data['id'],"prediction": row_data['prediction']})
                 else:
                     row_data["prediction"] = fetched[0]
                     row_data["class_type"] = fetched[1]
