@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +50,7 @@
           <entry key="organization_names_fortune_1000" value="4" />
           <entry key="password" value="3" />
           <entry key="png" value="16" />
-          <entry key="py" value="163" />
+          <entry key="py" value="164" />
           <entry key="raw_org_dataset" value="2" />
           <entry key="tsv" value="27" />
           <entry key="txt" value="15" />
@@ -66,7 +64,7 @@
           <entry key="JSON" value="14" />
           <entry key="Markdown" value="14" />
           <entry key="PLAIN_TEXT" value="36" />
-          <entry key="Python" value="163" />
+          <entry key="Python" value="164" />
           <entry key="TSV" value="27" />
         </counts>
       </usages-collector>
@@ -81,7 +79,7 @@
           <entry key="md" value="2303" />
           <entry key="org_twitter_handles_2" value="7" />
           <entry key="password" value="85" />
-          <entry key="py" value="48360" />
+          <entry key="py" value="49610" />
           <entry key="tsv" value="48" />
           <entry key="txt" value="1264" />
           <entry key="vmoptions" value="4" />
@@ -92,7 +90,7 @@
           <entry key="CSV" value="183" />
           <entry key="Markdown" value="2303" />
           <entry key="PLAIN_TEXT" value="1664" />
-          <entry key="Python" value="48360" />
+          <entry key="Python" value="49610" />
           <entry key="TSV" value="48" />
         </counts>
       </usages-collector>
@@ -103,8 +101,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="454" column="96" selection-start-line="454" selection-start-column="96" selection-end-line="454" selection-end-column="96" />
+            <state relative-caret-position="403">
+              <caret line="528" column="51" selection-start-line="528" selection-start-column="51" selection-end-line="528" selection-end-column="51" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#1415#1624#0" />
@@ -115,10 +113,24 @@
                 <element signature="e#17627#18097#0" />
                 <element signature="e#18162#18497#0" />
                 <element signature="e#18540#18824#0" />
-                <marker date="1611770187899" expanded="true" signature="9363:9369" ph="..." />
-                <marker date="1611770187899" expanded="true" signature="15266:15271" ph="..." />
-                <marker date="1611770187899" expanded="true" signature="15266:18110" ph="..." />
-                <marker date="1611770187899" expanded="true" signature="15303:15312" ph="..." />
+                <marker date="1611772056734" expanded="true" signature="9363:9369" ph="..." />
+                <marker date="1611772056734" expanded="true" signature="15266:15271" ph="..." />
+                <marker date="1611772056734" expanded="true" signature="15266:19812" ph="..." />
+                <marker date="1611772056734" expanded="true" signature="15303:15312" ph="..." />
+                <marker date="1611772056734" expanded="true" signature="19319:19812" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/classify_account.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="413" column="4" selection-start-line="413" selection-start-column="4" selection-end-line="416" selection-end-column="43" />
+              <folding>
+                <element signature="e#276#344#0" />
+                <element signature="e#12544#12599#0" />
               </folding>
             </state>
           </provider>
@@ -126,11 +138,6 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aspect_based_learning/analysis_data.csv">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aspect_based_learning/li_trial_master.csv">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -546,7 +553,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1085353" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1085353" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -557,7 +564,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" weight="0.3286334" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50105375" side_tool="true" weight="0.3286334" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49947312" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -794,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/uniq_user_list_2020_07_to_2020_09.csv">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="44">
@@ -880,13 +880,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/classify_account.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="413" column="4" selection-start-line="413" selection-start-column="4" selection-end-line="416" selection-end-column="43" />
+          <folding>
+            <element signature="e#276#344#0" />
+            <element signature="e#12544#12599#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/analysis_data.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="454" column="96" selection-start-line="454" selection-start-column="96" selection-end-line="454" selection-end-column="96" />
+        <state relative-caret-position="403">
+          <caret line="528" column="51" selection-start-line="528" selection-start-column="51" selection-end-line="528" selection-end-column="51" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#1415#1624#0" />
@@ -897,10 +908,11 @@
             <element signature="e#17627#18097#0" />
             <element signature="e#18162#18497#0" />
             <element signature="e#18540#18824#0" />
-            <marker date="1611770187899" expanded="true" signature="9363:9369" ph="..." />
-            <marker date="1611770187899" expanded="true" signature="15266:15271" ph="..." />
-            <marker date="1611770187899" expanded="true" signature="15266:18110" ph="..." />
-            <marker date="1611770187899" expanded="true" signature="15303:15312" ph="..." />
+            <marker date="1611772056734" expanded="true" signature="9363:9369" ph="..." />
+            <marker date="1611772056734" expanded="true" signature="15266:15271" ph="..." />
+            <marker date="1611772056734" expanded="true" signature="15266:19812" ph="..." />
+            <marker date="1611772056734" expanded="true" signature="15303:15312" ph="..." />
+            <marker date="1611772056734" expanded="true" signature="19319:19812" ph="..." />
           </folding>
         </state>
       </provider>

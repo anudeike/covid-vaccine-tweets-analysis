@@ -430,6 +430,14 @@ class AccountClassifier:
         # these are the accounts that were classified by botometer that were not in the classification
         missing_classified_accounts = []
 
+        # start the timer.
+        start_time = datetime.now()
+
+        current_time = start_time.strftime("%H:%M:%S")
+        print("Script Started: ", current_time)
+
+        # count the amount that were classified successfully and the ones that failed
+        successful_analysis, failed_analysis = 0, 0
 
         # for each row
         for entry in p_data:
@@ -468,23 +476,57 @@ class AccountClassifier:
                 row_data["virus_scores"] = [sent[1]["virus_scores"]]
                 row_data["virus_overall"] = sent[1]["virus_overall_sent"]
 
+                # increment:
+                successful_analysis += 1
                 #append the dictionary as a new row
                 print(f"row: {row_data}")
                 out = out.append(row_data, ignore_index=True)
 
 
 
+
+
             except Exception as e:
                 print(f"[top-level]: {repr(e)}\n")
+                failed_analysis += 1
                 continue # skip this one
 
         # show the time elapsed
+        end_time = datetime.now()
 
-        print("Missing Accounts: ")
-        print(missing_classified_accounts)
+        # log the stats
+        self.log_statistics(start_time, end_time, successful_analysis, failed_analysis, len(missing_classified_accounts))
+
+        # # get the time elapsed
+        # print(f'Time Elapsed: ')
+        # print("Missing Accounts: ")
+        # print(missing_classified_accounts)
         out.to_csv("analysis_data_test.csv", index=False)
 
         return 0
+
+    def log_statistics(self, start, end, success, failed, amt_accts_added):
+        """
+        Logs General Statistics for the Program
+        :param start: Start time
+        :param end: End time
+        :param success: Amount of tweets successfully processed
+        :param failed: Amound of tweets unsuccessfully processed
+        :return: None
+        """
+
+        total = success + failed
+        elapsed = start - end
+        elapsed_seconds = elapsed.total_seconds()
+
+        # get the timer in the time in hours
+        elapsed_hours = divmod(elapsed_seconds, 3600)
+        elapsed_minutes = divmod(elapsed_hours[1], 60)
+
+        # display the stats
+        print(f'Time Elapsed: {elapsed_hours[0]} hours, {elapsed_minutes[0]} minutes, and {elapsed_minutes[1]} seconds.')
+        print(f'Evaluated {total} Tweets. \n{success} successful evaluations\n {failed} failed evaluations')
+        print(f'{amt_accts_added} new accounts added to classification bank.')
 
     def get_account_ids(self, path, separ=','):
         """
