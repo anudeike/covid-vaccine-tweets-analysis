@@ -172,7 +172,7 @@ def get_tweets(limit=3):
 
 
 def main():
-    get_tweets(limit=5000)
+    get_tweets(limit=10)
     pass
 
 main()

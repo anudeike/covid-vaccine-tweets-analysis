@@ -390,11 +390,11 @@ class AccountClassifier:
         res = df.loc[df['id'] == uid]
 
         if res.empty:
-            print(f'{uid} could not be found in database.')
+            print(f'\n{uid} could not be found in database.')
             return None
 
-        print(f'{uid} fetched.\n')
-        print(res)
+        print(f'\n{uid} fetched.')
+        #print(res)
         # get the type
         pred = res.values
 
@@ -460,7 +460,7 @@ class AccountClassifier:
                     row_data["class_type"] = type["type"]
 
                     # then add it to the list to be appended to the classification bank
-                    missing_classified_accounts.append([row_data['id'], row_data['prediction']])
+                    missing_classified_accounts.append({"id": row_data['id'],"prediciton": row_data['prediction']})
                 else:
                     row_data["prediction"] = fetched[0]
                     row_data["class_type"] = fetched[1]
@@ -479,7 +479,7 @@ class AccountClassifier:
                 # increment:
                 successful_analysis += 1
                 #append the dictionary as a new row
-                print(f"row: {row_data}")
+                #print(f"row: {row_data}")
                 out = out.append(row_data, ignore_index=True)
 
 
@@ -501,7 +501,17 @@ class AccountClassifier:
         # print(f'Time Elapsed: ')
         # print("Missing Accounts: ")
         # print(missing_classified_accounts)
+
+        # output the results
+        print(f'{missing_classified_accounts} Accounts missing')
         out.to_csv("analysis_data_test.csv", index=False)
+
+        # add the missing accounts to the bank and then output the bank
+        mdf = pd.DataFrame(missing_classified_accounts)
+        self.classification_bank = self.classification_bank.append(mdf)
+
+        # send to csv
+        self.classification_bank.to_csv("classification_bank.csv", index=False)
 
         return 0
 
@@ -516,15 +526,16 @@ class AccountClassifier:
         """
 
         total = success + failed
-        elapsed = start - end
+        elapsed = end - start
         elapsed_seconds = elapsed.total_seconds()
 
         # get the timer in the time in hours
         elapsed_hours = divmod(elapsed_seconds, 3600)
-        elapsed_minutes = divmod(elapsed_hours[1], 60)
+        elapsed_minutes = divmod(elapsed_seconds, 60)
 
         # display the stats
-        print(f'Time Elapsed: {elapsed_hours[0]} hours, {elapsed_minutes[0]} minutes, and {elapsed_minutes[1]} seconds.')
+        print("\n\n==========================STATISTICS============================\n")
+        print(f'Time Elapsed: {0} hours, {elapsed_minutes[0]} minutes, and {elapsed_minutes[1]} seconds.')
         print(f'Evaluated {total} Tweets. \n{success} successful evaluations\n {failed} failed evaluations')
         print(f'{amt_accts_added} new accounts added to classification bank.')
 
@@ -598,7 +609,7 @@ if __name__ == "__main__":
 
     # create the batch class
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True, path_to_classified="li_trial_master.csv")
+                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True, path_to_classified="classification_bank.csv")
 
 
     bc.classify_preprocessed()
