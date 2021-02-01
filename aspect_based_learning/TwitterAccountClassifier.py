@@ -447,6 +447,18 @@ class AccountClassifier:
 
             # get the type of account
             try:
+
+                # try to do in a separate process?
+                # analyze sentiment
+                sent = self.get_sentiment(row_data["tweet_text"])
+
+                # put into the row
+                row_data["vaccine_scores"] = [sent[0]["vaccine_scores"]]
+                row_data["vaccine_overall"] = sent[0]["vaccine_overall_sent"]
+
+                row_data["virus_scores"] = [sent[1]["virus_scores"]]
+                row_data["virus_overall"] = sent[1]["virus_overall_sent"]
+
                 # get the type
 
                 # this fetches from the classification bank
@@ -466,15 +478,7 @@ class AccountClassifier:
                     row_data["class_type"] = fetched[1]
 
 
-                # analyze sentiment
-                sent = self.get_sentiment(row_data["tweet_text"])
 
-                # put into the row
-                row_data["vaccine_scores"] = [sent[0]["vaccine_scores"]]
-                row_data["vaccine_overall"] = sent[0]["vaccine_overall_sent"]
-
-                row_data["virus_scores"] = [sent[1]["virus_scores"]]
-                row_data["virus_overall"] = sent[1]["virus_overall_sent"]
 
                 # increment:
                 successful_analysis += 1
@@ -496,11 +500,6 @@ class AccountClassifier:
 
         # log the stats
         self.log_statistics(start_time, end_time, successful_analysis, failed_analysis, len(missing_classified_accounts))
-
-        # # get the time elapsed
-        # print(f'Time Elapsed: ')
-        # print("Missing Accounts: ")
-        # print(missing_classified_accounts)
 
         # output the results
         print(f'{missing_classified_accounts} Accounts missing')

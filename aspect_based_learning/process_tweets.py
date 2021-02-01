@@ -169,10 +169,22 @@ def get_tweets(limit=3):
     return
 
 
+# this is the latest function
+def fetch_tweets(limit = 5, path="2020-07_2020-09_clean.csv"):
 
+    df = pd.read_csv(path, error_bad_lines=False)
+
+    #df = df.head(limit).values
+
+    # for each line
+    for row in df:
+        print(row)
+    pass
 
 def main():
-    get_tweets(limit=50)
+    #get_tweets(limit=50)
+
+    fetch_tweets()
     pass
 
 main()

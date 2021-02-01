@@ -19,3 +19,8 @@ https://github.com/WillKoehrsen/Machine-Learning-Projects/blob/master/Random%20F
 * Rate was about: 2417 Requests/hr, processed about 28000 requests
 * Looking to add more processes.
 * RapidAPI Overages: 1.5%
+
+# Official Notes and Statistics
+
+###  Testing Botometer Processing Times.
+According to 
