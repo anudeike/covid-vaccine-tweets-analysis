@@ -8,8 +8,8 @@ import time
 from datetime import datetime
 
 # sent analysis
-#import aspect_based_sentiment_analysis as absa
-#nlp = absa.load()
+import aspect_based_sentiment_analysis as absa
+nlp = absa.load()
 
 load_dotenv()
 
@@ -43,6 +43,9 @@ class AccountClassifier:
         # will only be a batch if is batch is true
         if self.isBatch:
             self.account_ids = self.get_account_ids(data_file_path, separator)
+
+        # set some stats vars
+        self.missing_classified_accounts = []
 
 
 
@@ -403,9 +406,61 @@ class AccountClassifier:
 
         return pred[0][1], 'HUMAN'
 
-    def classify_preprocessed(self):
+    def classify_preprocessed_by_row(self, row):
+
+        # this function does not work on batches
+        if self.isBatch:
+            raise ValueError(
+                "Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.\n"
+                "To use this function you must set (isPreproccessed = True) as well.")
+
+        try:
+
+            # classify the account
+            # this fetches from the classification bank
+            screen_name = row['User Display Name']
+            fetched = self.fetch_from_classification_bank(screen_name)
+
+            if fetched is None:
+
+                # if is not in the classification bank, then fetch from botometer
+                type = self.classify_single_account(screen_name)
+                row["prediction"] = type["prediction"]  # this is the numerical value
+                row["class_type"] = type["type"]
+
+                # then add it to the list to be appended to the classification bank
+                self.missing_classified_accounts.append({"id": screen_name, "prediction": row['prediction']})
+            else:
+                # if it is in the bank
+                row["prediction"] = fetched[0]
+                row["class_type"] = fetched[1]
+
+            # get the sentiment
+            sent = self.get_sentiment(row["proccessed_tweet"])
+
+            # put into the row
+
+            # vaccine scores
+            row["vaccine_score_neutral"] = sent[0]["vaccine_scores"][0]
+            row["vaccine_score_negative"] = sent[0]["vaccine_scores"][1]
+            row["vaccine_score_positive"] = sent[0]["vaccine_scores"][2]
+            row["vaccine_overall_sentiment"] = sent[0]["vaccine_overall_sent"]
+
+            # virus scores
+            row["virus_scores_neutral"] = sent[1]["virus_scores"][0]
+            row["virus_scores_negative"] = sent[1]["virus_scores"][1]
+            row["virus_scores_positive"] = sent[1]["virus_scores"][2]
+
+            row["virus_overall_sentiment"] = sent[1]["virus_overall_sent"]
+
+        except Exception as e:
+            print(f"[top-level]: {repr(e)}\n")
+            return None
+        pass
+
+    def classify_preprocessed_old(self):
         """
-        Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
+        For Use within a dataframe that contains all the information from Dr. Li
         :return: Dataframe
         """
 
@@ -417,8 +472,6 @@ class AccountClassifier:
         # place an if statement here that checks in the separate data frame
         # create a blank_dataframe
         out = pd.DataFrame()
-
-        row_list = []
 
         # put into a 2d array
         p_data = self.prep_df.values
@@ -596,10 +649,7 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
-    # file path
-    prep_path = "pre_processed_tweets.csv"
-
-    path_to_clean = "2020-07_2020-09_clean.csv"
+    path_to_clean = "2020-07_2020-09_preproccessed.csv"
 
     df = pd.read_csv(path_to_clean)
 
@@ -609,12 +659,20 @@ if __name__ == "__main__":
         print(df)
 
 
+
+
     exit(1)
+
+    # start the timer.
+    start_time = datetime.now()
+
+    current_time = start_time.strftime("%H:%M:%S")
+    print("Script Started: ", current_time)
 
     # create the batch class
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                           model_path=path_models, data_file_path=prep_path, isBatch=False,
+                           model_path=path_models, data_file_path=path_to_clean, isBatch=False,
                            isPreprocessed=True, path_to_classified="classification_bank.csv")
 
-    bc.classify_preprocessed()
+    #bc.classify_preprocessed_old()
 

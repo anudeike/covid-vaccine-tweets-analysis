@@ -170,7 +170,7 @@ def get_tweets(limit=3):
 
 
 # this is the latest function
-def fetch_tweets(limit = 5, path="2020-07_2020-09_clean.csv"):
+def fetch_tweets(limit = 5, path="2020-07_2020-09_reduced.csv"):
 
     df = pd.read_csv(path, error_bad_lines=False)
 
@@ -182,9 +182,21 @@ def fetch_tweets(limit = 5, path="2020-07_2020-09_clean.csv"):
     pass
 
 def main():
-    #get_tweets(limit=50)
 
-    fetch_tweets()
+    #get_tweets(limit=50)
+    path_to_clean = "2020-07_2020-09_reduced.csv"
+
+    # get the tweets
+    df = pd.read_csv(path_to_clean)
+
+    # clean the tweet content column
+    df['proccessed_tweet'] = df['Tweet Content'].apply(preprocess_tweet)
+
+    with pd.option_context('display.max_columns', None):  # more options can be specified also
+        print(df.head(5))
+
+    df.to_csv("2020-07_2020-09_preproccessed.csv", index=False)
+    # export the tweet out
     pass
 
 main()
