@@ -8,8 +8,8 @@ import time
 from datetime import datetime
 
 # sent analysis
-import aspect_based_sentiment_analysis as absa
-nlp = absa.load()
+#import aspect_based_sentiment_analysis as absa
+#nlp = absa.load()
 
 load_dotenv()
 
@@ -538,6 +538,7 @@ class AccountClassifier:
         print(f'Evaluated {total} Tweets. \n{success} successful evaluations\n {failed} failed evaluations')
         print(f'{amt_accts_added} new accounts added to classification bank.')
 
+
     def get_account_ids(self, path, separ=','):
         """
         Reads the account ids from a file into a dataframe.
@@ -586,14 +587,6 @@ if __name__ == "__main__":
     # rapid fire key
     rapidapi_key = os.getenv('RAPID_FIRE_KEY')
 
-    # authentication
-    # twitter_app_auth = {
-    #     'consumer_key': os.getenv('TWITTER_API_KEY'),
-    #     'consumer_secret': os.getenv('TWITTER_API_SECRET'),
-    #     'access_token': os.getenv('TWITTER_ACCESS_TOKEN'),
-    #     'access_token_secret': os.getenv('TWITTER_ACCESS_SECRET'),
-    # }
-
     # authentication via app
     twitter_app_auth = {
         'consumer_key': os.getenv('TWITTER_API_KEY'),
@@ -606,10 +599,22 @@ if __name__ == "__main__":
     # file path
     prep_path = "pre_processed_tweets.csv"
 
+    path_to_clean = "2020-07_2020-09_clean.csv"
+
+    df = pd.read_csv(path_to_clean)
+
+    #print(df.head())
+
+    with pd.option_context('display.max_columns', None):  # more options can be specified also
+        print(df)
+
+
+    exit(1)
+
     # create the batch class
     bc = AccountClassifier(rapid_api_key=rapidapi_key, twitter_app_auth=twitter_app_auth,
-                       model_path=path_models, data_file_path=prep_path, isBatch=False, isPreprocessed=True, path_to_classified="classification_bank.csv")
-
+                           model_path=path_models, data_file_path=prep_path, isBatch=False,
+                           isPreprocessed=True, path_to_classified="classification_bank.csv")
 
     bc.classify_preprocessed()
 
