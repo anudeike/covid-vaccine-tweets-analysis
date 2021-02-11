@@ -23,4 +23,10 @@ https://github.com/WillKoehrsen/Machine-Learning-Projects/blob/master/Random%20F
 # Official Notes and Statistics
 
 ###  Testing Botometer Processing Times.
-According to 
+
+
+`Time Elapsed: 0.0 hours, 14.0 minutes, and 21.741192999999953 seconds.
+Evaluated 1200 Tweets. 
+483 successful evaluations
+ 0 failed evaluations
+0 new accounts added to classification bank.`

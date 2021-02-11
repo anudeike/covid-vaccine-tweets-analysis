@@ -1,22 +1,13 @@
 import pandas as pd
 
-# Create a dataframe from a list of dictionaries
-rectangles = [
-    { 'height': 40, 'width': 10 },
-    { 'height': 20, 'width': 9 },
-    { 'height': 3.4, 'width': 4 }
-]
+paths = ['tweet_processing_test_1200.csv',
+         'tweet_processing_test_4000.csv',
+         'tweet_processing_test_4000-8000.csv',
+         'tweet_processing_test_8000-12000.csv',
+         'tweet_processing_test_12000-18000.csv',
+         'tweet_processing_test_18000-20000.csv']
 
-rectangles_df = pd.DataFrame(rectangles)
-#print(rectangles_df)
+df = pd.read_csv(paths[0])
 
-# Use the height and width to calculate the area
-def calculate_area(row):
-    row["area"] = row['height'] * row['width']
-    row["perimeter"] = 2 * (row['height'] * row['width'])
-    return row
-
-
-
-obj = rectangles_df.apply(calculate_area, axis=1)
-print(obj)
+for _ in range(1, len(paths)):
+    paths

@@ -46,6 +46,8 @@ class AccountClassifier:
 
         # set some stats vars
         self.missing_classified_accounts = []
+        self.successful_analysis, self.failed_analysis = 0, 0
+        self.tweet_index = 0
 
 
 
@@ -370,7 +372,7 @@ class AccountClassifier:
     def get_sentiment(self, text):
 
         # get the sentiment in all of the target words
-        vaccine, virus = nlp(text, aspects=["vaccine", "virus"])
+        vaccine, virus, vaccines, vaccination = nlp(text, aspects=["vaccine", "virus", "vaccines", "vaccination"])
 
         return [{
             "vaccine_scores": vaccine.scores,
@@ -378,6 +380,12 @@ class AccountClassifier:
         },{
             "virus_scores": virus.scores,
             "virus_overall_sent": virus.sentiment
+        },{
+            "vaccines_scores": vaccines.scores,
+            "vaccines_overall_sent": vaccines.sentiment
+        },{
+            "vaccination_scores": vaccination.scores,
+            "vaccination_overall_sent": vaccination.sentiment
         }]
 
         pass
@@ -401,10 +409,7 @@ class AccountClassifier:
         # get the type
         pred = res.values
 
-        if pred[0][1] == 0:
-            return pred[0][1], 'NON-HUMAN'
-
-        return pred[0][1], 'HUMAN'
+        return pred[0][1]
 
     def classify_preprocessed_by_row(self, row):
 
@@ -418,26 +423,42 @@ class AccountClassifier:
 
             # classify the account
             # this fetches from the classification bank
-            screen_name = row['User Display Name']
+            screen_name = row['User ID']
             fetched = self.fetch_from_classification_bank(screen_name)
 
             if fetched is None:
 
-                # if is not in the classification bank, then fetch from botometer
-                type = self.classify_single_account(screen_name)
-                row["prediction"] = type["prediction"]  # this is the numerical value
-                row["class_type"] = type["type"]
-
-                # then add it to the list to be appended to the classification bank
-                self.missing_classified_accounts.append({"id": screen_name, "prediction": row['prediction']})
+                # for now we just skip if it is not in the classification bank
+                print(f'Since {screen_name} was not found in the classification bank, it will be skipped.')
+                self.tweet_index += 1
+                return None
+                # THIS CODE ONLY HAPPENS IF WE ARE ANALYZING THE DATA THAT IS NOT FOUND IN THE CLASSIFICATION BANK
+                # # if is not in the classification bank, then fetch from botometer
+                # type = self.classify_single_account(screen_name)
+                # row["prediction"] = type["prediction"]  # this is the numerical value
+                # row["class_type"] = type["type"]
+                #
+                # # then add it to the list to be appended to the classification bank
+                # self.missing_classified_accounts.append({"id": screen_name, "prediction": row['prediction']})
             else:
                 # if it is in the bank
-                row["prediction"] = fetched[0]
-                row["class_type"] = fetched[1]
+
+                print(f'Prediction for {screen_name}: {fetched}')
+
+                # if human
+                if int(fetched) == 0:
+                    # not counting non humans
+                    print(
+                        f'{screen_name} has been classified as a non-human and therefore will not be counted in the final analysis.')
+                    self.tweet_index += 1
+                    return None
+
+                else:
+                    row["prediction"] = fetched # should only be humans
 
             # get the sentiment
             sent = self.get_sentiment(row["proccessed_tweet"])
-
+            print(f'Sentiment Analysis Result: {sent}')
             # put into the row
 
             # vaccine scores
@@ -450,122 +471,34 @@ class AccountClassifier:
             row["virus_scores_neutral"] = sent[1]["virus_scores"][0]
             row["virus_scores_negative"] = sent[1]["virus_scores"][1]
             row["virus_scores_positive"] = sent[1]["virus_scores"][2]
-
             row["virus_overall_sentiment"] = sent[1]["virus_overall_sent"]
+
+            # vaccines scores
+            row["vaccines_scores_neutral"] = sent[2]["vaccines_scores"][0]
+            row["vaccines_scores_negative"] = sent[2]["vaccines_scores"][1]
+            row["vaccines_scores_positive"] = sent[2]["vaccines_scores"][2]
+            row["vaccines_overall_sentiment"] = sent[2]["vaccines_overall_sent"]
+
+            # vaccination scores
+            row["vaccination_scores_neutral"] = sent[3]["vaccination_scores"][0]
+            row["vaccination_scores_negative"] = sent[3]["vaccination_scores"][1]
+            row["vaccination_scores_positive"] = sent[3]["vaccination_scores"][2]
+            row["vaccination_overall_sentiment"] = sent[3]["vaccination_overall_sent"]
+
+            # success!
+            self.successful_analysis += 1
+
+            # increment the index
+            print(f'Processed tweet #{self.tweet_index}')
+            self.tweet_index += 1
+            return row
 
         except Exception as e:
             print(f"[top-level]: {repr(e)}\n")
+            self.failed_analysis += 1
             return None
         pass
 
-    def classify_preprocessed_old(self):
-        """
-        For Use within a dataframe that contains all the information from Dr. Li
-        :return: Dataframe
-        """
-
-        # this function does not work on batches
-        if self.isBatch:
-            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.\n"
-                             "To use this function you must set (isPreproccessed = True) as well.")
-
-        # place an if statement here that checks in the separate data frame
-        # create a blank_dataframe
-        out = pd.DataFrame()
-
-        # put into a 2d array
-        p_data = self.prep_df.values
-
-        # to be inserted data
-        row_data = {}
-
-        # this data will be inserted into the classification bank
-        # these are the accounts that were classified by botometer that were not in the classification
-        missing_classified_accounts = []
-
-        # start the timer.
-        start_time = datetime.now()
-
-        current_time = start_time.strftime("%H:%M:%S")
-        print("Script Started: ", current_time)
-
-        # count the amount that were classified successfully and the ones that failed
-        successful_analysis, failed_analysis = 0, 0
-
-        # for each row
-        for entry in p_data:
-
-            row_data["id"] = entry[1]
-            row_data["tweet_text"] = entry[0]
-
-            # get the type of account
-            try:
-
-                # try to do in a separate process?
-                # analyze sentiment
-                sent = self.get_sentiment(row_data["tweet_text"])
-
-                # put into the row
-                row_data["vaccine_scores"] = [sent[0]["vaccine_scores"]]
-                row_data["vaccine_overall"] = sent[0]["vaccine_overall_sent"]
-
-                row_data["virus_scores"] = [sent[1]["virus_scores"]]
-                row_data["virus_overall"] = sent[1]["virus_overall_sent"]
-
-                # get the type
-
-                # this fetches from the classification bank
-                fetched = self.fetch_from_classification_bank(row_data["id"])
-
-                if fetched is None:
-
-                    # if is not in the classification bank, then fetch from botometer
-                    type = self.classify_single_account(row_data["id"])
-                    row_data["prediction"] = type["prediction"] # this is the numerical value
-                    row_data["class_type"] = type["type"]
-
-                    # then add it to the list to be appended to the classification bank
-                    missing_classified_accounts.append({"id": row_data['id'],"prediction": row_data['prediction']})
-                else:
-                    row_data["prediction"] = fetched[0]
-                    row_data["class_type"] = fetched[1]
-
-
-
-
-                # increment:
-                successful_analysis += 1
-                #append the dictionary as a new row
-                #print(f"row: {row_data}")
-                out = out.append(row_data, ignore_index=True)
-
-
-
-
-
-            except Exception as e:
-                print(f"[top-level]: {repr(e)}\n")
-                failed_analysis += 1
-                continue # skip this one
-
-        # show the time elapsed
-        end_time = datetime.now()
-
-        # log the stats
-        self.log_statistics(start_time, end_time, successful_analysis, failed_analysis, len(missing_classified_accounts))
-
-        # output the results
-        print(f'{missing_classified_accounts} Accounts missing')
-        out.to_csv("analysis_data_test.csv", index=False)
-
-        # add the missing accounts to the bank and then output the bank
-        mdf = pd.DataFrame(missing_classified_accounts)
-        self.classification_bank = self.classification_bank.append(mdf)
-
-        # send to csv
-        self.classification_bank.to_csv("classification_bank.csv", index=False)
-
-        return 0
 
     def log_statistics(self, start, end, success, failed, amt_accts_added):
         """
@@ -591,6 +524,31 @@ class AccountClassifier:
         print(f'Evaluated {total} Tweets. \n{success} successful evaluations\n {failed} failed evaluations')
         print(f'{amt_accts_added} new accounts added to classification bank.')
 
+    def log_statistics_new(self, start, end):
+        """
+        Logs General Statistics for the Program
+        :param start: Start time
+        :param end: End time
+        :param success: Amount of tweets successfully processed
+        :param failed: Amound of tweets unsuccessfully processed
+        :return: None
+        """
+
+        total = self.tweet_index
+        elapsed = end - start
+        amt_accts_added = len(self.missing_classified_accounts)
+
+        elapsed_seconds = elapsed.total_seconds()
+
+        # get the timer in the time in hours
+        elapsed_hours = divmod(elapsed_seconds, 3600)
+        elapsed_minutes = divmod(elapsed_seconds, 60)
+
+        # display the stats
+        print("\n\n==========================STATISTICS============================\n")
+        print(f'Time Elapsed: {elapsed_hours[0]} hours, {elapsed_minutes[0]} minutes, and {elapsed_minutes[1]} seconds.')
+        print(f'Evaluated {total} Tweets. \n{self.successful_analysis} successful evaluations\n {self.failed_analysis} failed evaluations')
+        print(f'{amt_accts_added} new accounts added to classification bank.')
 
     def get_account_ids(self, path, separ=','):
         """
@@ -633,6 +591,15 @@ class AccountClassifier:
         except Exception as e:
             print(f'ERROR: {repr(e)}')
 
+    def update_classification_bank(self):
+        # add the missing accounts to the bank and then output the bank
+        mdf = pd.DataFrame(self.missing_classified_accounts)
+
+        self.classification_bank = self.classification_bank.append(mdf)
+
+        # send to csv
+        self.classification_bank.to_csv("classification_bank.csv", index=False)
+
 
 
 if __name__ == "__main__":
@@ -653,15 +620,15 @@ if __name__ == "__main__":
 
     df = pd.read_csv(path_to_clean)
 
+    # reduce the df to something managable
+    start_rows = 18000
+    num_rows = 20000
+
+    df = df[start_rows:num_rows]
     #print(df.head())
 
-    with pd.option_context('display.max_columns', None):  # more options can be specified also
-        print(df)
-
-
-
-
-    exit(1)
+    # with pd.option_context('display.max_columns', None):  # more options can be specified also
+    #     print(df)
 
     # start the timer.
     start_time = datetime.now()
@@ -674,5 +641,22 @@ if __name__ == "__main__":
                            model_path=path_models, data_file_path=path_to_clean, isBatch=False,
                            isPreprocessed=True, path_to_classified="classification_bank.csv")
 
-    #bc.classify_preprocessed_old()
+    # get the info on each row
+    r = df.apply(bc.classify_preprocessed_by_row, axis=1)
 
+    # print the result
+    with pd.option_context('display.max_columns', None):  # more options can be specified also
+        print(r)
+
+    end_time = datetime.now()
+
+    # stats
+    bc.log_statistics_new(start_time, end_time)
+
+    # add to classification bank
+    bc.update_classification_bank()
+
+    r.to_csv(f"2020-07_2020-09_csvfiles/tweet_processing_test_{start_rows}-{num_rows}.csv", index=False)
+
+    # drop empty and then create csv
+    #r.dropna(subset=["No."], inplace=True)
