@@ -323,12 +323,11 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
     master_df = pd.read_csv(master_path)
 
     bots_humans = turn_orgs_to_bots(master_df)
-    #bots_humans = get_rid_of_orgs(master_df)
 
 
 
     # split into array for the features and resp vars
-    removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
+    #removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
     x1 = bots_humans.drop(['labels', 'id'], axis=1).values
     # print(bots_humans.drop(['labels', 'id'], axis=1).head(5))
     # return
@@ -349,7 +348,6 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
         'max_depth': [2, 4, 6],
         'n_estimators': [50, 100, 200],
         'learning_rate': [0.1, 0.01, 1],
-
     }
 
     # model = model_selection.GridSearchCV(model, optimization_dict,
@@ -361,7 +359,7 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
 
     # list all the features and their importances
     print_feature_importances(model.feature_importances_)
-    #print(model.feature_importances_)
+    # print(model.feature_importances_)
     print(model.score(X_test_scaled, Y_test))
 
     # print(f'Accuracy: {model.best_score_ * 100}')

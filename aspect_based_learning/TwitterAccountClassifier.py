@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import time
 from datetime import datetime
+import sqlite3
 
 # sent analysis
 import aspect_based_sentiment_analysis as absa
@@ -489,7 +490,7 @@ class AccountClassifier:
             self.successful_analysis += 1
 
             # increment the index
-            print(f'Processed tweet #{self.tweet_index}')
+            print(f'Processed tweet # {self.tweet_index}')
             self.tweet_index += 1
             return row
 
@@ -601,6 +602,17 @@ class AccountClassifier:
         self.classification_bank.to_csv("classification_bank.csv", index=False)
 
 
+def insert_into_database(row_info, conn):
+
+    # convert to a dataframe
+    row_info = pd.DataFrame(row_info, index=[row_info['No.']])
+
+    # add stuff to the database and then commit
+    # cur = conn.cursor()
+    # cur.execute(sql_code, row_info)
+    # cur.commit()
+    row_info.to_sql(name="tweet_information_second_batch", con=conn, if_exists="append")
+
 
 if __name__ == "__main__":
 
@@ -616,19 +628,21 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
-    path_to_clean = "2020-07_2020-09_preproccessed.csv"
+    path_to_clean = "2020-07_2020-09_preproccessed_3_150000-500000.csv"
 
     df = pd.read_csv(path_to_clean)
 
+    # define the database:
+    db_file = r"human_classified_sentiment_processed.db"
+
     # reduce the df to something managable
-    start_rows = 18000
-    num_rows = 20000
+    start_rows = 200300
+    num_rows = 300000
 
-    df = df[start_rows:num_rows]
-    #print(df.head())
+    df = df[start_rows:]
 
-    # with pd.option_context('display.max_columns', None):  # more options can be specified also
-    #     print(df)
+    # turn it into an array of dicts
+    df_dicts = df.to_dict(orient='records')
 
     # start the timer.
     start_time = datetime.now()
@@ -641,12 +655,33 @@ if __name__ == "__main__":
                            model_path=path_models, data_file_path=path_to_clean, isBatch=False,
                            isPreprocessed=True, path_to_classified="classification_bank.csv")
 
-    # get the info on each row
-    r = df.apply(bc.classify_preprocessed_by_row, axis=1)
 
-    # print the result
-    with pd.option_context('display.max_columns', None):  # more options can be specified also
-        print(r)
+    #open the database connection.
+    conn = sqlite3.connect(db_file)
+
+
+    #go through each row
+    ind = 0
+
+    for dict in df_dicts:
+        result = bc.classify_preprocessed_by_row(dict)
+
+        # if the result is empty, we don't need to add it
+        if result is None:
+            print(f'****======Completed Row: {ind} =======****')
+            ind += 1
+            continue
+
+        # send the data into the sql
+        insert_into_database(result, conn)
+        print(f'****======Completed Row: {ind} =======****')
+        ind += 1
+
+    # r = df.apply(bc.classify_preprocessed_by_row, axis=1)
+    #
+    # # print the result
+    # with pd.option_context('display.max_columns', None):  # more options can be specified also
+    #     print(r)
 
     end_time = datetime.now()
 
@@ -654,9 +689,9 @@ if __name__ == "__main__":
     bc.log_statistics_new(start_time, end_time)
 
     # add to classification bank
-    bc.update_classification_bank()
+    #bc.update_classification_bank()
 
-    r.to_csv(f"2020-07_2020-09_csvfiles/tweet_processing_test_{start_rows}-{num_rows}.csv", index=False)
+    #r.to_csv(f"2020-07_2020-09_csvfiles/tweet_processing_test_{start_rows}-{num_rows}_second_batch.csv", index=False)
 
     # drop empty and then create csv
     #r.dropna(subset=["No."], inplace=True)
