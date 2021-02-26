@@ -28,11 +28,12 @@ import sqlite3
 # df.to_sql(name="tweet_information_second_batch", con=cnx, if_exists="append")
 
 # FOR REDUCING SIZE
-hi = 500000
-lo = 150000
+lo = 1500000
+hi = 2500000
+
 
 df = pd.read_csv('2020-07_2020-09.csv', error_bad_lines=False)
 
 df = df[lo:hi]
 
-df.to_csv(f"2020-07_2020-09_reduced_{lo}_to_{hi}.csv")
+df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}.csv")

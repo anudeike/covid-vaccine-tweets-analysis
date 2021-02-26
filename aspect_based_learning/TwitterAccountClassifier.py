@@ -49,6 +49,7 @@ class AccountClassifier:
         self.missing_classified_accounts = []
         self.successful_analysis, self.failed_analysis = 0, 0
         self.tweet_index = 0
+        self.seen_tweets = {} # this holds the tweets that have been seen and classified
 
 
 
@@ -457,34 +458,72 @@ class AccountClassifier:
                 else:
                     row["prediction"] = fetched # should only be humans
 
-            # get the sentiment
-            sent = self.get_sentiment(row["proccessed_tweet"])
-            print(f'Sentiment Analysis Result: {sent}')
-            # put into the row
+            proccessed_tweet_content = row["proccessed_tweet"]
 
-            # vaccine scores
-            row["vaccine_score_neutral"] = sent[0]["vaccine_scores"][0]
-            row["vaccine_score_negative"] = sent[0]["vaccine_scores"][1]
-            row["vaccine_score_positive"] = sent[0]["vaccine_scores"][2]
-            row["vaccine_overall_sentiment"] = sent[0]["vaccine_overall_sent"]
+            # should be valid in python 3.8
+            if (match := self.seen_tweets.get(proccessed_tweet_content)):
+                # if there is a match, then get the value from the seen_tweets
+                print(f"**[{proccessed_tweet_content}]** has already been seen.")
+                # vaccine scores
+                row["vaccine_score_neutral"] = match[0]["vaccine_scores"][0]
+                row["vaccine_score_negative"] = match[0]["vaccine_scores"][1]
+                row["vaccine_score_positive"] = match[0]["vaccine_scores"][2]
+                row["vaccine_overall_sentiment"] = match[0]["vaccine_overall_sent"]
 
-            # virus scores
-            row["virus_scores_neutral"] = sent[1]["virus_scores"][0]
-            row["virus_scores_negative"] = sent[1]["virus_scores"][1]
-            row["virus_scores_positive"] = sent[1]["virus_scores"][2]
-            row["virus_overall_sentiment"] = sent[1]["virus_overall_sent"]
+                # virus scores
+                row["virus_scores_neutral"] = match[1]["virus_scores"][0]
+                row["virus_scores_negative"] = match[1]["virus_scores"][1]
+                row["virus_scores_positive"] = match[1]["virus_scores"][2]
+                row["virus_overall_sentiment"] = match[1]["virus_overall_sent"]
 
-            # vaccines scores
-            row["vaccines_scores_neutral"] = sent[2]["vaccines_scores"][0]
-            row["vaccines_scores_negative"] = sent[2]["vaccines_scores"][1]
-            row["vaccines_scores_positive"] = sent[2]["vaccines_scores"][2]
-            row["vaccines_overall_sentiment"] = sent[2]["vaccines_overall_sent"]
+                # vaccines scores
+                row["vaccines_scores_neutral"] = match[2]["vaccines_scores"][0]
+                row["vaccines_scores_negative"] = match[2]["vaccines_scores"][1]
+                row["vaccines_scores_positive"] = match[2]["vaccines_scores"][2]
+                row["vaccines_overall_sentiment"] = match[2]["vaccines_overall_sent"]
 
-            # vaccination scores
-            row["vaccination_scores_neutral"] = sent[3]["vaccination_scores"][0]
-            row["vaccination_scores_negative"] = sent[3]["vaccination_scores"][1]
-            row["vaccination_scores_positive"] = sent[3]["vaccination_scores"][2]
-            row["vaccination_overall_sentiment"] = sent[3]["vaccination_overall_sent"]
+                # vaccination scores
+                row["vaccination_scores_neutral"] = match[3]["vaccination_scores"][0]
+                row["vaccination_scores_negative"] = match[3]["vaccination_scores"][1]
+                row["vaccination_scores_positive"] = match[3]["vaccination_scores"][2]
+                row["vaccination_overall_sentiment"] = match[3]["vaccination_overall_sent"]
+
+                # success!
+                self.successful_analysis += 1
+
+                # increment the index
+                print(f'Processed tweet # {self.tweet_index}')
+                self.tweet_index += 1
+                return row
+
+            else:
+                # get the sentiment
+                sent = self.get_sentiment(proccessed_tweet_content)
+                print(f'Sentiment Analysis Result: {sent}')
+
+                # vaccine scores
+                row["vaccine_score_neutral"] = sent[0]["vaccine_scores"][0]
+                row["vaccine_score_negative"] = sent[0]["vaccine_scores"][1]
+                row["vaccine_score_positive"] = sent[0]["vaccine_scores"][2]
+                row["vaccine_overall_sentiment"] = sent[0]["vaccine_overall_sent"]
+
+                # virus scores
+                row["virus_scores_neutral"] = sent[1]["virus_scores"][0]
+                row["virus_scores_negative"] = sent[1]["virus_scores"][1]
+                row["virus_scores_positive"] = sent[1]["virus_scores"][2]
+                row["virus_overall_sentiment"] = sent[1]["virus_overall_sent"]
+
+                # vaccines scores
+                row["vaccines_scores_neutral"] = sent[2]["vaccines_scores"][0]
+                row["vaccines_scores_negative"] = sent[2]["vaccines_scores"][1]
+                row["vaccines_scores_positive"] = sent[2]["vaccines_scores"][2]
+                row["vaccines_overall_sentiment"] = sent[2]["vaccines_overall_sent"]
+
+                # vaccination scores
+                row["vaccination_scores_neutral"] = sent[3]["vaccination_scores"][0]
+                row["vaccination_scores_negative"] = sent[3]["vaccination_scores"][1]
+                row["vaccination_scores_positive"] = sent[3]["vaccination_scores"][2]
+                row["vaccination_overall_sentiment"] = sent[3]["vaccination_overall_sent"]
 
             # success!
             self.successful_analysis += 1
@@ -492,6 +531,10 @@ class AccountClassifier:
             # increment the index
             print(f'Processed tweet # {self.tweet_index}')
             self.tweet_index += 1
+
+            # add the tweet to the the seen tweets
+            self.seen_tweets[proccessed_tweet_content] = sent
+
             return row
 
         except Exception as e:
@@ -543,7 +586,7 @@ class AccountClassifier:
 
         # get the timer in the time in hours
         elapsed_hours = divmod(elapsed_seconds, 3600)
-        elapsed_minutes = divmod(elapsed_seconds, 60)
+        elapsed_minutes = divmod(elapsed_hours[1], 60)
 
         # display the stats
         print("\n\n==========================STATISTICS============================\n")
@@ -628,7 +671,7 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
-    path_to_clean = "2020-07_2020-09_preproccessed_3_150000-500000.csv"
+    path_to_clean = "preprocessed/2020-07_2020-09_preproccessed_5_1500000_to_2500000.csv"
 
     df = pd.read_csv(path_to_clean)
 
@@ -636,10 +679,10 @@ if __name__ == "__main__":
     db_file = r"human_classified_sentiment_processed.db"
 
     # reduce the df to something managable
-    start_rows = 200300
-    num_rows = 300000
+    start_rows = 700000
+    num_rows = 800000
 
-    df = df[start_rows:]
+    df = df[start_rows:num_rows]
 
     # turn it into an array of dicts
     df_dicts = df.to_dict(orient='records')

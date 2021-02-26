@@ -18,3 +18,5 @@ aspect_based_learning/2020-07_2020-09_preproccessed_3_150000-500000.csv
 aspect_based_learning/2020-07_2020-09_preproccessed_2.csv
 aspect_based_learning/human_classified_sentiment_processed.db
 aspect_based_learning/human_processed_tweets.db
+aspect_based_learning/reduced
+aspect_based_learning/quick_process
