@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/aspect-based.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/human_classified_sentiment_processed.db-journal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/preprocessed/data_explore.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/preprocessed/data_explore.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspect_based_learning/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/scratch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspect_based_learning/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/using_botometer_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/using_botometer_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,26 +145,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/audio_digital_processing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\preprocessed" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\reduced" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\2020-07_2020-09_csvfiles\second_batch" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\models" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\models" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\demographer_testing_data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\preprocessed" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\reduced" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.TwitterAccountClassifier">
+  <component name="RunManager" selected="Python.analyze_cap_data">
     <configuration name="TwitterAccountClassifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,7 +186,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TwitterAccountClassifier_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="analyze_cap_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -190,11 +194,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier_2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze_cap_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,28 +207,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="data_explore" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="vaccine-data-processing" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning/preprocessed" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/preprocessed/data_explore.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="process_tweets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="process_tweets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -266,20 +249,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="using_botometer_api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-data-processing" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/using_botometer_api.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.TwitterAccountClassifier" />
-      <item itemvalue="Python.TwitterAccountClassifier_2" />
-      <item itemvalue="Python.data_explore" />
       <item itemvalue="Python.process_tweets" />
       <item itemvalue="Python.scratch" />
+      <item itemvalue="Python.using_botometer_api" />
+      <item itemvalue="Python.analyze_cap_data" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.analyze_cap_data" />
+        <item itemvalue="Python.using_botometer_api" />
         <item itemvalue="Python.TwitterAccountClassifier" />
-        <item itemvalue="Python.data_explore" />
         <item itemvalue="Python.process_tweets" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.TwitterAccountClassifier_2" />
       </list>
     </recent_temporary>
   </component>
@@ -346,9 +350,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

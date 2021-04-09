@@ -105,6 +105,8 @@ def preprocess_tweet(full_text):
 
     # removes extra spaces
     full_text = re.sub(r' +', ' ', full_text)
+
+    # remove punctuation
     full_text = re.sub(r'/(\r\n)+|\r+|\n+|\t+/', " ", full_text)
 
 
@@ -183,8 +185,7 @@ def fetch_tweets(limit = 5, path="2020-07_2020-09_reduced.csv"):
 
 def main():
 
-    #get_tweets(limit=50)
-    path_to_clean = "reduced/2020-07_2020-09_reduced_1500000_to_2500000.csv"
+    path_to_clean = "reduced/2020-07_2020-09_reduced_500000_to_600000_full.csv"
 
     # get the tweets
     df = pd.read_csv(path_to_clean)
@@ -192,10 +193,11 @@ def main():
     # clean the tweet content column
     df['proccessed_tweet'] = df['Tweet Content'].apply(preprocess_tweet)
 
+
     with pd.option_context('display.max_columns', None):  # more options can be specified also
         print(df.head(5))
 
-    df.to_csv("preprocessed/2020-07_2020-09_preproccessed_5_1500000_to_2500000.csv", index=False)
+    df.to_csv("preprocessed/2020-07_2020-09_preproccessed_500000_to_600000_full.csv", index=False)
     # export the tweet out
     pass
 

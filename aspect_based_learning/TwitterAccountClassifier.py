@@ -10,11 +10,13 @@ import sqlite3
 
 # sent analysis
 import aspect_based_sentiment_analysis as absa
-nlp = absa.load()
+nlp = absa.load() # load the model
 
 load_dotenv()
 
 class AccountClassifier:
+
+    # constructor
     def __init__(self, rapid_api_key, twitter_app_auth, model_path, data_file_path="", separator=',', isBatch=True, isPreprocessed=False, path_to_classified=None):
 
         # set whether you can use a batch
@@ -29,6 +31,7 @@ class AccountClassifier:
 
         # load the bank
         self.classification_bank = None
+
         if path_to_classified is not None:
             # this is the li_trial_master data
             self.classification_bank = pd.read_csv(path_to_classified)
@@ -64,101 +67,6 @@ class AccountClassifier:
         except Exception as e:
             print(e)
             raise RuntimeError("Prediction Failed.")
-
-    def classify(self):
-        """
-        Classifies the accounts given one at a time. Returns a dataframe containing the id and the predicted_label
-        :return: Dataframe
-        """
-
-        # this function does not work on batches
-        if self.isBatch:
-            raise ValueError("Classifier set to work with Batch processing (isBatch = True). Consider using classify_batch() instead.")
-
-        # set some of the dataframe parameters
-        out = pd.DataFrame()
-        row_list = []
-
-        # for each of the names in the list -> this would work best on the muted list
-        for id in self.account_ids:
-
-            try:
-                result = self.bom.check_account(id)
-
-                if (result["user"]["majority_lang"] == 'en'):
-                    # use the english results
-
-                    # for each row that'll be appended
-                    row = {
-                        "id": id,
-                        "CAP": result['cap']['english'],
-                        "astroturf": result['display_scores']['english']['astroturf'],
-                        "fake_follower": result['display_scores']['english']['fake_follower'],
-                        "financial": result['display_scores']['english']['financial'],
-                        "other": result['display_scores']['english']['other'],
-                        "overall": result['display_scores']['english']['overall'],
-                        "self-declared": result['display_scores']['english']['self_declared'],
-                        # "spammer": result['display_scores']['english']['spammer'],
-                    }
-
-                    # prepare to be read
-                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
-
-                    # predict
-                    classification = self.predict(reshaped_data) # make a prediction
-
-                    # display what it is classified as
-                    if classification[0] == 1:
-                        print(f'{id} is classified as HUMAN')
-                    else:
-                        print(f'{id} is classified as NON-HUMAN')
-
-                    # notify
-                    print(f'{id} has been predicted.\n')
-
-                    # append the row list
-                    row_list.append({"id":id,
-                                     "predicted_label": classification[0]})
-
-                else:
-
-                    row = {
-                        "id": id,
-                        "CAP": result['cap']['universal'],
-                        "astroturf": result['display_scores']['universal']['astroturf'],
-                        "fake_follower": result['display_scores']['universal']['fake_follower'],
-                        "financial": result['display_scores']['universal']['financial'],
-                        "other": result['display_scores']['universal']['other'],
-                        "overall": result['display_scores']['universal']['overall'],
-                        "self-declared": result['display_scores']['universal']['self_declared'],
-                        # "spammer": result['display_scores']['universal']['spammer'],
-                    }
-
-                    # prepare to be read
-                    reshaped_data = np.array(list(row.values())[1:]).reshape(1, -1)
-
-                    classification = self.predict(reshaped_data)  # make a prediction
-
-                    # display what it is classified as
-                    if classification[0] == 1:
-                        print(f'{id} is classified as HUMAN')
-                    else:
-                        print(f'{id} is classified as NON-HUMAN')
-
-                    # notify
-                    print(f'{id} has been predicted.\n')
-
-                    # append the row list
-                    row_list.append({"id": id,
-                                     "predicted_label": classification[0]})
-
-            except Exception as e:
-                # skip if error
-                print("{} Could not be fetched: {}".format(id, e))
-
-        print(row_list)
-        out = out.append(row_list)
-        return out
 
     def classify_single_account(self, account_id):
         """
@@ -544,31 +452,7 @@ class AccountClassifier:
         pass
 
 
-    def log_statistics(self, start, end, success, failed, amt_accts_added):
-        """
-        Logs General Statistics for the Program
-        :param start: Start time
-        :param end: End time
-        :param success: Amount of tweets successfully processed
-        :param failed: Amound of tweets unsuccessfully processed
-        :return: None
-        """
-
-        total = success + failed
-        elapsed = end - start
-        elapsed_seconds = elapsed.total_seconds()
-
-        # get the timer in the time in hours
-        elapsed_hours = divmod(elapsed_seconds, 3600)
-        elapsed_minutes = divmod(elapsed_seconds, 60)
-
-        # display the stats
-        print("\n\n==========================STATISTICS============================\n")
-        print(f'Time Elapsed: {0} hours, {elapsed_minutes[0]} minutes, and {elapsed_minutes[1]} seconds.')
-        print(f'Evaluated {total} Tweets. \n{success} successful evaluations\n {failed} failed evaluations')
-        print(f'{amt_accts_added} new accounts added to classification bank.')
-
-    def log_statistics_new(self, start, end):
+    def log_statistics(self, start, end):
         """
         Logs General Statistics for the Program
         :param start: Start time
@@ -654,7 +538,8 @@ def insert_into_database(row_info, conn):
     # cur = conn.cursor()
     # cur.execute(sql_code, row_info)
     # cur.commit()
-    row_info.to_sql(name="tweet_information_second_batch", con=conn, if_exists="append")
+    row_info.to_sql(name="tweet_information_third_batch", con=conn, if_exists="append")
+    conn.commit()
 
 
 if __name__ == "__main__":
@@ -671,7 +556,7 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
-    path_to_clean = "preprocessed/2020-07_2020-09_preproccessed_5_1500000_to_2500000.csv"
+    path_to_clean = "preprocessed/2020-07_2020-09_preproccessed_500000_to_600000_full.csv"
 
     df = pd.read_csv(path_to_clean)
 
@@ -679,8 +564,8 @@ if __name__ == "__main__":
     db_file = r"human_classified_sentiment_processed.db"
 
     # reduce the df to something managable
-    start_rows = 700000
-    num_rows = 800000
+    start_rows = 1
+    num_rows = 100000
 
     df = df[start_rows:num_rows]
 
@@ -729,7 +614,7 @@ if __name__ == "__main__":
     end_time = datetime.now()
 
     # stats
-    bc.log_statistics_new(start_time, end_time)
+    bc.log_statistics(start_time, end_time)
 
     # add to classification bank
     #bc.update_classification_bank()
