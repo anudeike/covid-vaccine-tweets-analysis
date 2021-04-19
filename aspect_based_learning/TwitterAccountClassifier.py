@@ -556,7 +556,7 @@ if __name__ == "__main__":
     # model path
     path_models = "models/XGB_Default_Classifier.dat"
 
-    path_to_clean = "preprocessed/2020-07_2020-09_preproccessed_500000_to_600000_full.csv"
+    path_to_clean = "preprocessed/2020-07_2020-09_preproccessed_1750000_to_2500000_full.csv"
 
     df = pd.read_csv(path_to_clean)
 
@@ -564,10 +564,10 @@ if __name__ == "__main__":
     db_file = r"human_classified_sentiment_processed.db"
 
     # reduce the df to something managable
-    start_rows = 1
+    start_rows = 146295
     num_rows = 100000
 
-    df = df[start_rows:num_rows]
+    # df = df[start_rows:]
 
     # turn it into an array of dicts
     df_dicts = df.to_dict(orient='records')

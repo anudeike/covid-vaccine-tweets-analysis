@@ -2,6 +2,8 @@ import pandas as pd
 import sqlite3
 import json
 from collections import Counter
+import numpy as np
+
 # THIS IS FOR TESTING THE DATA BASE
 # paths = ['2020-07_2020-09_csvfiles/tweet_processing_test_1-1500_second_batch.csv',
 #          '2020-07_2020-09_csvfiles/tweet_processing_test_1500-5500_second_batch.csv',
@@ -29,22 +31,22 @@ from collections import Counter
 # df.to_sql(name="tweet_information_second_batch", con=cnx, if_exists="append")
 
 #======== FOR REDUCING SIZE
-lo = 500000
-hi = 600000
-
-def skip_function(ind):
-    if ind < hi and ind > lo:
-        return False
-
-    return True
-
-
-# TO DO
-df = pd.read_csv('2020-07_2020-09.csv', skiprows=lambda x: skip_function(x), error_bad_lines=False, names="No.,Is retweet?,Tweet ID,Post Date,User Display Name,User ID,User Info,User Location,Tweet Content,Number of Quotes,Number of Replies,Number of Likes,Number of Retweets,Raw link 1,Solved link 1,Raw link 2,Solved link 2,Raw link 3,Solved link 3,Raw link 4,Solved link 4,Raw link 5,Solved link 5".split(','))
-
-#df = df[lo:hi]
-print(df)
-df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}_full.csv")
+# lo = 2500000
+# hi = 3000000
+#
+# def skip_function(ind):
+#     if ind < hi and ind > lo:
+#         return False
+#
+#     return True
+#
+#
+# # TO DO
+# df = pd.read_csv('2020-07_2020-09.csv', skiprows=lambda x: skip_function(x), error_bad_lines=False, names="No.,Is retweet?,Tweet ID,Post Date,User Display Name,User ID,User Info,User Location,Tweet Content,Number of Quotes,Number of Replies,Number of Likes,Number of Retweets,Raw link 1,Solved link 1,Raw link 2,Solved link 2,Raw link 3,Solved link 3,Raw link 4,Solved link 4,Raw link 5,Solved link 5".split(','))
+#
+# #df = df[lo:hi]
+# print(df)
+# df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}_full.csv")
 
 # ====== for converting the sql to csv
 #
@@ -62,23 +64,30 @@ df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}_full.csv")
 
 
 
-# ids_in_classification_bank = set(pd.read_csv("classification_bank.csv")["id"].values)
+ids_in_classification_bank = set(pd.read_csv("classification_bank.csv")["id"].values)
 #
-# print("retrived from c_bank")
+# #print("retrived from c_bank")
 #
 # """ USING COUNTER """
-# user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_200000_to_300000_full.csv', error_bad_lines=False)["User ID"].values)
-#
-# print("retrived user_ids")
-# most_common_users = set(list(zip(*user_ids_in_preprocessed.most_common(500)))[0])
-#
-# print("got more common users")
-#
-# # diff_uniq_df = pd.DataFrame(data=list(most_common_users), columns=["id", "counts"])
-# # diff_uniq_df.to_csv("mostCommonUsers.csv",index=False)
-#
-# diff_uniq = most_common_users - ids_in_classification_bank
-#
-# # send to pandas dataframe
-# diff_uniq_df = pd.DataFrame(data=list(diff_uniq)[0:2000], columns=["id"])
-# diff_uniq_df.to_csv("usernamesToBeClassfied_200k-300k.csv",index=False)
+user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_2500000_to_3000000_full.csv', error_bad_lines=False)["User ID"].values)
+
+print("retrived user_ids")
+
+names_values_separated = list(zip(*user_ids_in_preprocessed.most_common()))
+
+top_n = 50000
+print(f"Getting most common {top_n} users: ")
+#print(f'length of the most common users: {most_common_users}')
+#print(f'ALL USERS: {all_most_common_users[0:100]}')
+
+print(f'Top {top_n} users:')
+print(f'Number of tweets they made: {sum(names_values_separated[1][0:top_n])}.\nThis is {np.round(sum(names_values_separated[1][0:top_n])/400000, 4)}% of the total tweets')
+
+unqiue_most_common_usernames = set(names_values_separated[0][0:top_n])
+difference = unqiue_most_common_usernames - ids_in_classification_bank
+
+print(f'Number of {top_n} top users not in classification bank: {len(difference)}')
+
+
+diff_uniq_df = pd.DataFrame(data=list(difference), columns=["id"])
+diff_uniq_df.to_csv("usernames_for_classification/not_classified_2_5M_3M.csv",index=False)
