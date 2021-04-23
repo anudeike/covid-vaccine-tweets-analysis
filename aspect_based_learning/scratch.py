@@ -31,8 +31,8 @@ import numpy as np
 # df.to_sql(name="tweet_information_second_batch", con=cnx, if_exists="append")
 
 #======== FOR REDUCING SIZE
-# lo = 2500000
-# hi = 3000000
+# lo = 3500000
+# hi = 4100000
 #
 # def skip_function(ind):
 #     if ind < hi and ind > lo:
@@ -54,7 +54,7 @@ import numpy as np
 # df = pd.read_sql_query("SELECT * from tweet_information_second_batch", conn)
 #
 # df.to_csv("output_3_19_2021.csv", index=False)
-
+#
 # # turn to json
 # df_dict = df[0:10].to_dict(orient="records")
 #
@@ -64,30 +64,30 @@ import numpy as np
 
 
 
-ids_in_classification_bank = set(pd.read_csv("classification_bank.csv")["id"].values)
+# ids_in_classification_bank = set(pd.read_csv("classification_bank.csv")["id"].values)
+# #
+# # #print("retrived from c_bank")
+# #
+# # """ USING COUNTER """
+# user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_3500000_to_4100000_full.csv', error_bad_lines=False)["User ID"].values)
 #
-# #print("retrived from c_bank")
+# print("retrived user_ids")
 #
-# """ USING COUNTER """
-user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_2500000_to_3000000_full.csv', error_bad_lines=False)["User ID"].values)
-
-print("retrived user_ids")
-
-names_values_separated = list(zip(*user_ids_in_preprocessed.most_common()))
-
-top_n = 50000
-print(f"Getting most common {top_n} users: ")
-#print(f'length of the most common users: {most_common_users}')
-#print(f'ALL USERS: {all_most_common_users[0:100]}')
-
-print(f'Top {top_n} users:')
-print(f'Number of tweets they made: {sum(names_values_separated[1][0:top_n])}.\nThis is {np.round(sum(names_values_separated[1][0:top_n])/400000, 4)}% of the total tweets')
-
-unqiue_most_common_usernames = set(names_values_separated[0][0:top_n])
-difference = unqiue_most_common_usernames - ids_in_classification_bank
-
-print(f'Number of {top_n} top users not in classification bank: {len(difference)}')
-
-
-diff_uniq_df = pd.DataFrame(data=list(difference), columns=["id"])
-diff_uniq_df.to_csv("usernames_for_classification/not_classified_2_5M_3M.csv",index=False)
+# names_values_separated = list(zip(*user_ids_in_preprocessed.most_common()))
+#
+# top_n = 100000
+# print(f"Getting most common {top_n} users: ")
+# #print(f'length of the most common users: {most_common_users}')
+# #print(f'ALL USERS: {all_most_common_users[0:100]}')
+#
+# print(f'Top {top_n} users:')
+# print(f'Number of tweets they made: {sum(names_values_separated[1][0:top_n])}.\nThis is {np.round(sum(names_values_separated[1][0:top_n])/600000, 4)}% of the total tweets')
+#
+# unqiue_most_common_usernames = set(names_values_separated[0][0:top_n])
+# difference = unqiue_most_common_usernames - ids_in_classification_bank
+#
+# print(f'Number of {top_n} top users not in classification bank: {len(difference)}')
+#
+#
+# diff_uniq_df = pd.DataFrame(data=list(difference), columns=["id"])
+# diff_uniq_df.to_csv("usernames_for_classification/not_classified_3M_4_1M.csv",index=False)
