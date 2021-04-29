@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification/to_sql.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspect_based_learning/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspect_based_learning/scratch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,8 +158,8 @@
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\reduced" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.to_sql">
-    <configuration name="TwitterAccountClassifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.scratch">
+    <configuration name="analyze_cap_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -170,11 +167,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/TwitterAccountClassifier.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze_cap_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -246,7 +243,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="to_sql" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="to_sql_with_pandas (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -258,7 +255,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification/to_sql.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification/to_sql_with_pandas.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -268,19 +265,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.TwitterAccountClassifier" />
+      <item itemvalue="Python.analyze_cap_data" />
       <item itemvalue="Python.create_user_classifications" />
       <item itemvalue="Python.process_tweets" />
       <item itemvalue="Python.scratch" />
-      <item itemvalue="Python.to_sql" />
+      <item itemvalue="Python.to_sql_with_pandas (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.to_sql" />
-        <item itemvalue="Python.create_user_classifications" />
         <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.create_user_classifications" />
         <item itemvalue="Python.process_tweets" />
-        <item itemvalue="Python.TwitterAccountClassifier" />
+        <item itemvalue="Python.to_sql_with_pandas (1)" />
+        <item itemvalue="Python.analyze_cap_data" />
       </list>
     </recent_temporary>
   </component>

@@ -60,17 +60,19 @@ At the very top of the file import the pandas and botometer libraries. If you're
  path = "verified_humans.csv" # you can also use tsv output_path = "output_data.csv"  Now its time to use the keys that we got from the Twitter and RapidAPI API's. Define them as variables and then pass them into the botometer object to be able to create an authenticated Botometer instance that is ready to process some accounts!    
       
     
- rapidapi_key = os.getenv('RAPID_FIRE_KEY')     # authentication      
+ ```rapidapi_key = os.getenv('RAPID_FIRE_KEY')     # authentication      
  twitter_app_auth = {      
      'consumer_key': os.getenv('TWITTER_API_KEY'),      
      'consumer_secret': os.getenv('TWITTER_API_SECRET'),      
      'access_token': os.getenv('TWITTER_ACCESS_TOKEN'),      
      'access_token_secret': os.getenv('TWITTER_ACCESS_SECRET'),      
- }      
+ }     
           
- # you can copy this    bom = botometer.Botometer(wait_on_ratelimit=True,      
+ # you can copy this    
+ bom = botometer.Botometer(wait_on_ratelimit=True,      
                               rapidapi_key=rapidapi_key,      
                               **twitter_app_auth)    
+```
  From here, getting information on an account is pretty simple. Most of this example will be pulled from the botometer documentation.     
     
 You can get information on a single account using one line of code    
@@ -83,7 +85,8 @@ To check an array of accounts, you can use a simple for loop.
 The result (for each account) will look like this.    
     
   
- { "cap": { "english": 0.8018818614025648, "universal": 0.5557322218336633 }, "display_scores": { "english": { "astroturf": 0.0, "fake_follower": 4.1, "financial": 1.5, "other": 4.7, "overall": 4.7, "self_declared": 3.2, "spammer": 2.8 }, "universal": { "astroturf": 0.3, "fake_follower": 3.2, "financial": 1.6, "other": 3.8, "overall": 3.8, "self_declared": 3.7, "spammer": 2.3 } }, "raw_scores": { "english": { "astroturf": 0.0, "fake_follower": 0.81, "financial": 0.3, "other": 0.94, "overall": 0.94, "self_declared": 0.63, "spammer": 0.57 }, "universal": { "astroturf": 0.06, "fake_follower": 0.64, "financial": 0.3133333333333333, "other": 0.76, "overall": 0.76, "self_declared": 0.74, "spammer": 0.47 } }, "user": { "majority_lang": "en", "user_data": { "id_str": "11330", "screen_name": "test_screen_name" } } }   
+````{ "cap": { "english": 0.8018818614025648, "universal": 0.5557322218336633 }, "display_scores": { "english": { "astroturf": 0.0, "fake_follower": 4.1, "financial": 1.5, "other": 4.7, "overall": 4.7, "self_declared": 3.2, "spammer": 2.8 }, "universal": { "astroturf": 0.3, "fake_follower": 3.2, "financial": 1.6, "other": 3.8, "overall": 3.8, "self_declared": 3.7, "spammer": 2.3 } }, "raw_scores": { "english": { "astroturf": 0.0, "fake_follower": 0.81, "financial": 0.3, "other": 0.94, "overall": 0.94, "self_declared": 0.63, "spammer": 0.57 }, "universal": { "astroturf": 0.06, "fake_follower": 0.64, "financial": 0.3133333333333333, "other": 0.76, "overall": 0.76, "self_declared": 0.74, "spammer": 0.47 } }, "user": { "majority_lang": "en", "user_data": { "id_str": "11330", "screen_name": "test_screen_name" } } }
+````   
   (This is copied directly from the github repo)    
  Here are the meaning of some of the vital fields    
  * **user**: Twitter user object (from the user) plus the language inferred from majority of tweets    
@@ -195,6 +198,129 @@ The first thing to do is to make sure that you separate our your datasets.
 You should have a separate dataset for each one of the treatment groups. In this case, our treatment groups are bot, individuals, and organizations. They'll be stored in `bot_account_names.csv`, `individual_account_names.csv` and `organization_account_names.csv` (the file names don't have to match these, they can be whatever you want). 
 
 ### Exploring Each of the Datasets
-There's a lot of ways to do data exploration, but one of the best/first places to start is with a histogram. The histogram is one of the most useful tools for getting a summary of the distribution for a single dependent variable. 
-Here is an example of a histogram:
+There's a lot of ways to do data exploration, but one of the best/first places to start is basic summary analysis of the mean and standard deviation of the distribution. 
 
+The first step to calculating the mean and standard deviation for your datasets is to first get the dataset from a csv into dataframe.
+
+This can be done with the following code
+``df = pandas.read_csv("path_to_csv.csv")`` 
+ From there, we can use `print(df.describe())` to print out a couple of summary statistics.
+ Your output should look something like this:
+ ```
+        Unnamed: 0        No.  ...  Raw link 5  Solved link 5
+count   11.000000  11.000000  ...         0.0            0.0
+mean     5.000000   7.000000  ...         NaN            NaN
+std      3.316625   3.316625  ...         NaN            NaN
+min      0.000000   2.000000  ...         NaN            NaN
+25%      2.500000   4.500000  ...         NaN            NaN
+50%      5.000000   7.000000  ...         NaN            NaN
+75%      7.500000   9.500000  ...         NaN            NaN
+max     10.000000  12.000000  ...         NaN            NaN
+
+ ```
+ (It might not look *exactly* like this, but the left hand labels (count, mean, std etc) should be there.)
+ 
+ Can't see the columns you want? Don't worry, `df.describe()` returns a dataframe and like any other dataframe you can simply select the column you want by first assigning the result to a variable and then using this syntax: `describe_df["column_name"]`. 
+ If you want to be able to see the entire output you can simply export it to a csv file using the `to_csv()` functions like this: `describe_df.to_csv("path_to_output_csv.csv")`. 
+
+You can read more about this function in the documentation [here](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
+
+### Plotting Historgrams 
+Though numbers are good and all, chances are, the person who will look at the data would like to see some kind of visual aid to contextualize the mean and standard deviation. A perfect tool for this task is called a histogram.
+A histogram is a series of bar charts that  shows the distribution of values in a sample. They tend to look something like this. 
+
+ ![an example of a histogram](https://rb.gy/fxkgp0)
+ Without much context, this might be a bit frustrating to read, but from a glance this histogram and tell us a couple of things
+ * The Gross Monthly Salary is skewed to the left
+ * The median is likely lower than the mean of the distribution
+ * And most of the values fall between $800 and $1000
+
+There is more you could take from it, but for now, those are the most important observations.
+***
+**Creating a Histogram in Python**
+Creating a histogram in Python is relatively easy.
+ 
+First make sure you have matplotlib installed.
+
+Then, at the top of your file, include the following line: `import matplotlib.pyplot as plt` to include and use the matplotlib package
+
+Next, Dataframes have a helper function called `df.hist()` that can generate a histogram for us which makes it easy to display a histogram of your data.
+
+**Don't forget to include plt.show() at the end of the program so you can see the graph**
+Your output should look something like this:
+![And example output of df.hist()](https://res.cloudinary.com/cheezitromansh/image/upload/v1619139351/example_tkeghp.png)
+
+For more control over the visual output (maybe you wanted it a different color, or all the graphs in a straight line), you should check out the base [matplotlib.pyplot](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) documention and the [pandas.hist()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.hist.html) documentation for more details.
+
+Part of the fun here is playing around with the code and comparing different distributions to one another. You can perform certain statistics tests such as the t-test, and correlation tests but none of this will be covered in this tutorial.
+### Intepreting the Data
+We've already covered some of this with drawing conclusions from the histogram above, but this time, we'll take it a step further and compare features, such as CAP and overall score, between different classes of accounts (ie. Bot, human and organization). 
+
+The first thing we need to do is to pick a feature that we will be comparing across all classes. For the sake of simplicity, I picked the CAP, or Complete Automation Score. This score ranges from 0-1, with 0 being the most automated and 1 being the most automated.
+
+The way to get these specific columns from your dataframe is outlined below:
+```
+org_cap = org_df['CAP'].values  
+bot_cap = bot_df['CAP'].values  
+human_cap = human_df['CAP'].values
+```
+
+Now we have the values for the CAP feature for each class in their own array. 
+
+To plot it, all we need to do is to call the `plt.hist()` function. You can read more about it [here.](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) 
+
+Before we do this, we should establish how many bins we should have. This will dictate the thinkness of the bars in our histogram. Instead of the standard amount, I'll specifiy 100 bins with this bit of code:
+`bins = np.linspace(0, 1, 100)`
+**Note**: np.linspace comes from the numpy library. Read all about it [here.](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html)
+
+The last thing we have to do now is to simply plot all the histograms!
+```
+plt.hist(org_cap, bins, alpha=0.5, label='CAP_ORG')  
+plt.hist(bot_cap, bins, alpha=0.5, label='CAP_BOT')  
+plt.hist(human_cap, bins, alpha=0.5, label='CAP_HUMAN')  
+plt.legend(loc='upper right')  
+plt.title("Distribution of Complete Automation Probability (CAP) \nof Humans, Bots and Organizations")
+plt.show()
+```
+When you run this code, you should get something that looks a bit like this:
+![enter image description here](https://res.cloudinary.com/cheezitromansh/image/upload/v1619154342/example_pwhdid.png)
+
+As you can see, the bars are labeled, colored coded (human - green, bot - orange, organization - blue). For the sake of time and sanity, I'll leave it up to you to figure out how to create a plot for each one of the features.
+
+But just looking at the plot, we can see some **massive** differences in the distributions between the 3 classes. Here are a couple of things you could notice at a glance:
+* The Org and Bot distributions are a lot further right, clustering closer to 1 than the human distributions
+* The Bot distribution appears to have the most right skewed frequency, followed by the Organization frequency
+* The human distribution is a lot more spead out than both the Org and Both Distributions
+* Though the Bot and Org distributions are close to each other on the graph, they have relatively small spread ( standard deviations) and are still very distinct from each other.
+* The Bot distribution is heavily skewed to the right with most of its values occuring very close to 1
+* The Org distribution seems to be centered around 0.8
+
+Looking at the means and standard deviations for the dataset, it seems like these observations coroborate:
+```
+Average CAP of Humans: 0.46322320956704793, Standard Dev = 0.2427303756982515
+Average CAP of Bot: 0.9497471030462905, Standard Dev = 0.0579888920629633
+Average CAP of Organizations: 0.7755106538863092, Standard Dev = 0.08051632412876976
+```
+Feel free to do the same for the rest of the features.
+
+But after you do, its a good idea to **pause** and take a second to carefully intepret these findings.
+
+Since our goal is to predict whether an account is made by a individual (human) or non-individual (everyone else), try asking the question **how can I use this information to tell individuals from non-individuals?**
+
+Seriously, do it. Write some of the ideas down!
+
+Done?
+
+Here's a couple of my answers: 
+* We could use a statstical test to be able to discriminate between the two
+	* Pros: Would be fast to train (not much training in all honesty), the botometer website recommends a statistical test
+	* Cons: Could only be so accurate and might not work across multiple features (or at least its hard to do that -- not sure, never tried it)
+* We could create a machine learning algorithm to be able to tell the two groups apart!
+	* Pros: Its machine learning, its fun, it can work very well across multiple different feature dimensions
+	* Cons: We don't have much data (less than 60,000 data points) and it is type of resource heavy to train
+ 
+It wouldn't be much fun if I didn't choose the machine learning route, but if you want to try the statistical test and compare the performance of the two systems, go right on a ahead.
+
+# Building a Machine Learning Model
+
+After getting this data

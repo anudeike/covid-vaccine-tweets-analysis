@@ -3,7 +3,6 @@ import botometer
 from dotenv import load_dotenv
 import os
 import time
-import luckysocial
 from scipy import stats
 import numpy as np
 import json
