@@ -419,7 +419,7 @@ RAPID_FIRE_KEY=93e5b6e789msh21f8c0a25171494p1d5236jsnd91e3eb8aa6b
     # model path
     path_models = "XGB_Default_Classifier.dat"
 
-    path_to_clean = "not_classified_3M_4_1M.csv"
+    path_to_clean = "not_classified_4_8M_5_5M.csv"
 
     df = pd.read_csv(path_to_clean)
 
@@ -439,7 +439,7 @@ RAPID_FIRE_KEY=93e5b6e789msh21f8c0a25171494p1d5236jsnd91e3eb8aa6b
                            model_path=path_models, data_file_path=path_to_clean, isBatch=False,
                            isPreprocessed=True)
 
-    db_file = "newly_classified_4.db"
+    db_file = "newly_classified_6.db"
 
     # open the database connection.
     conn = sqlite3.connect(db_file)

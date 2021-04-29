@@ -31,22 +31,22 @@ import numpy as np
 # df.to_sql(name="tweet_information_second_batch", con=cnx, if_exists="append")
 
 #======== FOR REDUCING SIZE
-# lo = 3500000
-# hi = 4100000
-#
-# def skip_function(ind):
-#     if ind < hi and ind > lo:
-#         return False
-#
-#     return True
-#
-#
-# # TO DO
-# df = pd.read_csv('2020-07_2020-09.csv', skiprows=lambda x: skip_function(x), error_bad_lines=False, names="No.,Is retweet?,Tweet ID,Post Date,User Display Name,User ID,User Info,User Location,Tweet Content,Number of Quotes,Number of Replies,Number of Likes,Number of Retweets,Raw link 1,Solved link 1,Raw link 2,Solved link 2,Raw link 3,Solved link 3,Raw link 4,Solved link 4,Raw link 5,Solved link 5".split(','))
-#
-# #df = df[lo:hi]
-# print(df)
-# df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}_full.csv")
+lo = 5500000
+hi = 5500020
+
+def skip_function(ind):
+    if ind < hi and ind > lo:
+        return False
+
+    return True
+
+
+# TO DO
+df = pd.read_csv('2020-07_2020-09.csv', skiprows=lambda x: skip_function(x), error_bad_lines=False, names="No.,Is retweet?,Tweet ID,Post Date,User Display Name,User ID,User Info,User Location,Tweet Content,Number of Quotes,Number of Replies,Number of Likes,Number of Retweets,Raw link 1,Solved link 1,Raw link 2,Solved link 2,Raw link 3,Solved link 3,Raw link 4,Solved link 4,Raw link 5,Solved link 5".split(','))
+
+#df = df[lo:hi]
+print(df)
+df.to_csv(f"reduced/2020-07_2020-09_reduced_{lo}_to_{hi}_full.csv")
 
 # ====== for converting the sql to csv
 #
@@ -69,19 +69,19 @@ import numpy as np
 # # #print("retrived from c_bank")
 # #
 # # """ USING COUNTER """
-# user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_3500000_to_4100000_full.csv', error_bad_lines=False)["User ID"].values)
+# user_ids_in_preprocessed = Counter(pd.read_csv('preprocessed/2020-07_2020-09_preproccessed_4100000_to_4800000_full.csv', error_bad_lines=False)["User ID"].values)
 #
 # print("retrived user_ids")
 #
 # names_values_separated = list(zip(*user_ids_in_preprocessed.most_common()))
 #
-# top_n = 100000
+# top_n = 110000
 # print(f"Getting most common {top_n} users: ")
 # #print(f'length of the most common users: {most_common_users}')
 # #print(f'ALL USERS: {all_most_common_users[0:100]}')
 #
 # print(f'Top {top_n} users:')
-# print(f'Number of tweets they made: {sum(names_values_separated[1][0:top_n])}.\nThis is {np.round(sum(names_values_separated[1][0:top_n])/600000, 4)}% of the total tweets')
+# print(f'Number of tweets they made: {sum(names_values_separated[1][0:top_n])}.\nThis is {np.round(sum(names_values_separated[1][0:top_n])/700000, 4)}% of the total tweets')
 #
 # unqiue_most_common_usernames = set(names_values_separated[0][0:top_n])
 # difference = unqiue_most_common_usernames - ids_in_classification_bank
@@ -90,4 +90,4 @@ import numpy as np
 #
 #
 # diff_uniq_df = pd.DataFrame(data=list(difference), columns=["id"])
-# diff_uniq_df.to_csv("usernames_for_classification/not_classified_3M_4_1M.csv",index=False)
+# diff_uniq_df.to_csv("usernames_for_classification/not_classified_4_8M_5_5M.csv",index=False)
