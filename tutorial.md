@@ -173,7 +173,7 @@ If you find a better solution, feel free to reach out to use at ikechukwuanude@g
 If you've reached this part, you should have a spreadsheet filled to the brim with data points.  
 Each row should look something like this:  
   
- screen_name,CAP,astroturf,fake_follower,financial,other,overall,self-declared,spammer,type PatriciaMazzei,0.30618807248975083,1.3,0.2,0.0,0.8,0.2,0.1,0.0,HUMAN  
+` screen_name,CAP,astroturf,fake_follower,financial,other,overall,self-declared,spammer,type PatriciaMazzei,0.30618807248975083,1.3,0.2,0.0,0.8,0.2,0.1,0.0,HUMAN`
 The first line of the example data are the headers and the second line is an example row of data.   
 **NOTE**: If you were not able to get enough data, or there simply isn't enough time to make thousands of requests, there will be a folder filled with example datasets that'll help you speedrun this tutorial.   
   
@@ -323,4 +323,138 @@ It wouldn't be much fun if I didn't choose the machine learning route, but if yo
 
 # Building a Machine Learning Model
 
-After getting this data
+Here's the fun part! In this step, we'll build a machine learning model, train it, and validate it. Despite the complexity typically involved in building, training and testing, we can simpliffy the process massively using `sci-kit learn`, `numpy` and `xgboost` libraries.
+
+## Deciding what models to Use
+There is a vast array of different machine learning algorithms. Each algorithm has their own use-cases, pros and cons and it's up to us to decide on the algorithm that is the most useful for our test case. 
+
+### Our Test Case
+Our test case looks like this:
+* We have bunch of features (CAP, astroturf, overall etc) that describe a particular account
+* We also need a binary output (individual or non-individual - organizations count as non-individual)
+
+[This is a good article to help get familiar with some of the classification algorithms out there.](https://serokell.io/blog/classification-algorithms) 
+
+But, for the sake of simplicity, we'll consider two separate types of algorithms: Random Forest and Logistic Regression.
+### Logistic Regression
+Logistic Regression is a type of classification algorithm that uses a logistic curve to classify data. It is mainly used for binary classification but cannot be adapted for multi-class or multi-label classification. [Here's](https://holypython.com/log-reg/logistic-regression-pros-cons/) a good article on some of the advantages and disadvantages of logisitic regression but the most important advantages and disadantages are as follows:
+* **Unlikely to Overfit**: Since its a linear model, it won't over fit the data and will still maintain generalizability between datasets.
+* **Efficient**: Not very resource heavy and easy to compute
+* **Linearity**: [disadvantage] This is a **huge** disadvantage for our use case as we can't be certain that this is a linear problem. 
+
+### Random Forest (XGBoost)
+Random Forest is an algorithm based on the **decision tree**. It is a lot easier to explain that logistic regression because it works very similarly to how we might think of classifying objects. 
+
+**How a Decision Tree Works**
+For example, say we wanted to classify an object as an apple or not an apple (an apple being defined as a red, round, fruit). We might as questions such as: "Is the object a fruit?". If it is not a fruit, then it cannot be an apple, so we categorize it as not an apple. But if it is a fruit, we can ask another question: "Is it round?". If the fruit is not round, then we can say that it is not an apple. However if the fruit is round then we can ask our third and final question: "Is the round fruit red?". If the answer is yes, then we can classify the object as an apple, otherwise, it is not an apple.
+
+**From Decision Tree to Decision Forest**
+Similarly to how a forest is consisted of a bunch of different trees, a Random Forest is consisted of a bunch of different **uncorrelated** decision trees that act as an ensemble. Each individual decision tree returns a class prediction and the prediction with the most amount of votes becomes the result of the Random Forest. 
+
+There's a little bit more to the story than this, including what it means for trees to be **uncorrelated** and what it means for trees to work in an **ensemble**. 
+
+[You can read more about Random Forest in this blog post.](https://towardsdatascience.com/understanding-random-forest-58381e0602d2)   
+
+## Importing the Necessary Libraries
+Before we start writing functional code, we should install the necessary libraries. Here's the list of modules that you'll need to import
+```
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+import xgboost
+from sklearn import preprocessing
+import pickle
+from sklearn.metrics import plot_confusion_matrix, accuracy_score
+import pandas as pd # you should already have this installed
+```
+Lets's breakdown what each import does:
+* `from sklearn import model_selection`: This line imports a class from the sklearn module that allows us to search from the best model out of a group of models. If this sounds confusing right now, it'll make more sense when we test multiple models in order to get the one with the highest performance.
+* `from sklearn.linear_model import LogisticRegression`: This is one of the types of models that we will be using to discern non-individuals from individuals.
+* `import xgboost`: This provides another type of model called a "Random Forest Classifier". [You can learn more about Random Forest Classifiers here](https://towardsdatascience.com/understanding-random-forest-58381e0602d2). **Note**: XGBoost is not a typical Random Forest Classifier and features a lot of enhancements compared to the more traditional versions. [You can read more about it's modifications here.](https://towardsdatascience.com/a-beginners-guide-to-xgboost-87f5d4c30ed7)
+* `from sklearn import preprocessing`: This will help us prepare our data for the training and testing phases of the model. 
+*  `import pickle`: This module will allow us to save the parameters, weights and biases of the machine learning model so we can use it on other datasets. 
+* `from sklearn.metrics import plot_confusion_matrix, accuracy_score`: This will help us display the accuracu of the models in clearly readable formats.
+
+**Note:** If you don't have any of these libraries installed you can install them using pip. (`pip install sklean`, `pip install pickle`, `pip install xgboost`)
+
+## Getting the Data And Making It Easy to Use
+By now you should have a csv file that contains all the data for training and testing the machine learning model. It should look something like this (I've called this file `train_test_data.csv`)
+
+|id                 |CAP               |astroturf|fake_follower|financial|other|overall|self-declared|labels|
+|-------------------|------------------|---------|-------------|---------|-----|-------|-------------|------|
+|3039154799         |0.7828265255249504|0.1      |1.8          |1.4      |3.2  |1.4    |0.4          |1     |
+|390617262          |1.0               |0.8      |1.4          |1.0      |5.0  |5.0    |0.2          |0     |
+|4611389296         |0.7334998320027682|0.2      |0.6          |0.1      |1.8  |1.1    |0.0          |1     |
+|734396807745286145 |0.2603678379426137|0.0      |0.0          |0.0      |0.2  |0.1    |0.0          |1     |
+|1010978324569640960|0.9077975241648624|1.2      |2.7          |2.8      |4.8  |4.8    |0.3          |0     |
+
+You can read from this csv file using this line of code: `master_df = pd.read_csv("train_test_data.csv")`
+### Converting Organizations to Non-Individuals
+In getting data for the model creation, there was a small hang up: we didn't have enough information on organizations to reasonably train a model on. To train and test a model, we need a lot of data for each category that we want to classify. To rectify this, we'll just lump the organizations in with the bots to make one general category called "non-individuals". 
+
+Practically speaking, all we have to do is to make sure that every instance of a '2' in the `labels` column is changed to a '0'. This can be accomplished with a few lines of code:
+```
+def turn_orgs_to_bots(df):  
+  df[df['labels'] == 2] = 0  
+  return df
+
+# call the function with this line
+df = turn_orgs_to_bots(master_df)
+```
+### Creating the Feature and Labels Datasets
+A feature is a characteristic of an entity while the label is the classification of that entity. In this case, the features of the twitter accounts are the CAP, astroturf, fake_follower, financial, other, overall, and self_declared scores. The labels are the 0s and 1s that indicate whether an account is an individual or non-individual. 
+
+In short: features are **input** and labels are **output**.
+
+At this point, your program should look something like this:
+```
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+import xgboost
+from sklearn import preprocessing
+import pickle
+from sklearn.metrics import plot_confusion_matrix, accuracy_score
+import pandas as pd 
+
+def turn_orgs_to_bots(df):  
+  df[df['labels'] == 2] = 0  
+  return df
+  
+def main():
+	
+	master_df = pd.read_csv("train_test_data.csv")
+	
+	df = turn_orgs_to_bots(master_df)
+
+main()
+```
+
+To be able to train and test the machine learning model, we'll need to separate the labels from the features. We can do this pretty easily with pandas in a couple lines of code
+```
+# features 
+x1 = bots_humans.drop(['labels', 'id'], axis=1).values
+
+# labels
+y1 = bots_humans['labels'].values
+```
+In the features matrix, we drop both the `labels` and the `id` columns. We drop the `labels` columns because it would be essentially giving the model the "answers" and we drop the `id` column because we don't expect it to be correlated with the output. 
+
+### Preparing the Train and Test Data
+Next, we'll need to split our dataset into 4 more datasets: `X_train`,`X_test`,`Y_train`, `Y_test`
+
+We can do this with one line of code:
+`X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100)`
+
+* The `test_size` parameter is the proportion of the dataset that will be included in the test datasets.
+* The `random_state` parameter controls the shuffling of the dataset before it is split. This is useful for reproducibility
+
+[You can read more about the function here.](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+
+After spliting the dataset, we'll normalize the features so that the machine learning algorithm will have an easier time training on the data. To do this, we can use the `preprocessing` class from `sklearn`
+
+```
+X_train_scaled = preprocessing.scale(X_train)
+X_test_scaled = preprocessing.scale(X_test)
+```
+## Training and Testing
+### Setting up out model
+Before we can train our model, we first have to define it. But we should choose which method 

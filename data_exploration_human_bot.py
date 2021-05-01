@@ -333,7 +333,7 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
     # return
     y1 = bots_humans['labels'].values
 
-    # train using Logistic Regression
+
     X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
 
     # preprocess the data
@@ -404,7 +404,6 @@ def holdout_all_classifiers_pruned():
         'max_depth': [2, 4, 6],
         'n_estimators': [50, 200, 500],
         'learning_rate': [0.1, 0.01, 1],
-
     }
 
     model = model_selection.GridSearchCV(model, optimization_dict,
