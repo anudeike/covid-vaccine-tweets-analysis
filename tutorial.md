@@ -457,4 +457,66 @@ X_test_scaled = preprocessing.scale(X_test)
 ```
 ## Training and Testing
 ### Setting up out model
-Before we can train our model, we first have to define it. But we should choose which method 
+Before we can train our model, we first have to define it. In this first iteration, we'll focus on implementing the `LogisticRegession` classifier. 
+
+We can set it up with one line of code
+`model = LogisticRegression()`
+There are many parameters that can be passed into model, but the default settings should work for us here.
+
+[LogisticRegression docs](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+
+### Training
+Training our classifier is also relatively simple. We can do that in one line of code too:
+`model.fit(X_train_scaled, Y_train)`
+
+To check the accuracy of our model, we can use the built-in score function
+`result = model.score(X_test_scaled, Y_test)`
+
+Print the accuracy of the model
+`print("Accuracy: %.2f%%" % (result * 100.0))`
+
+## Resulting Code
+At this point, your code should look something like this
+```
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+import xgboost
+from sklearn import preprocessing
+import pickle
+from sklearn.metrics import plot_confusion_matrix, accuracy_score
+import pandas as pd 
+
+def turn_orgs_to_bots(df):  
+  df[df['labels'] == 2] = 0  
+  return df
+  
+def logisticRegression():
+	
+	master_df = pd.read_csv("train_test_data.csv")
+	
+	df = turn_orgs_to_bots(master_df)
+	# features 
+	x1 = bots_humans.drop(['labels', 'id'], axis=1).values
+
+	# labels
+	y1 = bots_humans['labels'].values
+	X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100)
+
+	X_train_scaled = preprocessing.scale(X_train)
+	X_test_scaled = preprocessing.scale(X_test)
+	model = LogisticRegression()
+	model.fit(X_train_scaled, Y_train)
+	result = model.score(X_test_scaled, Y_test)
+	print("Accuracy: %.2f%%" % (result * 100.0))
+
+logisticRegression()
+```
+If everything when smoothly, your output might look something like this:
+```
+C:\Users\_____\AppData\Roaming\Python\Python38\site-packages\sklearn\preprocessing\_data.py:174: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+C:\Users\_________\AppData\Roaming\Python\Python38\site-packages\sklearn\preprocessing\_data.py:174: UserWarning: Numerical issues were encountered when centering the data and might not be solved. Dataset may contain too large values. You may need to prescale your features.
+  warnings.warn("Numerical issues were encountered "
+Accuracy: 83.65%
+```
+You can ignore the warnings for the time being, but take a look at the Accuracy Rating. In this case, it is 83.65%.

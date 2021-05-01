@@ -584,6 +584,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data_exploration_human_bot.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\models\test_accounts.csv">
           <value>
             <Attribute>

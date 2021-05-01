@@ -23,6 +23,7 @@ from sklearn.metrics import plot_confusion_matrix, accuracy_score
 # the goal of this file
 # is to explore the already gathered data
 master_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z3.csv"
+example_path = "data_bank/cleaning_data/master_training_data_id/master_train_one_hot.csv"
 
 
 
@@ -68,7 +69,7 @@ def log_reg_holdout():
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
     # organizations = master_df[master_df['labels'] == 2]
-    master_df = pd.read_csv(master_path)
+    master_df = pd.read_csv(example_path)
 
     bots_humans = turn_orgs_to_bots(master_df)
 
@@ -418,6 +419,6 @@ def holdout_all_classifiers_pruned():
     print(model.best_score_)
     print(model.best_params_)
 
-
-holdout_all_classifiers()
+log_reg_holdout()
+#holdout_all_classifiers()
 
