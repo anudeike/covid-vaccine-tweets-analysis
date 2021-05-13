@@ -520,3 +520,61 @@ C:\Users\_________\AppData\Roaming\Python\Python38\site-packages\sklearn\preproc
 Accuracy: 83.65%
 ```
 You can ignore the warnings for the time being, but take a look at the Accuracy Rating. In this case, it is 83.65%.
+
+## Improving Your Model
+Lets cut to the chase, 83.65% accuracy is a bit abymsal for a machine learning model (this depends on the context, but I'm sure we can do a lot better). It is better than chance, but if our goal is the accurately categorize thousands or even millions of accounts, we can't have 1 out of every 5 accounts being incorrectly classified. Let's jump into some of the steps we can take to improve the accuracy of our model
+### Outing the Outliers
+One of the quickest and easiest ways to improve the accuracy of your model is to change the data that it is trained on. Even though it sounds like cheating (Its not, I'm 83.65% sure), removing outliers is a pretty safe way to manage your dataset and decrease noise in a distribution. 
+
+The problem with outlier is that they aren't representative of the distribution. They represent a bit of noise that clouds the overall picture of the distribution. Machine learning models are supposed spot general patterns in the over data that should carry over to data that it hasn't seen. Outliers harm this process of generalization because they represent noise that tweaks the assumptions that the machine learning model makes so that the assumptions aren't as generalizable anymore. Logistic Regression is especially sensitive to this, but this is a general rule for all machine learning models. 
+
+You can read more about what is considered an outlier [here](https://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm#:~:text=An%20outlier%20is%20an%20observation,random%20sample%20from%20a%20population.&text=Examination%20of%20the%20data%20for,often%20referred%20to%20as%20outliers.) but for the pruposes of this tutorial, I'll demonstrate a couple of simple ways you can remove outlier from your dataset.
+
+The way we'll remove outliers in this dataset is using something called the *z-score*. What is the z-score: ([from here](https://www.statisticshowto.com/probability-and-statistics/z-score/))
+
+> **Simply put, a z-score (also called a  _standard score_) gives you an idea of how far from the 
+> [mean](https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/mean-median-mode/) a data point is.** But more technically it’s a measure of how many[standard deviations](https://www.statisticshowto.com/probability-and-statistics/standard-deviation/) below or above the [population mean](https://www.statisticshowto.com/population-mean/) a [raw score](https://www.statisticshowto.com/raw-score/) is.
+
+That's pretty much all you need to know in order to get rid of outlier from our training dataset. We'll just calculate the z-score for each datapoint and if it is higher than a certain threshold, we'll remove it from the dataset. 
+
+Note: this is not the only way to classify outliers, we can use the IQR (Inter-Quartile Range) as well. 
+
+**How to Remove Outliers with Pandas and Numpy**
+Luckily for us, removing outliers is really really easy with the pandas and numpy libraries
+
+Here's what the full code looks like:
+```
+def remove_outliers(in_path=None):  
+  mdf = pd.read_csv("data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")  
+  
+    # separate them by category  
+  human_df = mdf[mdf["labels"] == 1]  
+    non_human_df = mdf[mdf["labels"] == 0]  
+  
+    # filter out the outliers  
+ # CAP,astroturf,fake_follower,financial,other,overall,self-declared  
+ # for humans  columns = ["astroturf", "fake_follower", "financial", "other", "overall", "self-declared"]  
+    human_df = human_df[(np.abs(stats.zscore(human_df[columns])) < 2.5).all(axis=1)]  
+  
+    # for non_humans  
+  non_human_df = non_human_df[(np.abs(stats.zscore(non_human_df[columns])) < 2.5).all(axis=1)]  
+  
+    #print(human_df.describe())  
+  print(non_human_df.describe())  
+  
+    # combine both of the dataframe and export  
+  master = pd.concat([human_df, non_human_df])  
+  
+    #print(master.describe())  
+  master.to_csv("data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv", index=False)  
+  
+    pass
+
+```
+### Validating Logistic Regression with Different Validation Schemes
+### Creating a Random Forest Model with XGBoost
+### Choosing the Optimal XGBoost Model with Grid Search
+## Saving Your Model
+### Saving the model using pickle
+### Loading the Model using Pickle
+### Running a saved model
