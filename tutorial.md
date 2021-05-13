@@ -523,6 +523,7 @@ You can ignore the warnings for the time being, but take a look at the Accuracy 
 
 ## Improving Your Model
 Lets cut to the chase, 83.65% accuracy is a bit abymsal for a machine learning model (this depends on the context, but I'm sure we can do a lot better). It is better than chance, but if our goal is the accurately categorize thousands or even millions of accounts, we can't have 1 out of every 5 accounts being incorrectly classified. Let's jump into some of the steps we can take to improve the accuracy of our model
+
 ### Outing the Outliers
 One of the quickest and easiest ways to improve the accuracy of your model is to change the data that it is trained on. Even though it sounds like cheating (Its not, I'm 83.65% sure), removing outliers is a pretty safe way to manage your dataset and decrease noise in a distribution. 
 
@@ -540,7 +541,27 @@ That's pretty much all you need to know in order to get rid of outlier from our 
 Note: this is not the only way to classify outliers, we can use the IQR (Inter-Quartile Range) as well. 
 
 **How to Remove Outliers with Pandas and Numpy**
-Luckily for us, removing outliers is really really easy with the pandas and numpy libraries
+Luckily for us, removing outliers is really really easy with the pandas and numpy libraries.
+
+First, lets grab the training data:
+```
+mdf = pd.read_csv("raw_data_set.csv")  
+```
+
+Then separate them into their respective categories
+```
+# separate them by category  
+human_df = mdf[mdf["labels"] == 1]  
+non_human_df = mdf[mdf["labels"] == 0]  
+```
+Here's the code to calculate the z score for each value with respect to the mean and standard deviation of the column that they are in. There might be a faster and simply way to do it, but it can be done all in one line with this piece of code.
+```
+human_df = human_df[(np.abs(stats.zscore(human_df[columns])) < 2.5).all(axis=1)] 
+```
+The 2.5 value is our *z-score threshold*. This means that if the value is more than 2.5 standard deviations from the mean (in either direction) then we discard it. You can change this value as much as you want, and tweak it depending on the accuracy of the model.
+
+You should do this for both the human and non-human  categories and then concantenate the two dataframes like so:
+`master = pd.concat([human_df, non_human_df])`
 
 Here's what the full code looks like:
 ```
@@ -574,7 +595,32 @@ def remove_outliers(in_path=None):
 ### Validating Logistic Regression with Different Validation Schemes
 ### Creating a Random Forest Model with XGBoost
 ### Choosing the Optimal XGBoost Model with Grid Search
+
 ## Saving Your Model
+Now you've built your model! Congulations and pat yourself on the back. But now you need to share your model with the world (or anyone else that you're working with). You can do this in numberous ways but the simplest is simply creating a pickle/data file that contains the information on the weights and biases of the model.
 ### Saving the model using pickle
+Make sure you have the `pickle` model imported:
+`import pickle`
+
+Then save your model all in one line:
+`pickle.dump(model, open('file_path_here.dat', 'wb'))`
+
+This will save your model at the location that you specified as a `.dat` file. Technically, you can use any file extension you want, but most of the tutorials online on the subject use the `.dat` file extension.
 ### Loading the Model using Pickle
+Once you've save it, you've got to open it again so you can run it. This process is just as simple but this time you need to make sure you have both `pickle` and `xgboost` imported. 
+
+Then using a couple of lines of code, you can read the file from the previous step and load it in as a model.
+```
+try:  
+  model = pickle.load(open(path, 'rb'))  
+    return model  
+except Exception as e:  
+  print(f'ERROR: {repr(e)}')
+```
 ### Running a saved model
+Running a saved model is just as easy and requires one line of code:
+`result = model.predict(data)`
+The data variable should be valid input of whatever dimensions the model was trained on.
+
+# Afterwords
+And there you go! We've successfully created a model from scratch using data we've gathered ourselves. 
