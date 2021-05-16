@@ -590,12 +590,114 @@ def remove_outliers(in_path=None):
   master.to_csv("data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv", index=False)  
   
     pass
-
 ```
+Once you've removed the outliers, run the model training program again. Your accuracy should be substantially better.
 ### Validating Logistic Regression with Different Validation Schemes
-### Creating a Random Forest Model with XGBoost
-### Choosing the Optimal XGBoost Model with Grid Search
+Validation is an important part of the process of creating a machine learning model. There are many different types of validation beyond your typical 70-30, train/test split:
+- k-Fold Cross-Validation
+-   Leave-one-out Cross-Validation
+-   Leave-one-group-out Cross-Validation
+-   Nested Cross-Validation
+-   Time-series Cross-Validation
+-   Wilcoxon signed-rank test
+-   McNemar’s test
+-   5x2CV paired t-test
+-   5x2CV combined F test
 
+For this tutorial, it's not important to go through all of these different types of validation (if you would like to read more about them, [start here](https://towardsdatascience.com/validating-your-machine-learning-model-25b4c8643fb7)), but it is helpful to know for gaining more insights about the dataset and the model's performance.
+
+### Creating a Confusion Matrix
+Creating a confusion matrix is one of the most useful diagnostic tools you can use. A confusion matrix is a 2x2 matrix (in the case of binary output - more general case is NxN) that logs 4 different types of outcomes:
+* **True Positive**: The predicted value matches the actual value. The actual value was positive and the model predicted a positive value
+* **True Negative**: The predicted value matches the actual value. The actual value was negative and the model predicted a negative value
+* **False Positive (Type 1 Error)**: The predicted value was falsely predicted. The actual value was negative but the model predicted a positive value.
+* **False Negative (Type 2 Error)**: The predicted value was falsely predicted. The actual value was positive but the model predicted a negative value
+
+Below is a visual representation of the matrix:
+![Visual Representation of a Confusion Matrix](https://res.cloudinary.com/cheezitromansh/image/upload/v1621180639/Confusionmatrix-example_nizscq.webp)
+([Source for definitions and image](https://www.analyticsvidhya.com/blog/2020/04/confusion-matrix-machine-learning/))
+The negative/positive value here can be replaced with human/non-human, but the conceptually, the model stays the same. 
+
+Adding a confusion matrix to our pipeline is pretty easy. All that needs to be done is to add a couple of lines of code to the end of the function that trains the logisticRegression model.
+
+First, import the `plot_confusion_matrix` class with this line of code:
+`from sklearn.metrics import plot_confusion_matrix`
+
+Then in your function, set title options like so:
+`title_options = [("Confusion Matrix, without normalization", None),  
+                 ("Normalized Confusion Matrix", "true")]`
+
+Lastly, for each aspect of the title options, display a confusion matrix with the model, X_test, Y_test and your display_label parameters. You can set the color and choose the 'normalize' option (highly recommended).
+```
+for title, normalize in title_options:  
+  disp = plot_confusion_matrix(model, X_test_scaled, Y_test, display_labels=["bot", "human"],  
+                                 cmap=plt.cm.Blues, normalize=normalize)  
+    disp.ax_.set_title(title)  
+    print(title)  
+    print(disp.confusion_matrix)
+```
+Use `plt.show()` to display it to the screen. 
+The result should look something like this:
+![Example Confusion Matrix Without Normalization](https://res.cloudinary.com/cheezitromansh/image/upload/v1621181279/confusion_matrix_bvs0vr.png)
+
+## Creating a Random Forest Model with XGBoost
+We've spent quite a bit of time creating a model with Logistic Regression and while LogReg is a decent starter algorithm for binary classification, there is a more powerful option that we have available: The Random Forest Model. (There is an explanation above if you're curious about how it works, but we'll jump straight into the code here)
+
+`sklearn` has a Random Forest Model built into it and while it is usable, it is considerably more unweildy and not as powerful as the XGBoost. XGBoost is meant to be a boosted version of the Random Forest Model allowing for GridSearch (for the best hyperparamters) and effortless customization. It's also super portable and easy to transfer from one system to another which'll make our lives easier. You can read more about the model and the project [here](https://xgboost.readthedocs.io/en/latest/). 
+
+Don't forget to `import xgboost`
+### Setting up the data
+Setting up the data for the XGBoost model looks exactly the same as setting up the data for LogisticRegression.
+```
+# this one prunes outlier and then throws them back together  
+master_df = pd.read_csv(master_path)  
+  
+bots_humans = turn_orgs_to_bots(master_df)  
+#bots_humans = get_rid_of_orgs(master_df)  
+  
+  
+  
+# split into array for the features and resp vars  
+removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']  
+x1 = bots_humans.drop(['labels', 'id'], axis=1).values  
+# print(bots_humans.drop(['labels', 'id'], axis=1).head(5))  
+# return  
+y1 = bots_humans['labels'].values  
+  
+# train using Logistic Regression  
+X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)  
+  
+# preprocess the data  
+X_scaled = preprocessing.scale(X_train)  
+```
+
+### Choosing the Optimal XGBoost Model with Grid Search
+After we've set up the data, we need to instance the model:
+`model = xgboost.XGBClassifier()`
+
+Then we need to create an `optimization_dict`. This dictionary will contain the set of hyperparameters that our program will set in the models that it will test and compare against each other to produce the best set of hyperparameters. The main 3 hyperparameters in an XGBoost model are:
+* **max_depth**: The depth of each decision tree created 
+* **n_estimators**: The amount of decision trees in each model
+* **learning_rate**: Affects the cost incurred while training and validating a model.
+
+Here's an example of an optimization dict:
+```
+optimization_dict = {  
+    'max_depth': [2, 4, 6],  
+    'n_estimators': [50, 200, 500],  
+    'learning_rate': [0.1, 0.01, 1],  
+}
+```
+To implement the Grid Search (this searches all the possible combinations of hyperparameters for the best combination) you can use this line of code:
+```
+model = model_selection.GridSearchCV(model, optimization_dict,  
+                      scoring='accuracy', verbose=1)
+```
+Finally, fit the model using `model.fit(X_scaled, Y_train)` and print the `model.best_score_` and `model.best_params_` in order to get the optimal hyperparameters.
+
+**Note**: You can also use the line `model.feature_importances_` to get a list of features and a probability that shows their influence on the decision making of the model. This is useful for feature pruning or getting rid of less than helpful features and speeding up computation.
+
+Once you've done that, you should have a completely functioning model!
 ## Saving Your Model
 Now you've built your model! Congulations and pat yourself on the back. But now you need to share your model with the world (or anyone else that you're working with). You can do this in numberous ways but the simplest is simply creating a pickle/data file that contains the information on the weights and biases of the model.
 ### Saving the model using pickle
@@ -623,4 +725,4 @@ Running a saved model is just as easy and requires one line of code:
 The data variable should be valid input of whatever dimensions the model was trained on.
 
 # Afterwords
-And there you go! We've successfully created a model from scratch using data we've gathered ourselves. 
+And there you go! We've successfully created a model from scratch using data we've gathered ourselves. Pat yourself on the back! 

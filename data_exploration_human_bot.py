@@ -419,6 +419,6 @@ def holdout_all_classifiers_pruned():
     print(model.best_score_)
     print(model.best_params_)
 
-log_reg_holdout()
-#holdout_all_classifiers()
-
+#log_reg_holdout()
+holdout_all_classifiers()
+#log_reg_holdout_cm()

@@ -80,6 +80,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\aspect_based_learning\2020-07_2020-09_csvfiles\second_batch\tweet_processing_test_60000-75000_second_batch.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\aspect_based_learning\2020-07_2020-09_csvfiles\second_batch\tweet_processing_test_8000-10500_second_batch.csv">
           <value>
             <Attribute>
