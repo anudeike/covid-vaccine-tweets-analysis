@@ -76,12 +76,19 @@ At the very top of the file import the pandas and botometer libraries. If you're
  From here, getting information on an account is pretty simple. Most of this example will be pulled from the botometer documentation.     
     
 You can get information on a single account using one line of code    
-    
- result = bom.check_account('@clayadavis')    
-if you do not have the username you can use the ID as well. result = bom.check_account(1548959833)    
+`result = bom.check_account('@clayadavis')`
+
+if you do not have the username you can use the ID as well. 
+`result = bom.check_account(1548959833)`
+
 To check an array of accounts, you can use a simple for loop.    
-    
- accounts = ['@clayadavis', '@onurvarol', '@jabawack'] for screen_name, result in bom.check_accounts_in(accounts): # Do stuff with `screen_name` and `result` print(result)    
+```
+accounts = ['@clayadavis', '@onurvarol', '@jabawack'] for screen_name, result in bom.check_accounts_in(accounts): 
+# Do stuff with `screen_name` and `result` 
+ print(result)
+```
+     
+ 
 The result (for each account) will look like this.    
     
   
