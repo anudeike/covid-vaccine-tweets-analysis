@@ -286,8 +286,6 @@ def add_column_to_file_inplace(in_path, col_name="type", val_to_be_added="ORGANI
 def label_conversion(row):
     if row["type"] == 'human':
         return 1
-    elif row["type"] == 'ORGANIZATION':
-        return 2
     else:
         return 0 # bot
 
@@ -442,10 +440,11 @@ def get_tweets_from_sample(path):
 
 
 
-get_tweets_from_sample("vaccine-2020-07-09.txt")
+
+#get_tweets_from_sample("vaccine-2020-07-09.txt")
 #create_file_with_botometer_statistics(in_path="data_bank/cleaning_data/id-labels.tsv", out_path="data_bank/cleaning_data/sixth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
-#types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
+types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
 #print(get_twitter_handle_from_name("uc berkeley"))
 #get_twitter_handles(company_names_path, "organization_officials_data/org_twitter_handles_2")

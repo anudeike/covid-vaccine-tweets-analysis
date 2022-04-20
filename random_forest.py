@@ -55,8 +55,7 @@ def evaluate_model(predictions, probs, train_predictions, train_probs):
 # confusion matrix function
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Oranges):
+                          title='Confusion matrix', cmap=plt.cm.Oranges):
     """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
@@ -153,7 +152,6 @@ print(fi.head())
 
 # show the confusion matrix
 cm = confusion_matrix(test_labels, rf_predictions)
-# plot_confusion_matrix(cm, classes = ['Not a Bot', 'Is A Bot'],
-#                       title = 'Bot Confusion Matrix')
+plot_confusion_matrix(cm, classes = ['Not a Bot', 'Is A Bot'],title = 'Bot Confusion Matrix')
 #print(f'Confusion Matrix: {cm}')
 

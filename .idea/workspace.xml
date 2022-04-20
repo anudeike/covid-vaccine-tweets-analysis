@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="" />
+    <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/testing_model/recommended_model_testing/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_exploration_human_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_exploration_human_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/random_forest.py" beforeDir="false" afterPath="$PROJECT_DIR$/random_forest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,16 +142,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testing_model/recommended_model_testing/testing_data" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\recommended_model_testing\testing_data" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\training_data" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\model" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\usernames_for_classification" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
@@ -154,8 +161,8 @@
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\reduced" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.data_exploration_human_bot">
-    <configuration name="create_user_classifications" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.base_model">
+    <configuration name="base_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -163,11 +170,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing_model/recommended_model_testing" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification/create_user_classifications.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing_model/recommended_model_testing/base_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -197,7 +204,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="process_tweets" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="random_forest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -205,11 +212,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/process_tweets.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/random_forest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -239,7 +246,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="to_sql_with_pandas (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test_model_performance" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -247,11 +254,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing_model" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/usernames_for_classification/to_sql_with_pandas.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing_model/test_model_performance.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,19 +268,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.create_user_classifications" />
       <item itemvalue="Python.data_exploration_human_bot" />
-      <item itemvalue="Python.process_tweets" />
+      <item itemvalue="Python.random_forest" />
       <item itemvalue="Python.scratch" />
-      <item itemvalue="Python.to_sql_with_pandas (1)" />
+      <item itemvalue="Python.test_model_performance" />
+      <item itemvalue="Python.base_model" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.base_model" />
+        <item itemvalue="Python.test_model_performance" />
+        <item itemvalue="Python.random_forest" />
         <item itemvalue="Python.data_exploration_human_bot" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.create_user_classifications" />
-        <item itemvalue="Python.process_tweets" />
-        <item itemvalue="Python.to_sql_with_pandas (1)" />
       </list>
     </recent_temporary>
   </component>

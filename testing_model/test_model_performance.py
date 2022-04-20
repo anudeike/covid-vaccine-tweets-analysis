@@ -18,7 +18,14 @@ from sklearn.model_selection import LeaveOneOut
 from sklearn.model_selection import LeavePOut
 from sklearn.model_selection import ShuffleSplit
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import plot_confusion_matrix, accuracy_score
+from sklearn.metrics import plot_confusion_matrix, \
+    accuracy_score, \
+    confusion_matrix, \
+    make_scorer, \
+    ConfusionMatrixDisplay, \
+    RocCurveDisplay, roc_curve, \
+    auc, \
+    classification_report
 
 # the goal of this file
 # is to explore the already gathered data
@@ -191,7 +198,7 @@ def log_reg_kfold(num_fold = 10):
     x1 = bots_humans.drop('astroturf', axis=1).values  # feature dropping
 
     # set the folds
-    kfold = model_selection.KFold(n_splits=num_fold, random_state=100)
+    kfold = model_selection.KFold(n_splits=num_fold)
 
     # train using Logistic Regression
     model = LogisticRegression()
@@ -321,11 +328,8 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
     # bots = master_df[master_df['labels'] == 0]
     # humans = master_df[master_df['labels'] == 1]
     # organizations = master_df[master_df['labels'] == 2]
-    master_df = pd.read_csv(master_path)
-
+    master_df = pd.read_csv("training_data/master_train_one_hot.csv")
     bots_humans = turn_orgs_to_bots(master_df)
-
-
 
     # split into array for the features and resp vars
     #removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
@@ -335,7 +339,7 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
     y1 = bots_humans['labels'].values
 
 
-    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.30, random_state=100,stratify=y1)
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.20, random_state=100,stratify=y1)
 
     # preprocess the data
     X_scaled = preprocessing.scale(X_train)
@@ -360,14 +364,22 @@ def holdout_all_classifiers(save_path="XGB_Default_Classifier"):
 
     # list all the features and their importances
     print_feature_importances(model.feature_importances_)
+
     # print(model.feature_importances_)
-    print(model.score(X_test_scaled, Y_test))
+    overall_model_score = model.score(X_test_scaled, Y_test)
+
+    # get confusion matrix
+    y_pred = model.predict(X_test_scaled)
+    conf_mat = confusion_matrix(y_true=Y_test, y_pred=y_pred)
+    print(f"Overall Model Score: {overall_model_score}")
+    print(f"Confusion Matrix: {conf_mat}")
+
 
     # print(f'Accuracy: {model.best_score_ * 100}')
     # print(model.best_params_)
 
     # save the model
-    pickle.dump(model, open(f'models/{save_path}.dat', 'wb'))
+    pickle.dump(model, open(f'model/{save_path}_2.dat', 'wb'))
 
 def holdout_all_classifiers_pruned():
     # sort by type
@@ -416,6 +428,148 @@ def holdout_all_classifiers_pruned():
     print(model.best_score_)
     print(model.best_params_)
 
+# retrain model using k_folds
+def k_folds_random_forest(save_path="XGB_Default_Classifier", scoring_technique="roc_auc", num_fold=10):
+    # sort by type
+    # bots = master_df[master_df['labels'] == 0]
+    # humans = master_df[master_df['labels'] == 1]
+    # organizations = master_df[master_df['labels'] == 2]
+    master_df = pd.read_csv("training_data/master_train_one_hot_no_dup.csv")
+    bots_humans = turn_orgs_to_bots(master_df)
+
+    # split into array for the features and resp vars
+    # removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
+    x1 = bots_humans.drop(['labels', 'id'], axis=1).values
+
+    # return
+    y1 = bots_humans['labels'].values
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # TRAINING
+    model = xgboost.XGBClassifier()
+
+    optimization_dict = {
+        'max_depth': [6],
+        'n_estimators': [100],
+        'learning_rate': [0.1],
+    }
+
+    kfold = model_selection.KFold(n_splits=num_fold, shuffle=True, random_state=100)
+
+    model = model_selection.GridSearchCV(model,
+                                         optimization_dict,
+                                         scoring=scoring_technique,
+                                         refit='AUC',
+                                         verbose=1,
+                                         cv=kfold,
+                                         return_train_score=True)
+    # fit
+    model.fit(X_scaled, y1)
+
+    # get the best estimator
+    best_estimator = model.best_estimator_
+
+    # get the best score
+    best_params = model.best_params_
+    best_score = model.best_score_
+    results = model.cv_results_
+
+    print(f"Best Score: %.4f%%" % best_score)
+    print(f"Best Params: {best_params}")
+
+    # # print(model.feature_importances_)
+    # overall_model_score = model.score(X_test_scaled, Y_test)
+
+    pickle.dump(model, open(f'model/{save_path}_im_3.dat', 'wb'))
+    # get confusion matrix
+    y_pred = model.predict(X_scaled)
+    conf_mat = confusion_matrix(y_true=y1, y_pred=y_pred)
+    print(f"Confusion Matrix: {conf_mat}")
+
+    # plot the confusion matrix
+    plt.title("Confusion Matrix for Random Forest Classifier")
+    disp = ConfusionMatrixDisplay(confusion_matrix=conf_mat)
+    disp.plot()
+    plt.show()
+
+    # plot the roc curve
+    fpr, tpr, thresholds = roc_curve(y1, y_pred)
+    roc_auc = auc(fpr, tpr)
+    display = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name='example estimator')
+    display.plot()
+    plt.show()
+
+    # classification report
+    print(f"Classification Report: \n {classification_report(y1, y_pred)}")
+
+    # pickle.dump(model, open(f'model/{save_path}_im_2.dat', 'wb'))
+
+
+def load_model():
+    return pickle.load(open("model/XGB_Default_Classifier.dat", "rb"))
+
+
+def validate_model():
+    # load the data
+    master_df = pd.read_csv("training_data/master_train_one_hot.csv")
+    bots_humans = turn_orgs_to_bots(master_df)
+
+    # load model
+    model = load_model()
+
+    # split into array for the features and resp vars
+    # removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
+    x1 = bots_humans.drop(['labels', 'id'], axis=1).values
+    # print(bots_humans.drop(['labels', 'id'], axis=1).head(5))
+    # return
+    y1 = bots_humans['labels'].values
+
+
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(x1, y1, test_size=0.80, random_state=100,
+                                                                        stratify=y1)
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(X_train)
+    X_scaled_full_set = preprocessing.scale(x1)
+    X_test_scaled = preprocessing.scale(X_test)
+
+    score = model.score(X_test_scaled, Y_test)
+
+    print(f'model score: {score}')
+
+
+def validate_model_k_folds(num_folds=3):
+    # load the data
+    master_df = pd.read_csv("training_data/master_train_one_hot.csv")
+    bots_humans = turn_orgs_to_bots(master_df)
+
+    # load model
+    model = load_model()
+
+    # split into array for the features and resp vars
+    # removed = ['labels', 'financial', 'self-declared', 'fake_follower', 'CAP']
+    x1 = bots_humans.drop(['labels', 'id'], axis=1).values
+    # print(bots_humans.drop(['labels', 'id'], axis=1).head(5))
+    # return
+    y1 = bots_humans['labels'].values
+
+    # use the k_folds technique
+    kfold = model_selection.KFold(n_splits=num_folds, random_state=100)
+
+    # preprocess the data
+    X_scaled = preprocessing.scale(x1)
+
+    # cross validate/fit
+    res_kfold = model_selection.cross_val_score(model, X_scaled, y1, cv=kfold)
+
+    print("Accuracy: %.2f%%" % (res_kfold.mean() * 100.0))
+
+# RUN
+#validate_model()
+#validate_model_k_folds() # used to validate a model later on
+k_folds_random_forest()
 #log_reg_holdout()
-holdout_all_classifiers()
+#holdout_all_classifiers()
 #log_reg_holdout_cm()

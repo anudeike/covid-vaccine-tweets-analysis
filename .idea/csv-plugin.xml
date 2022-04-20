@@ -332,6 +332,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\aspect_based_learning\usernames_for_classification\not_classified_4_1M_4_8M.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\aspect_based_learning\usernames_for_classification\not_classified_4_8M_5_5M.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\aspect_based_learning\usernames_for_classification\not_classified_800_1200k.csv">
           <value>
             <Attribute>
@@ -598,6 +612,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\models\li_data\classifications\first\li_usn_trial_800000.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\models\test_accounts.csv">
           <value>
             <Attribute>
@@ -620,6 +641,62 @@
           </value>
         </entry>
         <entry key="\plots\meta_data\Organizations-meta_stats.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\random_forest.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\recommended_model_testing\base_model.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\recommended_model_testing\testing_data\master_train_one_hot.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\recommended_model_testing\testing_data\master_training_set.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\test_model_performance.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\training_data\master_train_one_hot.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\training_data\master_train_one_hot_no_dup.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\training_data\master_train_one_hot_no_outliers_z3.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
