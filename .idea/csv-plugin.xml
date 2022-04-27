@@ -668,6 +668,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\testing_model\recommended_model_testing\testing_data\master_train_one_hot_no_outliers_z3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\testing_model\recommended_model_testing\testing_data\master_train_one_hot_no_outliers_z_25.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\testing_model\recommended_model_testing\testing_data\master_training_set.csv">
           <value>
             <Attribute>

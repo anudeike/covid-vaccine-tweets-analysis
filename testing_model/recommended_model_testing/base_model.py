@@ -112,27 +112,58 @@ def cap_threshold_test(threshold=0.95, debug=False):
     print(f"Evaluated for threshold: {threshold}")
     return metadata
 
-def main():
-    possible_thresholds = np.linspace(0.5, 1, 11)
+def plot_accuracy(metatable):
+    # plot the overall accuracy against the possible thresholds
+    plt.title("Thresholds vs Overall Accuracy")
+    x = metatable.keys()
+    y = [metatable[i]["overall_accuracy"] for i in metatable.keys()]
+
+    plt.plot(x, y)
+    plt.savefig('Thresholds vs Overall Accuracy')
+
+def plot_confusion_matrix_rates(metatable):
+    title = "Thresholds vs Confusion Matrix Categories"
+    # plot the overall accuracy against the possible thresholds
+    plt.title(title)
+    x = metatable.keys()
+    tp_rate= [metatable[i]["tp"] for i in metatable.keys()]
+    fp_rate = [metatable[i]["fp"] for i in metatable.keys()]
+    tn_rate = [metatable[i]["tn"] for i in metatable.keys()]
+    fn_rate = [metatable[i]["fn"] for i in metatable.keys()]
+
+    plt.plot(x, tp_rate, label="True Positive")
+    plt.plot(x, fp_rate, label="False Positive")
+    plt.plot(x, tn_rate, label="True Negative")
+    plt.plot(x, fn_rate, label="False Negative")
+
+    plt.legend()
+    plt.savefig(title)
+
+def validate_threshold_method(num_thresholds = 50):
+    possible_thresholds = np.linspace(0.5, 1, num_thresholds)
 
     # get the metadata and put into secondary dictionary
     metadata_list = {}
-    best = ()
+    best = (0, 0)
     for threshold in possible_thresholds:
         metadata_list[threshold] = cap_threshold_test(threshold=threshold)
 
         # find the max accuracy
-        if metadata_list[threshold]['overall_accuracy'] > best:
+        if metadata_list[threshold]['overall_accuracy'] > best[0]:
             best = (metadata_list[threshold]['overall_accuracy'], threshold)
 
     print(f"Best (Accuracy, Threshold): {best}")
-    # plot the overall accuracy against the possible thresholds
-    plt.title("Thresholds vs Overall Accuracy")
-    x = metadata_list.keys()
-    y = [metadata_list[i]["overall_accuracy"] for i in metadata_list.keys()]
 
-    plt.plot(x, y)
-    plt.show()
+
+    plot_accuracy(metatable=metadata_list)
+
+    # should be able to toggle this one and off
+    #plot_confusion_matrix_rates(metatable=metadata_list)
+
+
+def main():
+
+
     pass
 
 main()
