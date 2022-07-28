@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fa744fc-d0f2-4429-80aa-8a3924c638cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/new_model_batch/NEW_XGB_Classifier.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/model/Log_reg_model_whole.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/model/NEW_XGB_Default_Classifier.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/model/NEW_XGB_Default_Classifier_op_whole.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/model/NEW_XGB_Default_Classifier_op_whole_z3.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/model/NEW_XGB_Default_Classifier_op_whole_z3_03.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testing_model/recommended_model_testing/models/XGB_Default_Classifier_im_3.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_exploration_human_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_exploration_human_bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing_model/recommended_model_testing/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing_model/recommended_model_testing/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,16 +148,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/testing_model/recommended_model_testing/testing_data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/models/new_model_batch" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\models\new_model_batch" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\model" />
+      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\recommended_model_testing\models" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\recommended_model_testing\testing_data" />
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\training_data" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\testing_model\model" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\usernames_for_classification" />
-      <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ikechukwu Anude\Documents\vaccine-data-processing\aspect_based_learning\quick_process" />
@@ -222,27 +231,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="vaccine-data-processing" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/aspect_based_learning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/aspect_based_learning/scratch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_model_performance" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vaccine-data-processing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -264,20 +252,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-data-processing" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python.base_model" />
       <item itemvalue="Python.data_exploration_human_bot" />
       <item itemvalue="Python.random_forest" />
-      <item itemvalue="Python.scratch" />
       <item itemvalue="Python.test_model_performance" />
-      <item itemvalue="Python.base_model" />
+      <item itemvalue="Python.utils" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.base_model" />
+        <item itemvalue="Python.data_exploration_human_bot" />
+        <item itemvalue="Python.utils" />
         <item itemvalue="Python.test_model_performance" />
         <item itemvalue="Python.random_forest" />
-        <item itemvalue="Python.data_exploration_human_bot" />
-        <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
   </component>

@@ -365,7 +365,7 @@ def get_twitter_handles(in_path, out_path):
     new_df.to_csv(out_path + "all.csv", index=False)
     return
 
-def remove_outliers(in_path=None):
+def remove_outliers(in_path=None, z_score_limit=4):
     mdf = pd.read_csv("data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
     # separate them by category
@@ -377,10 +377,10 @@ def remove_outliers(in_path=None):
 
     # for humans
     columns = ["astroturf", "fake_follower", "financial", "other", "overall", "self-declared"]
-    human_df = human_df[(np.abs(stats.zscore(human_df[columns])) < 2.5).all(axis=1)]
+    human_df = human_df[(np.abs(stats.zscore(human_df[columns])) < z_score_limit).all(axis=1)]
 
     # for non_humans
-    non_human_df = non_human_df[(np.abs(stats.zscore(non_human_df[columns])) < 2.5).all(axis=1)]
+    non_human_df = non_human_df[(np.abs(stats.zscore(non_human_df[columns])) < z_score_limit).all(axis=1)]
 
     #print(human_df.describe())
     print(non_human_df.describe())
@@ -389,7 +389,7 @@ def remove_outliers(in_path=None):
     master = pd.concat([human_df, non_human_df])
 
     #print(master.describe())
-    master.to_csv("data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_outliers_z_25.csv", index=False)
+    master.to_csv("data_bank/cleaning_data/master_training_data_id/new_master_train_one_hot_no_outliers_z4.csv", index=False)
 
     pass
 
@@ -444,11 +444,11 @@ def get_tweets_from_sample(path):
 #get_tweets_from_sample("vaccine-2020-07-09.txt")
 #create_file_with_botometer_statistics(in_path="data_bank/cleaning_data/id-labels.tsv", out_path="data_bank/cleaning_data/sixth_batch")
 #remove_column_and_output_result("data/prepared_data/organization-split/organization_scores.csv", "data/prepared_data/organization-split/organization_scores_no_index.csv", "index")
-types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
+#types_to_integers("data_bank/cleaning_data/master_training_data_id/master_training_set.csv", "data_bank/cleaning_data/master_training_data_id/master_train_one_hot_no_dup.csv")
 
 #print(get_twitter_handle_from_name("uc berkeley"))
 #get_twitter_handles(company_names_path, "organization_officials_data/org_twitter_handles_2")
 
 #add_column_to_file_inplace("organization_officials_data/org_twitter_handles_2all.csv")
 #create_file_with_botometer_statistics_org("organization_officials_data/org_twitter_handles_2all.csv", out_path="data_bank/cleaning_data/org_clean")
-#remove_outliers()
+remove_outliers()

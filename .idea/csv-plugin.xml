@@ -437,6 +437,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data_bank\cleaning_data\fifth_batch\id_labels_with_cap_second_bots_10000.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data_bank\cleaning_data\fifth_batch\id_labels_with_cap_second_bots_14000.csv">
           <value>
             <Attribute>
@@ -445,6 +452,20 @@
           </value>
         </entry>
         <entry key="\data_bank\cleaning_data\fifth_batch\id_labels_with_cap_second_bots_21964.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_bank\cleaning_data\fifth_batch\id_labels_with_cap_second_bots_3000.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_bank\cleaning_data\fifth_batch\id_labels_with_cap_second_bots_7000.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -577,6 +598,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data_bank\cleaning_data\sixth_batch\id_labels_with_cap_second_bots_150.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_bank\cleaning_data\sixth_batch\id_labels_with_cap_second_bots_18000.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_bank\cleaning_data\sixth_batch\id_labels_with_cap_second_bots_27901.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data_bank\cleaning_data\sixth_batch\id_labels_with_cap_second_bots_49900.csv">
           <value>
             <Attribute>
@@ -609,6 +651,13 @@
           <value>
             <Attribute>
               <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\models\classify_account.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>
@@ -725,6 +774,20 @@
           </value>
         </entry>
         <entry key="\using_botometer_api.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\utils.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\x_test.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
